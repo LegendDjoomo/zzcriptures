@@ -1,0 +1,476 @@
+{
+  "biblicalWords": {
+    "hebrew": [
+      {
+        "word": "צְבָאוֹת",
+        "transliteration": "Tzevaot",
+        "meaning": "Hosts, armies. Used in the divine title 'YHWH Tzevaot' (LORD of Hosts), emphasizing God's supreme command over all heavenly armies (angels) and earthly powers.",
+        "primaryReference": "1 Samuel 1:3"
+      },
+      {
+        "word": "עוֹלָם",
+        "transliteration": "Olam",
+        "meaning": "Eternity, age, forever, ancient times. Conveys a sense of indefinite and perpetual time, both past and future. 'Le-Olam Va-Ed' means 'forever and ever'.",
+        "primaryReference": "Genesis 21:33"
+      },
+      {
+        "word": "יָשַׁע",
+        "transliteration": "Yasha",
+        "meaning": "To save, to deliver, to be liberated. The root verb for names like Joshua, Isaiah, and Jesus. It implies rescue from a narrow or tight place.",
+        "primaryReference": "Exodus 14:30"
+      },
+      {
+        "word": "צֶדֶק",
+        "transliteration": "Tzedeq",
+        "meaning": "Righteousness, justice. Often used in a legal or relational sense, meaning to be in the right. 'Tzedakah' is the noun form for righteousness/charity.",
+        "primaryReference": "Genesis 15:6"
+      },
+      {
+        "word": "רָעָה",
+        "transliteration": "Ra'ah",
+        "meaning": "Evil, badness, calamity, distress. Can refer to moral evil, natural evil, or simply something that is not good or pleasant.",
+        "primaryReference": "Isaiah 45:7"
+      },
+      {
+        "word": "תְּפִלָּה",
+        "transliteration": "Tefillah",
+        "meaning": "Prayer, intercession, supplication. The standard Hebrew word for communication with God.",
+        "primaryReference": "1 Kings 8:28"
+      },
+      {
+        "word": "קָדוֹשׁ",
+        "transliteration": "Kadosh",
+        "meaning": "Holy, sacred, set apart. The fundamental attribute of God, denoting His absolute otherness, purity, and separation from sin. 'Kedoshim' means 'holy ones' or 'saints'.",
+        "primaryReference": "Isaiah 6:3"
+      },
+      {
+        "word": "יָרֵא",
+        "transliteration": "Yare",
+        "meaning": "To fear, to revere, to be in awe. 'The fear of the LORD' (Yirat YHWH) is the foundation of wisdom, meaning a reverential awe and respect that leads to obedience.",
+        "primaryReference": "Proverbs 9:10"
+      },
+      {
+        "word": "אֱלֹהִים",
+        "transliteration": "Elohim",
+        "meaning": "God; a plural noun (im suffix) often used with singular verbs, emphasizing majesty, power, and the plurality within the Godhead. Used especially in creation narratives.",
+        "primaryReference": "Genesis 1:1"
+      },
+      {
+        "word": "יְהוָה",
+        "transliteration": "YHWH / Yahweh",
+        "meaning": "The sacred, personal, and covenantal name of the God of Israel. Revealed to Moses at the burning bush, derived from the verb 'hayah' (to be), meaning 'He Who Is' or 'I AM'. Often translated as 'LORD' (in small caps).",
+        "primaryReference": "Exodus 3:14-15"
+      },
+      {
+        "word": "אֲדֹנָי",
+        "transliteration": "Adonai",
+        "meaning": "Lord, Master. A title of respect and sovereignty for God. Jews often read this word in place of the sacred name YHWH.",
+        "primaryReference": "Psalm 8:1"
+      },
+      {
+        "word": "רוּחַ",
+        "transliteration": "Ruach",
+        "meaning": "Spirit, wind, breath. Denotes the powerful, invisible, and life-giving force of God. 'Ruach Elohim' is the Spirit of God hovering over creation.",
+        "primaryReference": "Genesis 1:2"
+      },
+      {
+        "word": "בָּרָא",
+        "transliteration": "Bara",
+        "meaning": "To create, to shape. This verb almost exclusively has God as its subject, denoting divine, ex nihilo (out of nothing) creation.",
+        "primaryReference": "Genesis 1:1"
+      },
+      {
+        "word": "בְּרִית",
+        "transliteration": "Berit",
+        "meaning": "Covenant, pact, treaty. A central theme of the Bible, describing God's binding agreements with humanity (e.g., Noah, Abraham, David) and Israel at Sinai.",
+        "primaryReference": "Genesis 9:9"
+      },
+      {
+        "word": "מָשִׁיחַ",
+        "transliteration": "Mashiach",
+        "meaning": "Anointed One; a person consecrated by having oil poured on their head, set apart for a special role like king (Saul, David) or priest. The ultimate 'Messiah' is the promised redeemer.",
+        "primaryReference": "Daniel 9:25-26"
+      },
+      {
+        "word": "כָּבוֹד",
+        "transliteration": "Kavod",
+        "meaning": "Glory, weight, heaviness, honor. Refers to the tangible and visible manifestation of God's majestic presence, often described as a consuming fire or brilliant cloud.",
+        "primaryReference": "Exodus 24:16-17"
+      },
+      {
+        "word": "חֶסֶד",
+        "transliteration": "Hesed",
+        "meaning": "Steadfast love, lovingkindness, mercy, covenant loyalty. One of the most important words describing God's character: His unwavering, faithful, and loyal love for His covenant people.",
+        "primaryReference": "Psalm 136"
+      },
+      {
+        "word": "אֱמֶת",
+        "transliteration": "Emet",
+        "meaning": "Truth, firmness, faithfulness. It signifies something that is reliable, stable, and true. Often paired with 'Hesed' (lovingkindness and truth).",
+        "primaryReference": "Psalm 117:2"
+      },
+      {
+        "word": "שָׁלוֹם",
+        "transliteration": "Shalom",
+        "meaning": "Peace; but far more than the absence of conflict. It signifies completeness, wholeness, health, welfare, safety, and prosperity. A state of holistic flourishing.",
+        "primaryReference": "Numbers 6:26"
+      },
+      {
+        "word": "נֶפֶשׁ",
+        "transliteration": "Nephesh",
+        "meaning": "Soul, life, person, self, appetite. Not a disembodied spirit, but the whole living being, the 'self' or 'life-force' of a person or animal.",
+        "primaryReference": "Genesis 2:7"
+      },
+      {
+        "word": "לֵב",
+        "transliteration": "Lev",
+        "meaning": "Heart. In Hebrew thought, the center of the intellect, will, and emotions—the core of a person's moral and spiritual life.",
+        "primaryReference": "Deuteronomy 6:5"
+      },
+      {
+        "word": "תְּשׁוּבָה",
+        "transliteration": "Teshuvah",
+        "meaning": "Return, repentance. The act of turning away from sin and returning to God. A key concept in the prophetic literature.",
+        "primaryReference": "Hosea 14:1"
+      },
+      {
+        "word": "קָהָל",
+        "transliteration": "Qahal",
+        "meaning": "Assembly, congregation, community. The gathered people of God.",
+        "primaryReference": "Deuteronomy 31:30"
+      }
+    ],
+   
+    "latin": [
+         {
+        "word": "Incarnatio",
+        "transliteration": "Incarnatio",
+        "meaning": "Incarnation. Literally 'becoming in flesh' (in + caro/flesh). The doctrine that the Son of God took on human flesh in Jesus Christ.",
+        "primaryReference": "John 1:14 (Concept)"
+      },
+      {
+        "word": "Trinitas",
+        "transliteration": "Trinitas",
+        "meaning": "Trinity. The foundational Christian doctrine of one God in three co-equal, co-eternal Persons: Father, Son (Verbum), and Holy Spirit (Spiritus Sanctus).",
+        "primaryReference": "Matthew 28:19 (Concept)"
+      },
+      {
+        "word": "Imago Dei",
+        "transliteration": "Imago Dei",
+        "meaning": "Image of God. The teaching that humanity is created in the image and likeness of God, conferring unique dignity and purpose.",
+        "primaryReference": "Genesis 1:27 (Concept)"
+      },
+      {
+        "word": "Agnus Dei",
+        "transliteration": "Agnus Dei",
+        "meaning": "Lamb of God. A title for Jesus, identifying Him as the perfect and final sacrificial lamb who takes away the sin of the world.",
+        "primaryReference": "John 1:29"
+      },
+      {
+        "word": "Vox Clamantis in Deserto",
+        "transliteration": "Vox Clamantis in Deserto",
+        "meaning": "'A voice of one crying in the wilderness'. A famous phrase from the Vulgate describing John the Baptist's ministry.",
+        "primaryReference": "Mark 1:3 (Vulgate)"
+      },
+      {
+        "word": "Consummation",
+        "transliteration": "Consummation",
+        "meaning": "Completion, fulfillment. The final completion and restoration of all things at the end of the age.",
+        "primaryReference": "(Theological Concept)"
+      }
+      ,{
+        "word": "Verbum",
+        "transliteration": "Verbum",
+        "meaning": "Word. Used in the Vulgate for the Greek 'Logos' in John 1:1, 'In principio erat Verbum'.",
+        "primaryReference": "John 1:1 (Vulgate)"
+      },
+      {
+        "word": "Gratia",
+        "transliteration": "Gratia",
+        "meaning": "Grace, favor. The foundational concept of unmerited divine assistance for salvation.",
+        "primaryReference": "Ephesians 2:8 (Vulgate)"
+      },
+      {
+        "word": "Pax",
+        "transliteration": "Pax",
+        "meaning": "Peace. The standard Latin translation for the Greek 'Eirēnē' and Hebrew 'Shalom'. Used in the common benediction 'Pax vobiscum' (Peace be with you).",
+        "primaryReference": "John 14:27 (Vulgate)"
+      },
+      {
+        "word": "Salvator",
+        "transliteration": "Salvator",
+        "meaning": "Savior. A key title for Christ, meaning 'one who saves'.",
+        "primaryReference": "Luke 2:11 (Vulgate)"
+      },
+      {
+        "word": "Caritas",
+        "transliteration": "Caritas",
+        "meaning": "Charity, love. In the Vulgate, this is Jerome's primary translation for the Greek 'Agapē', emphasizing its self-giving nature.",
+        "primaryReference": "1 Corinthians 13 (Vulgate)"
+      },
+      {
+        "word": "Ecclesia",
+        "transliteration": "Ecclesia",
+        "meaning": "Church. A direct borrowing from the Greek 'Ekklēsia'.",
+        "primaryReference": "Matthew 16:18 (Vulgate)"
+      },
+      {
+        "word": "Evangelium",
+        "transliteration": "Evangelium",
+        "meaning": "Gospel. A direct borrowing from the Greek 'Euangelion'.",
+        "primaryReference": "Mark 1:1 (Vulgate)"
+      },
+      {
+        "word": "Spiritus",
+        "transliteration": "Spiritus",
+        "meaning": "Spirit, breath. 'Spiritus Sanctus' is the Holy Spirit.",
+        "primaryReference": "Genesis 1:2 (Vulgate)"
+      },
+      {
+        "word": "Justificatio",
+        "transliteration": "Justificatio",
+        "meaning": "Justification. A key theological term from the Vulgate, meaning 'to declare righteous'. This Latin term heavily influenced Western theology (e.g., in Luther's 'justification by faith').",
+        "primaryReference": "Romans 4:25 (Vulgate)"
+      },
+      {
+        "word": "Redemptio",
+        "transliteration": "Redemptio",
+        "meaning": "Redemption. The act of buying back, delivering, or liberating at a cost. Central to the concept of Christ's work on the cross.",
+        "primaryReference": "Romans 3:24 (Vulgate)"
+      },
+      {
+        "word": "Sacramentum",
+        "transliteration": "Sacramentum",
+        "meaning": "Sacrament. In the Vulgate, it originally meant 'mystery' or 'oath'. Later, in Christian theology, it came to denote a sacred rite that is an outward sign of inward grace.",
+        "primaryReference": "Ephesians 5:32 (Vulgate)"
+      },
+      {
+        "word": "Vulgata",
+        "transliteration": "Vulgata",
+        "meaning": "'Common' or 'Popular'. The name for St. Jerome's 4th-century Latin translation of the Bible, which became the standard version for the Roman Catholic Church.",
+        "primaryReference": "(Name of the Translation)"
+      }
+    ],
+    "greek": [
+        {
+        "word": "Θεός",
+        "transliteration": "Theos",
+        "meaning": "God, deity. The standard word for God or a god.",
+        "primaryReference": "John 1:1"
+      },
+      {
+        "word": "Κύριος",
+        "transliteration": "Kyrios",
+        "meaning": "Lord, master. The title used for Jesus, identifying Him with the YHWH of the Old Testament. A confession of His divinity.",
+        "primaryReference": "Romans 10:9"
+      },
+      {
+        "word": "Ἰησοῦς",
+        "transliteration": "Iēsous",
+        "meaning": "Jesus; the Greek form of the Hebrew name Joshua/Yehoshua, meaning 'Yahweh is salvation'.",
+        "primaryReference": "Matthew 1:21"
+      },
+      {
+        "word": "Χριστός",
+        "transliteration": "Christos",
+        "meaning": "Christ, Anointed One. The Greek translation of 'Mashiach'. It became the fundamental title for Jesus of Nazareth.",
+        "primaryReference": "Matthew 16:16"
+      },
+      {
+        "word": "Πνεῦμα",
+        "transliteration": "Pneuma",
+        "meaning": "Spirit, wind, breath. 'Pneuma Hagion' means Holy Spirit.",
+        "primaryReference": "John 3:8"
+      },
+      {
+        "word": "λόγος",
+        "transliteration": "Logos",
+        "meaning": "Word, reason, principle. In John's Gospel, it is a title for Jesus, identifying Him as the ultimate self-expression and rational principle of God, through whom all things were created.",
+        "primaryReference": "John 1:1"
+      },
+      {
+        "word": "ἀγάπη",
+        "transliteration": "Agapē",
+        "meaning": "Love, specifically self-sacrificial, divine love. It is the nature of God (1 John 4:8) and the highest form of love commanded of believers.",
+        "primaryReference": "1 Corinthians 13"
+      },
+      {
+        "word": "χάρις",
+        "transliteration": "Charis",
+        "meaning": "Grace, favor, gift. The unmerited and free gift of God's salvation and favor through Jesus Christ.",
+        "primaryReference": "Ephesians 2:8"
+      },
+      {
+        "word": "πίστις",
+        "transliteration": "Pistis",
+        "meaning": "Faith, belief, trust, faithfulness. It encompasses intellectual assent, personal trust, and loyal obedience.",
+        "primaryReference": "Hebrews 11:1"
+      },
+      {
+        "word": "εἰρήνη",
+        "transliteration": "Eirēnē",
+        "meaning": "Peace. The Greek equivalent of the Hebrew 'Shalom', signifying wholeness and well-being, especially reconciliation with God through Christ.",
+        "primaryReference": "Romans 5:1"
+      },
+      {
+        "word": "ἁμαρτία",
+        "transliteration": "Hamartia",
+        "meaning": "Sin. Literally 'to miss the mark'. It signifies a failure to live up to God's standard, a state of rebellion and brokenness.",
+        "primaryReference": "Romans 3:23"
+      },
+      {
+        "word": "σωτηρία",
+        "transliteration": "Sōtēria",
+        "meaning": "Salvation, deliverance, rescue. Refers to being saved from sin and its consequences, and brought into a state of wholeness and eternal life.",
+        "primaryReference": "Romans 1:16"
+      },
+      {
+        "word": "δικαιοσύνη",
+        "transliteration": "Dikaiosynē",
+        "meaning": "Righteousness, justice. The state of being in right relationship with God and others. It is a gift from God received through faith.",
+        "primaryReference": "Romans 3:22"
+      },
+      {
+        "word": "ἐκκλησία",
+        "transliteration": "Ekklēsia",
+        "meaning": "Church, assembly. A body of people 'called out' from the world to belong to God. The universal body of Christ and its local expressions.",
+        "primaryReference": "Matthew 16:18"
+      },
+      {
+        "word": "εὐαγγέλιον",
+        "transliteration": "Euangelion",
+        "meaning": "Gospel, good news. The proclamation of the life, death, burial, and resurrection of Jesus Christ, through which salvation is offered.",
+        "primaryReference": "Mark 1:1"
+      },
+      {
+        "word": "ζωή",
+        "transliteration": "Zōē",
+        "meaning": "Life. Often used in the New Testament for 'eternal life' (zōē aiōnios), which is a quality of life in relationship with God that begins now and continues forever.",
+        "primaryReference": "John 10:10"
+      },
+      {
+        "word": "σάρξ",
+        "transliteration": "Sarx",
+        "meaning": "Flesh. Can mean the physical body, but often used by Paul to denote the sinful, fallen human nature opposed to God.",
+        "primaryReference": "Galatians 5:17"
+      },
+      {
+        "word": "σταυρός",
+        "transliteration": "Stauros",
+        "meaning": "Cross. The instrument of Roman execution which became the central symbol of Christian faith, representing Christ's sacrificial death.",
+        "primaryReference": "1 Corinthians 1:18"
+      },
+      {
+        "word": "παράκλητος",
+        "transliteration": "Paraklētos",
+        "meaning": "Helper, Advocate, Comforter. A legal term for someone called to one's aid. Jesus uses it for the Holy Spirit who will come alongside believers.",
+        "primaryReference": "John 14:16, 26"
+      },
+      {
+        "word": "μυστήριον",
+        "transliteration": "Mystērion",
+        "meaning": "Mystery. Not a secret to be kept, but a divine truth formerly hidden and now revealed in Christ and the Gospel.",
+        "primaryReference": "Ephesians 3:3-4"
+      },
+      {
+        "word": "μετανοέω",
+        "transliteration": "Metanoeō",
+        "meaning": "To repent. Literally 'to change one's mind/nous'. It signifies a profound turning around—a change of mind, heart, and direction away from sin and toward God.",
+        "primaryReference": "Mark 1:15"
+      },
+      {
+        "word": "ἐλπίς",
+        "transliteration": "Elpis",
+        "meaning": "Hope. In the NT, not a vague wish but a confident and certain expectation of future good, based on the promises of God.",
+        "primaryReference": "Romans 5:4-5"
+      },
+      {
+        "word": "ὑπακοή",
+        "transliteration": "Hypakoē",
+        "meaning": "Obedience, submission. The act of hearing and heeding; the proper response to faith.",
+        "primaryReference": "Romans 1:5"
+      },
+      {
+        "word": "ἐξουσία",
+        "transliteration": "Exousia",
+        "meaning": "Authority, power, right. Denotes the legal right or authority to act, as opposed to raw power (dynamis). Jesus taught with 'exousia'.",
+        "primaryReference": "Matthew 7:29"
+      },
+      {
+        "word": "σώμα",
+        "transliteration": "Sōma",
+        "meaning": "Body. Refers to the physical body, but also to a collective body like the Church, which is the 'Sōma of Christ'.",
+        "primaryReference": "1 Corinthians 12:27"
+      },
+      {
+        "word": "αἰών",
+        "transliteration": "Aiōn",
+        "meaning": "Age, eternity. A period of time, often with a specific character. 'Eis ton aiōna' means 'unto the age' or 'forever'.",
+        "primaryReference": "Matthew 28:20"
+      },
+      {
+        "word": "βασιλεία",
+        "transliteration": "Basileia",
+        "meaning": "Kingdom, reign, rule. The central theme of Jesus' preaching: the active reign and sovereignty of God, which has broken into the world through Him.",
+        "primaryReference": "Matthew 4:17"
+      },
+      {
+        "word": "σκανδαλίζω",
+        "transliteration": "Skandalizō",
+        "meaning": "To cause to stumble, to offend. The origin of the English 'scandalize'. It means to put a stumbling block in someone's path, causing them to sin or lose faith.",
+        "primaryReference": "Matthew 18:6"
+      }
+    ],
+    "aramaic": [
+      {
+        "word": "אַבָּא",
+        "transliteration": "Abba",
+        "meaning": "Father, Daddy. An intimate, familiar term for one's father. Jesus used it to address God, and it signifies the believer's intimate relationship with God through Christ.",
+        "primaryReference": "Mark 14:36"
+      },
+      {
+        "word": "מָרָנָא תָּא",
+        "transliteration": "Marana tha",
+        "meaning": "Our Lord, come! An early Christian Aramaic prayer expressing hope for the return of Jesus Christ.",
+        "primaryReference": "1 Corinthians 16:22"
+      },
+      {
+        "word": "רָקַע",
+        "transliteration": "Raqa",
+        "meaning": "Empty-headed, fool, worthless. A term of contempt that Jesus warns against using in the Sermon on the Mount.",
+        "primaryReference": "Matthew 5:22"
+      },
+      {
+        "word": "תְּלִיתַי",
+        "transliteration": "Talitha koum",
+        "meaning": "Little girl, arise. The words spoken by Jesus when raising Jairus's daughter from the dead.",
+        "primaryReference": "Mark 5:41"
+      },
+      {
+        "word": "אֵלִי אֵלִי לְמָה שְׁבַקְתָּנִי",
+        "transliteration": "Eli, Eli, lema sabachthani?",
+        "meaning": "My God, my God, why have you forsaken me? The cry of Jesus from the cross, quoting Psalm 22.",
+        "primaryReference": "Matthew 27:46"
+      },
+      {
+        "word": "פַּסְחָא",
+        "transliteration": "Pascha",
+        "meaning": "Passover. The Aramaic (and Greek) term for the Passover festival. This is the root for words like 'Paschal' (relating to Easter).",
+        "primaryReference": "Matthew 26:2"
+      },
+      {
+        "word": "גַּמְלִיאֵל",
+        "transliteration": "Gamaliel",
+        "meaning": "Reward of God. The name of the respected Pharisee and teacher of Paul who counseled caution regarding the apostles.",
+        "primaryReference": "Acts 5:34"
+      },
+      {
+        "word": "תְּרַע",
+        "transliteration": "Tera",
+        "meaning": "Gate, door. Used in the Aramaic sections of Daniel.",
+        "primaryReference": "Daniel 2:49"
+      }
+    ]
+  }
+}
+ 
