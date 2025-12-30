@@ -1,0 +1,33 @@
+{
+  "book": "Acts",
+  "chapters": [
+    { "chapter": 1, "title": "Power Promised" },
+    { "chapter": 2, "title": "Spirit Drops Hard" },
+    { "chapter": 3, "title": "Healing Shakes City" },
+    { "chapter": 4, "title": "Boldness Under Fire" },
+    { "chapter": 5, "title": "Lying Gets Checked" },
+    { "chapter": 6, "title": "Leaders Appointed" },
+    { "chapter": 7, "title": "Stephen Goes Martyr" },
+    { "chapter": 8, "title": "Gospel Spreads Out" },
+    { "chapter": 9, "title": "Saul Gets Flipped" },
+    { "chapter": 10, "title": "Gentiles Included" },
+    { "chapter": 11, "title": "Church Expands" },
+    { "chapter": 12, "title": "Prison Break Miracle" },
+    { "chapter": 13, "title": "Paul Starts Missions" },
+    { "chapter": 14, "title": "Miracles And Chaos" },
+    { "chapter": 15, "title": "Doctrine Debated" },
+    { "chapter": 16, "title": "Prison Praise Break" },
+    { "chapter": 17, "title": "Unknown God Explained" },
+    { "chapter": 18, "title": "Churches Multiply" },
+    { "chapter": 19, "title": "Revival Causes Riot" },
+    { "chapter": 20, "title": "Final Warnings" },
+    { "chapter": 21, "title": "Paul Arrested" },
+    { "chapter": 22, "title": "Testimony Given" },
+    { "chapter": 23, "title": "Plots Fail" },
+    { "chapter": 24, "title": "Trials Drag On" },
+    { "chapter": 25, "title": "Appeal To Caesar" },
+    { "chapter": 26, "title": "Paul Testifies Boldly" },
+    { "chapter": 27, "title": "Shipwreck Survival" },
+    { "chapter": 28, "title": "Gospel Reaches Rome" }
+  ]
+}

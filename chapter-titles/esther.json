@@ -1,0 +1,15 @@
+{
+  "book": "Esther",
+  "chapters": [
+    { "chapter": 1, "title": "Queen Vashti Exits Stage" },
+    { "chapter": 2, "title": "Esther Becomes Queen" },
+    { "chapter": 3, "title": "Haman Plots Evil" },
+    { "chapter": 4, "title": "Esther Prepares Boldly" },
+    { "chapter": 5, "title": "Esther Gets Audience" },
+    { "chapter": 6, "title": "Haman Humiliated Unexpectedly" },
+    { "chapter": 7, "title": "Haman Executed Swiftly" },
+    { "chapter": 8, "title": "Decree Saves Jews" },
+    { "chapter": 9, "title": "Feast Of Purim Established" },
+    { "chapter": 10, "title": "King Honors Mordecai" }
+  ]
+}

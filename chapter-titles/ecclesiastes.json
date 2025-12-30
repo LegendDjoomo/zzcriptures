@@ -1,0 +1,17 @@
+{
+  "book": "Ecclesiastes",
+  "chapters": [
+    { "chapter": 1, "title": "Everything Feels Pointless" },
+    { "chapter": 2, "title": "Pleasure Can’t Satisfy" },
+    { "chapter": 3, "title": "There’s A Time" },
+    { "chapter": 4, "title": "Oppression & Loneliness Suck" },
+    { "chapter": 5, "title": "Respect God, Watch Words" },
+    { "chapter": 6, "title": "Wealth Alone Doesn’t Fill" },
+    { "chapter": 7, "title": "Wisdom Beats Folly" },
+    { "chapter": 8, "title": "Obey God, Life Limited" },
+    { "chapter": 9, "title": "Death Comes For All" },
+    { "chapter": 10, "title": "Fools Mess Up Daily" },
+    { "chapter": 11, "title": "Take Risks Wisely" },
+    { "chapter": 12, "title": "Remember God Always" }
+  ]
+}

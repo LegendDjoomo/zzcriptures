@@ -1,0 +1,32 @@
+{
+  "book": "Leviticus",
+  "chapters": [
+    { "chapter": 1, "title": "Burnt Offering Explained" },
+    { "chapter": 2, "title": "Grain Offering Rules" },
+    { "chapter": 3, "title": "Peace Offering Instructions" },
+    { "chapter": 4, "title": "Sin Requires Sacrifice" },
+    { "chapter": 5, "title": "Guilt Still Costs" },
+    { "chapter": 6, "title": "Priest Duties Clarified" },
+    { "chapter": 7, "title": "Offering Laws Summarized" },
+    { "chapter": 8, "title": "Priests Officially Installed" },
+    { "chapter": 9, "title": "God Accepts Worship" },
+    { "chapter": 10, "title": "Disrespect Gets Punished" },
+    { "chapter": 11, "title": "Clean Versus Unclean" },
+    { "chapter": 12, "title": "Purification After Birth" },
+    { "chapter": 13, "title": "Skin Disease Inspection" },
+    { "chapter": 14, "title": "Healing And Restoration Process" },
+    { "chapter": 15, "title": "Bodily Cleanliness Rules" },
+    { "chapter": 16, "title": "Atonement Day Established" },
+    { "chapter": 17, "title": "Blood Is Sacred" },
+    { "chapter": 18, "title": "Sexual Boundaries Defined" },
+    { "chapter": 19, "title": "Holiness In Daily Life" },
+    { "chapter": 20, "title": "Serious Sins Punished" },
+    { "chapter": 21, "title": "Priest Purity Standards" },
+    { "chapter": 22, "title": "Offerings Must Be Pure" },
+    { "chapter": 23, "title": "God’s Calendar Revealed" },
+    { "chapter": 24, "title": "Justice And Reverence" },
+    { "chapter": 25, "title": "Rest And Reset Cycles" },
+    { "chapter": 26, "title": "Blessings Or Consequences" },
+    { "chapter": 27, "title": "Vows And Dedications" }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "book": "Ruth",
+  "chapters": [
+    { "chapter": 1, "title": "Naomi Loses Family, Returns" },
+    { "chapter": 2, "title": "Ruth Works Fields, Meets Boaz" },
+    { "chapter": 3, "title": "Ruth Follows Naomi’s Plan" },
+    { "chapter": 4, "title": "Boaz Marries Ruth, Line Continues" }
+  ]
+}

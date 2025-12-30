@@ -1,0 +1,21 @@
+{
+  "book": "Romans",
+  "chapters": [
+    { "chapter": 1, "title": "Gospel Power Revealed" },
+    { "chapter": 2, "title": "No One Excused" },
+    { "chapter": 3, "title": "All Fall Short" },
+    { "chapter": 4, "title": "Faith Credits Righteousness" },
+    { "chapter": 5, "title": "Grace Beats Sin" },
+    { "chapter": 6, "title": "Dead To Sin" },
+    { "chapter": 7, "title": "Law Can’t Save" },
+    { "chapter": 8, "title": "No Condemnation Ever" },
+    { "chapter": 9, "title": "God Chooses Sovereignly" },
+    { "chapter": 10, "title": "Faith Comes Hearing" },
+    { "chapter": 11, "title": "Israel Not Replaced" },
+    { "chapter": 12, "title": "Live Transformed" },
+    { "chapter": 13, "title": "Submit To Authority" },
+    { "chapter": 14, "title": "Stop Judging Believers" },
+    { "chapter": 15, "title": "Unity Over Ego" },
+    { "chapter": 16, "title": "Final Shoutouts" }
+  ]
+}

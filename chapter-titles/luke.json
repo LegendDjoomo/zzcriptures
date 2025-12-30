@@ -1,0 +1,29 @@
+{
+  "book": "Luke",
+  "chapters": [
+    { "chapter": 1, "title": "Birth Prep, Angel Hype" },
+    { "chapter": 2, "title": "Jesus Born, Shepherds Visit" },
+    { "chapter": 3, "title": "John Baptizes, Genealogy" },
+    { "chapter": 4, "title": "Temptation & Power" },
+    { "chapter": 5, "title": "Call Disciples, Miracles" },
+    { "chapter": 6, "title": "Sermon & Beatitudes" },
+    { "chapter": 7, "title": "Faith & Forgiveness" },
+    { "chapter": 8, "title": "Parables & Storms" },
+    { "chapter": 9, "title": "Send Disciples, Transfiguration" },
+    { "chapter": 10, "title": "Good Samaritan Flex" },
+    { "chapter": 11, "title": "Teach Prayer, Rebuke" },
+    { "chapter": 12, "title": "Watchful & Ready" },
+    { "chapter": 13, "title": "Repentance Urged" },
+    { "chapter": 14, "title": "Humility & Feasts" },
+    { "chapter": 15, "title": "Lost Sheep & Coin" },
+    { "chapter": 16, "title": "Steward & Lazarus" },
+    { "chapter": 17, "title": "Faith & Forgive" },
+    { "chapter": 18, "title": "Widow, Riches, Taxman" },
+    { "chapter": 19, "title": "Zacchaeus & Entry" },
+    { "chapter": 20, "title": "Traps & Parables" },
+    { "chapter": 21, "title": "Temple Signs & End" },
+    { "chapter": 22, "title": "Last Supper & Arrest" },
+    { "chapter": 23, "title": "Crucifixion & Death" },
+    { "chapter": 24, "title": "Resurrection & Road" }
+  ]
+}

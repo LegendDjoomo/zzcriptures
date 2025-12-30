@@ -1,0 +1,33 @@
+{
+  "book": "Matthew",
+  "chapters": [
+    { "chapter": 1, "title": "Jesus Birth Lineup" },
+    { "chapter": 2, "title": "Wise Men, King Threats" },
+    { "chapter": 3, "title": "John Baptizes Jesus" },
+    { "chapter": 4, "title": "Temptation Overcome" },
+    { "chapter": 5, "title": "Sermon Mount Flex" },
+    { "chapter": 6, "title": "Pray, Don’t Flex" },
+    { "chapter": 7, "title": "Judgment & Doors" },
+    { "chapter": 8, "title": "Miracles Start Rolling" },
+    { "chapter": 9, "title": "Faith Saves, Healings" },
+    { "chapter": 10, "title": "Disciples Sent Out" },
+    { "chapter": 11, "title": "Rest For Souls" },
+    { "chapter": 12, "title": "Sabbath Controversy" },
+    { "chapter": 13, "title": "Parables Drop" },
+    { "chapter": 14, "title": "Walks On Water" },
+    { "chapter": 15, "title": "Tradition Exposed" },
+    { "chapter": 16, "title": "Peter Confession" },
+    { "chapter": 17, "title": "Transfiguration Glow Up" },
+    { "chapter": 18, "title": "Forgive & Flex" },
+    { "chapter": 19, "title": "Marriage & Riches" },
+    { "chapter": 20, "title": "Laborers Paid Fair" },
+    { "chapter": 21, "title": "Triumphal Entry" },
+    { "chapter": 22, "title": "Parables & Questions" },
+    { "chapter": 23, "title": "Woes Dropped" },
+    { "chapter": 24, "title": "End Times Signs" },
+    { "chapter": 25, "title": "Kingdom Parables" },
+    { "chapter": 26, "title": "Plot Against Jesus" },
+    { "chapter": 27, "title": "Crucifixion, Darkness Falls" },
+    { "chapter": 28, "title": "Resurrection Flex" }
+  ]
+}

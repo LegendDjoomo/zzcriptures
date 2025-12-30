@@ -1,0 +1,30 @@
+{
+  "book": "2 Kings",
+  "chapters": [
+    { "chapter": 1, "title": "Elijah Claps On Messengers" },
+    { "chapter": 2, "title": "Elijah Ascends, Elisha Inherits" },
+    { "chapter": 3, "title": "Kings Fail Without God" },
+    { "chapter": 4, "title": "Elisha Performs Miracles" },
+    { "chapter": 5, "title": "Naaman Gets Cleaned Up" },
+    { "chapter": 6, "title": "Prophet Outsmarting Aram" },
+    { "chapter": 7, "title": "God Saves City Overnight" },
+    { "chapter": 8, "title": "Elisha Prophecies Kings" },
+    { "chapter": 9, "title": "Jehu Cleans House" },
+    { "chapter": 10, "title": "Judgment Executed Brutally" },
+    { "chapter": 11, "title": "Athaliah Overthrown" },
+    { "chapter": 12, "title": "Joash Repairs Temple" },
+    { "chapter": 13, "title": "Kings Rise, Elisha Dies" },
+    { "chapter": 14, "title": "Israel Weak, Judah Slightly Better" },
+    { "chapter": 15, "title": "Multiple Kings Rotate" },
+    { "chapter": 16, "title": "Ahaz Rules Wickedly" },
+    { "chapter": 17, "title": "Israel Exiled For Sin" },
+    { "chapter": 18, "title": "Hezekiah Leads Judah" },
+    { "chapter": 19, "title": "God Destroys Assyrians" },
+    { "chapter": 20, "title": "Hezekiah Healed, Pride Warning" },
+    { "chapter": 21, "title": "Manasseh Corrupts Judah" },
+    { "chapter": 22, "title": "Josiah Finds Book, Reforms" },
+    { "chapter": 23, "title": "Josiah Cleans Temple" },
+    { "chapter": 24, "title": "Babylon Approaches Judah" },
+    { "chapter": 25, "title": "Judah Falls, Exile Begins" }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "book": "1 Kings",
+  "chapters": [
+    { "chapter": 1, "title": "David Crowns Solomon" },
+    { "chapter": 2, "title": "David’s Last Commands" },
+    { "chapter": 3, "title": "Solomon Asks Wisdom" },
+    { "chapter": 4, "title": "Kingdom Runs Smooth" },
+    { "chapter": 5, "title": "Temple Prep Begins" },
+    { "chapter": 6, "title": "Temple Construction Complete" },
+    { "chapter": 7, "title": "Palace Built In Style" },
+    { "chapter": 8, "title": "Ark Placed In Temple" },
+    { "chapter": 9, "title": "God Confirms Covenant" },
+    { "chapter": 10, "title": "Queen Visits Solomon" },
+    { "chapter": 11, "title": "Solomon Turns Sideways" },
+    { "chapter": 12, "title": "Kingdom Splits Drama" },
+    { "chapter": 13, "title": "Prophet Shocks King" },
+    { "chapter": 14, "title": "Judah And Israel Trials" },
+    { "chapter": 15, "title": "Kings Rise And Fall" },
+    { "chapter": 16, "title": "Sin Brings Consequences" },
+    { "chapter": 17, "title": "Elijah Famine Moves" },
+    { "chapter": 18, "title": "Mount Carmel Showdown" },
+    { "chapter": 19, "title": "Elijah Runs From Fear" },
+    { "chapter": 20, "title": "Aram Defeated By God" },
+    { "chapter": 21, "title": "Ahab And Naboth Drama" },
+    { "chapter": 22, "title": "Kings Clash, Prophecy Hits" }
+  ]
+}

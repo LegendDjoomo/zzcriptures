@@ -1,0 +1,29 @@
+{
+  "book": "2 Samuel",
+  "chapters": [
+    { "chapter": 1, "title": "David Mourns Saul" },
+    { "chapter": 2, "title": "David Made King Judah" },
+    { "chapter": 3, "title": "Civil War Drags On" },
+    { "chapter": 4, "title": "Rival Leaders Assassinated" },
+    { "chapter": 5, "title": "David Becomes Full King" },
+    { "chapter": 6, "title": "Ark Brought To Jerusalem" },
+    { "chapter": 7, "title": "God Promises David Forever" },
+    { "chapter": 8, "title": "David Wins Wars" },
+    { "chapter": 9, "title": "David Honors Jonathan’s Son" },
+    { "chapter": 10, "title": "Ammonites Fight Back" },
+    { "chapter": 11, "title": "David Cheats, Bathsheba Tragedy" },
+    { "chapter": 12, "title": "Prophet Confronts David" },
+    { "chapter": 13, "title": "Family Drama Explodes" },
+    { "chapter": 14, "title": "David’s Son Reconciled" },
+    { "chapter": 15, "title": "Absalom Rebellion Starts" },
+    { "chapter": 16, "title": "David Faces Betrayal" },
+    { "chapter": 17, "title": "Absalom’s Plans Countered" },
+    { "chapter": 18, "title": "Absalom Dies, David Grieves" },
+    { "chapter": 19, "title": "David Returns, Reunites Kingdom" },
+    { "chapter": 20, "title": "Sheba Rebels, Quickly Defeated" },
+    { "chapter": 21, "title": "Gibeonites Vengeance Paid" },
+    { "chapter": 22, "title": "David’s Song Of Thanks" },
+    { "chapter": 23, "title": "David’s Last Words" },
+    { "chapter": 24, "title": "David’s Census Mistake" }
+  ]
+}

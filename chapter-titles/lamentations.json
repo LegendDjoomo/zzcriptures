@@ -1,0 +1,10 @@
+{
+  "book": "Lamentations",
+  "chapters": [
+    { "chapter": 1, "title": "Jerusalem Weeps Alone" },
+    { "chapter": 2, "title": "God’s Wrath Poured Out" },
+    { "chapter": 3, "title": "Hope In Suffering" },
+    { "chapter": 4, "title": "Destruction Hits Hard" },
+    { "chapter": 5, "title": "Pray For Restoration" }
+  ]
+}

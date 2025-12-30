@@ -1,0 +1,98 @@
+index.html:9590  Uncaught ReferenceError: renderRoadmap is not defined
+    at index.html:9590:36
+    at index.html:9592:11
+(anonymous) @ index.html:9590
+(anonymous) @ index.html:9592
+leaderboard_functions.js:173  Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'toLocaleString')
+    at leaderboard_functions.js:173:59
+    at Array.forEach (<anonymous>)
+    at leaderboard_functions.js:150:18
+(anonymous) @ leaderboard_functions.js:173
+(anonymous) @ leaderboard_functions.js:150
+Promise.then
+renderLeaderboard @ leaderboard_functions.js:144
+initializeLeaderboard @ leaderboard_functions.js:65
+await in initializeLeaderboard
+initializeApp @ index.html:5630
+await in initializeApp
+(anonymous) @ index.html:3559
+index.html:8248  Uncaught ReferenceError: bibleFunFacts is not defined
+    at getRandomFact (index.html:8248:43)
+    at showRandomFact (index.html:8271:27)
+    at showFunFacts (index.html:8187:13)
+    at HTMLButtonElement.onclick (index.html:426:84)
+getRandomFact @ index.html:8248
+showRandomFact @ index.html:8271
+showFunFacts @ index.html:8187
+onclick @ index.html:426
+bible_cap_functions.js:91  Uncaught ReferenceError: capStatements is not defined
+    at startCapGame (bible_cap_functions.js:91:39)
+    at HTMLButtonElement.onclick (index.html:2102:82)
+startCapGame @ bible_cap_functions.js:91
+onclick @ index.html:2102
+verse_match_functions.js:60  Uncaught ReferenceError: verseMatchPairs is not defined
+    at startMatchGame (verse_match_functions.js:60:38)
+    at HTMLButtonElement.onclick (index.html:2191:84)
+startMatchGame @ verse_match_functions.js:60
+onclick @ index.html:2191
+index.html:7968  Uncaught ReferenceError: escapeHtml is not defined
+    at index.html:7968:58
+    at Array.map (<anonymous>)
+    at renderNotesGrid (index.html:7967:47)
+    at HTMLButtonElement.newNote (index.html:7990:17)
+(anonymous) @ index.html:7968
+renderNotesGrid @ index.html:7967
+newNote @ index.html:7990
+genz_stories_functions.js:32  Stories data not found
+populateGenZStories @ genz_stories_functions.js:32
+onclick @ index.html:410
+leaderboard_functions.js:173  Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'toLocaleString')
+    at leaderboard_functions.js:173:59
+    at Array.forEach (<anonymous>)
+    at leaderboard_functions.js:150:18
+(anonymous) @ leaderboard_functions.js:173
+(anonymous) @ leaderboard_functions.js:150
+Promise.then
+renderLeaderboard @ leaderboard_functions.js:144
+(anonymous) @ index.html:6506
+Promise.then
+(anonymous) @ index.html:6496
+Promise.then
+showLeaderboardPage @ index.html:6475
+showSection @ index.html:4742
+(anonymous) @ index.html:4690
+leaderboard_functions.js:173  Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'toLocaleString')
+    at leaderboard_functions.js:173:59
+    at Array.forEach (<anonymous>)
+    at leaderboard_functions.js:150:18
+(anonymous) @ leaderboard_functions.js:173
+(anonymous) @ leaderboard_functions.js:150
+Promise.then
+renderLeaderboard @ leaderboard_functions.js:144
+(anonymous) @ index.html:6506
+Promise.then
+(anonymous) @ index.html:6496
+Promise.then
+showLeaderboardPage @ index.html:6475
+showSection @ index.html:4742
+(anonymous) @ index.html:3571
+leaderboard_functions.js:173  Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'toLocaleString')
+    at leaderboard_functions.js:173:59
+    at Array.forEach (<anonymous>)
+    at leaderboard_functions.js:150:18
+(anonymous) @ leaderboard_functions.js:173
+(anonymous) @ leaderboard_functions.js:150
+Promise.then
+renderLeaderboard @ leaderboard_functions.js:144
+(anonymous) @ index.html:6506
+Promise.then
+(anonymous) @ index.html:6496
+Promise.then
+showLeaderboardPage @ index.html:6475
+showSection @ index.html:4742
+(anonymous) @ index.html:4690
+leaderboard_functions.js:173  Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'toLocaleString')
+    at leaderboard_functions.js:173:59
+    at Array.forEach (<anonymous>)
+    at leaderboard_functions.js:150:18
+    

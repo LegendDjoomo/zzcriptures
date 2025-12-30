@@ -1,0 +1,21 @@
+{
+  "book": "Mark",
+  "chapters": [
+    { "chapter": 1, "title": "John Preps, Jesus Starts" },
+    { "chapter": 2, "title": "Faith & Forgiveness" },
+    { "chapter": 3, "title": "Disciples Called, Controversy" },
+    { "chapter": 4, "title": "Parables Drop" },
+    { "chapter": 5, "title": "Miracles Go Big" },
+    { "chapter": 6, "title": "Rejected, Walks On Water" },
+    { "chapter": 7, "title": "Traditions vs Heart" },
+    { "chapter": 8, "title": "Peter Confesses" },
+    { "chapter": 9, "title": "Transfiguration & Teachings" },
+    { "chapter": 10, "title": "Marriage, Riches, Servants" },
+    { "chapter": 11, "title": "Temple Cleared" },
+    { "chapter": 12, "title": "Parables & Taxes" },
+    { "chapter": 13, "title": "End Times Warning" },
+    { "chapter": 14, "title": "Last Supper Drama" },
+    { "chapter": 15, "title": "Crucifixion" },
+    { "chapter": 16, "title": "Resurrection Revealed" }
+  ]
+}

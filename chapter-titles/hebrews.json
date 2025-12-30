@@ -1,0 +1,18 @@
+{
+  "book": "Hebrews",
+  "chapters": [
+    { "chapter": 1, "title": "Jesus Supreme" },
+    { "chapter": 2, "title": "Salvation Confirmed" },
+    { "chapter": 3, "title": "Don’t Harden Heart" },
+    { "chapter": 4, "title": "Rest Awaits Believers" },
+    { "chapter": 5, "title": "High Priest Prep" },
+    { "chapter": 6, "title": "No Slack Faith" },
+    { "chapter": 7, "title": "Melchizedek Vibes" },
+    { "chapter": 8, "title": "Better Covenant Here" },
+    { "chapter": 9, "title": "Sacrifice Upgraded" },
+    { "chapter": 10, "title": "One Sacrifice Wins" },
+    { "chapter": 11, "title": "Faith Legends" },
+    { "chapter": 12, "title": "Run With Endurance" },
+    { "chapter": 13, "title": "Live Faithfully" }
+  ]
+}

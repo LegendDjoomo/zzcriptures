@@ -1,104 +1,263 @@
-function showBibleStoriesModal() {
-    const modal = document.getElementById('bible-study-modal');
-    const modalHeader = document.querySelector('#bible-study-modal .modal-header h2');
-    const modalBody = document.querySelector('#bible-study-modal .modal-body');
-    
-    modalHeader.textContent = 'Bible Stories (Gen Z Edition)';
-    
-  
-    modalBody.innerHTML = `
-        <div class="topic-btn" onclick="readStoryChapter('adam', 0)" style="text-align: left; background: linear-gradient(135deg, rgba(6, 214, 160, 0.1), rgba(255, 214, 10, 0.1)); border: 1px solid rgba(6, 214, 160, 0.2);">
-            <div style="font-weight: 600; margin-bottom: 4px;">Adam & Eve</div>
-            <div style="font-size: 0.85rem; color: var(--text-muted);">Genesis 3 • 3 parts</div>
-        </div>
-       <!-- Noah's Ark -->
-<div class="topic-btn" onclick="readStoryChapter('noah', 0)" 
-    style="text-align: left; background: linear-gradient(135deg, rgba(6, 214, 160, 0.15), rgba(72, 202, 228, 0.15)); border: 1px solid rgba(6, 214, 160, 0.3); border-radius: 10px; padding: 10px; margin-bottom: 8px;">
-    <div style="font-weight: 600; margin-bottom: 4px;">Noah's Ark</div>
-    <div style="font-size: 0.85rem; color: var(--text-muted);">Genesis 6–9 • 3 parts</div>
-</div>
+// Current story state
+let currentStoryKey = null;
+let currentStoryChapterIndex = 0;
+let currentFilter = 'all'; // Track active filter
 
-<!-- David and Goliath -->
-<div class="topic-btn" onclick="readStoryChapter('david', 0)" 
-    style="text-align: left; background: linear-gradient(135deg, rgba(255, 159, 28, 0.15), rgba(255, 94, 77, 0.15)); border: 1px solid rgba(255, 159, 28, 0.3); border-radius: 10px; padding: 10px;">
-    <div style="font-weight: 600; margin-bottom: 4px;">David and Goliath</div>
-    <div style="font-size: 0.85rem; color: var(--text-muted);">1 Samuel 17 • 3 parts</div>
-</div>
-<!-- Daniel in the Lion's Den -->
-<div class="topic-btn" onclick="readStoryChapter('daniel', 0)" 
-    style="text-align: left; background: linear-gradient(135deg, rgba(32, 84, 197, 0.15), rgba(255, 215, 0, 0.15)); border: 1px solid rgba(32, 84, 197, 0.3); border-radius: 10px; padding: 10px; margin-bottom: 8px;">
-    <div style="font-weight: 600; margin-bottom: 4px;">Daniel in the Lion's Den</div>
-    <div style="font-size: 0.85rem; color: var(--text-muted);">Daniel 6 • 3 parts</div>
-</div>
+// Main filter categories
+const FILTER_CATEGORIES = [
+    'all',
+    'obedience',
+    'sin',
+    'grace',
+    'temptation',
+    'day in a life',
+    'faith',
+    'love',
+    'courage',
+    'mission',
+    'compassion',
+    'leadership',
+    'miracles'
+];
 
-<!-- The Good Samaritan -->
-<div class="topic-btn" onclick="readStoryChapter('samaritan', 0)" 
-    style="text-align: left; background: linear-gradient(135deg, rgba(72, 187, 120, 0.15), rgba(255, 165, 0, 0.15)); border: 1px solid rgba(72, 187, 120, 0.3); border-radius: 10px; padding: 10px;">
-    <div style="font-weight: 600; margin-bottom: 4px;">The Good Samaritan</div>
-    <div style="font-size: 0.85rem; color: var(--text-muted);">Luke 10:25–37 • 3 parts</div>
-</div>
-<!-- The Life of David -->
-<div class="topic-btn" onclick="readStoryChapter('david_life', 0)" 
-    style="text-align: left; background: linear-gradient(135deg, rgba(186, 85, 211, 0.15), rgba(255, 140, 0, 0.15)); border: 1px solid rgba(186, 85, 211, 0.3); border-radius: 10px; padding: 10px; margin-bottom: 8px;">
-    <div style="font-weight: 600; margin-bottom: 4px;">The Life of David</div>
-    <div style="font-size: 0.85rem; color: var(--text-muted);">1 Samuel 16 – 2 Samuel 24 • 20 parts</div>
-</div>
-<!-- Jonah and the Big Fish -->
-<div class="topic-btn" onclick="readStoryChapter('jonah', 0)" 
-    style="text-align: left; background: linear-gradient(135deg, rgba(0, 119, 190, 0.15), rgba(255, 255, 102, 0.15)); border: 1px solid rgba(0, 119, 190, 0.3); border-radius: 10px; padding: 10px; margin-bottom: 8px;">
-    <div style="font-weight: 600; margin-bottom: 4px;">Jonah and the Big Fish</div>
-    <div style="font-size: 0.85rem; color: var(--text-muted);">Jonah 1–4 • 4 parts</div>
-</div>
-<!-- Paul the Apostle -->
-<div class="topic-btn" onclick="readStoryChapter('paul', 0)" 
-    style="text-align: left; background: linear-gradient(135deg, rgba(186, 85, 211, 0.15), rgba(0, 191, 255, 0.15)); border: 1px solid rgba(186, 85, 211, 0.3); border-radius: 10px; padding: 10px; margin-bottom: 8px;">
-    <div style="font-weight: 600; margin-bottom: 4px;">Paul the Apostle</div>
-    <div style="font-size: 0.85rem; color: var(--text-muted);">Acts 7–28 • 6 parts</div>
-</div>
-<!-- Elijah vs the Prophets of Baal -->
-<div class="topic-btn" onclick="readStoryChapter('elijah_baal', 0)" 
-    style="text-align: left; background: linear-gradient(135deg, rgba(255, 69, 0, 0.15), rgba(30, 144, 255, 0.15)); border: 1px solid rgba(255, 69, 0, 0.3); border-radius: 10px; padding: 10px; margin-bottom: 8px;">
-    <div style="font-weight: 600; margin-bottom: 4px;">Elijah vs the Prophets of Baal</div>
-    <div style="font-size: 0.85rem; color: var(--text-muted);">1 Kings 18:16–40 • 3 parts</div>
-</div>
-    `;
+function populateGenZStories(filterTag) {
+    const container = document.getElementById('genz-stories-list');
+    if (!container) return;
     
-    modal.classList.add('active');
+    container.innerHTML = ''; // Clear existing content
+    
+    // Only update currentFilter if a specific tag is passed
+    if (filterTag) {
+        currentFilter = filterTag;
+    }
+    // Otherwise use the existing global currentFilter
+
+    // Ensure stories object exists
+    if (typeof stories === 'undefined') {
+        console.error('Stories data not found');
+        container.innerHTML = '<p>Error loading stories.</p>';
+        return;
+    }
+
+    // Filter stories based on tag
+    const filteredStories = Object.entries(stories).filter(([key, story]) => {
+        if (filterTag === 'all') return true;
+        
+        if (!story.tag || !Array.isArray(story.tag)) {
+            // Stories without tags go to 'others'
+            return filterTag === 'others';
+        }
+        
+        // Check if any tag matches the filter (case-insensitive, partial match)
+        const hasMatchingTag = story.tag.some(tag => 
+            tag.toLowerCase().includes(filterTag.toLowerCase()) ||
+            filterTag.toLowerCase().includes(tag.toLowerCase())
+        );
+        
+        if (filterTag === 'others') {
+            // 'others' shows stories that don't match any main category
+            const matchesMainCategory = FILTER_CATEGORIES.slice(1, -1).some(category => 
+                story.tag.some(tag => 
+                    tag.toLowerCase().includes(category.toLowerCase()) ||
+                    category.toLowerCase().includes(tag.toLowerCase())
+                )
+            );
+            return !matchesMainCategory;
+        }
+        
+        return hasMatchingTag;
+    });
+
+    // Show empty state if no stories match
+    if (filteredStories.length === 0) {
+        container.innerHTML = `
+            <div class="stories-empty-state">
+                <h3>No stories found</h3>
+                <p>No stories match the "${filterTag}" category.</p>
+            </div>
+        `;
+        return;
+    }
+
+    // Render filtered stories
+    filteredStories.forEach(([key, story]) => {
+        const card = document.createElement('div');
+        card.className = 'story-card';
+        // Set background image
+        card.style.backgroundImage = `url('${story.image}')`;
+        
+        // Add click handler - now opens full-screen viewer
+        card.onclick = () => openStoryViewer(key, 0);
+
+        card.innerHTML = `
+            <div class="story-overlay">
+                <div class="story-title">${story.title}</div>
+                <div class="story-meta">${story.totalChapters} Parts</div>
+            </div>
+        `;
+        
+        container.appendChild(card);
+    });
 }
 
-function readStoryChapter(storyKey, chapterIndex) {
+// Initialize filter tabs
+function initializeStoryFilters() {
+    const container = document.getElementById('story-filter-tabs');
+    if (!container) return;
+    
+    container.innerHTML = '';
+    
+    FILTER_CATEGORIES.forEach(category => {
+        const tab = document.createElement('button');
+        tab.className = 'filter-tab';
+        if (category === currentFilter) {
+            tab.classList.add('active');
+        }
+        tab.textContent = category;
+        tab.onclick = () => filterStoriesByTag(category);
+        container.appendChild(tab);
+    });
+}
+
+// Filter stories by tag
+function filterStoriesByTag(tag) {
+    currentFilter = tag;
+    
+    // Update active tab
+    document.querySelectorAll('.filter-tab').forEach(tab => {
+        if (tab.textContent.toLowerCase() === tag.toLowerCase()) {
+            tab.classList.add('active');
+        } else {
+            tab.classList.remove('active');
+        }
+    });
+    
+    // Re-populate stories with filter
+    populateGenZStories(tag);
+}
+
+// Open the full-screen story viewer
+function openStoryViewer(storyKey, chapterIndex) {
     const story = stories[storyKey];
+    if (!story) return;
+    
     const chapter = story.chapters[chapterIndex];
-    
-    const modal = document.getElementById('bible-study-modal');
-    const modalHeader = document.querySelector('#bible-study-modal .modal-header h2');
-    const modalBody = document.querySelector('#bible-study-modal .modal-body');
-    
-    modalHeader.textContent = story.title;
-    
-    modalBody.innerHTML = `
-        <div class="card">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-                <div>
-                    <h3 class="card-title" style="margin: 0;">${chapter.heading}</h3>
-                    <p class="text-muted" style="margin-top: 4px; font-size: 0.85rem;">Part ${chapter.num} of ${story.totalChapters}</p>
-                </div>
-            </div>
-            
-            <div style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 30px;">
-                ${chapter.content}
-            </div>
-            
-            <!-- Navigation -->
-            <div class="navigation-buttons">
-                <div class="button-row">
-                    ${chapterIndex > 0 ? `<button class="btn btn-secondary" onclick="readStoryChapter('${storyKey}', ${chapterIndex - 1})">← Previous</button>` : `<button class="btn btn-secondary" disabled style="opacity: 0.4; cursor: not-allowed;">← Previous</button>`}
-                    <button class="btn btn-secondary" onclick="showBibleStoriesModal()">All Stories</button>
-                </div>
-                <div class="button-row">
-                    ${chapterIndex < story.totalChapters - 1 ? `<button class="btn btn-secondary" onclick="readStoryChapter('${storyKey}', ${chapterIndex + 1})">Next →</button>` : `<button class="btn btn-secondary" disabled style="opacity: 0.4; cursor: not-allowed;">Next →</button>`}
-                </div>
-            </div>
-        </div>
-    `;
+    if (!chapter) return;
+
+    // Store current state
+    currentStoryKey = storyKey;
+    currentStoryChapterIndex = chapterIndex;
+
+    // Get viewer elements
+    const viewer = document.getElementById('genz-story-viewer');
+    const title = document.getElementById('story-viewer-title');
+    const partIndicator = document.getElementById('story-part-indicator');
+    const heading = document.getElementById('story-viewer-heading');
+    const body = document.getElementById('story-viewer-body');
+    const progressBar = document.getElementById('story-progress-bar');
+    const prevBtn = document.getElementById('story-prev-btn');
+    const nextBtn = document.getElementById('story-next-btn');
+    const reflectSection = document.getElementById('story-reflect-section');
+    const reflectContent = document.getElementById('story-reflect-content');
+
+    if (!viewer) return;
+
+    // Update content
+    title.textContent = `${story.title}: Part ${chapter.num}`;
+    partIndicator.textContent = `Part ${chapter.num} of ${story.totalChapters}`;
+    heading.textContent = chapter.heading;
+    body.innerHTML = chapter.content;
+
+    // Update progress bar
+    const progress = (chapter.num / story.totalChapters) * 100;
+    progressBar.style.width = `${progress}%`;
+
+    // Update navigation buttons
+    if (chapterIndex > 0) {
+        prevBtn.disabled = false;
+    } else {
+        prevBtn.disabled = true;
+    }
+
+    if (chapterIndex < story.totalChapters - 1) {
+        nextBtn.disabled = false;
+        nextBtn.textContent = 'Next Part →';
+    } else {
+        nextBtn.disabled = false;
+        nextBtn.textContent = 'Finish';
+    }
+
+    // Handle reflect section (if exists in chapter)
+    if (chapter.reflect) {
+        reflectContent.textContent = chapter.reflect;
+        reflectSection.style.display = 'block';
+    } else {
+        reflectSection.style.display = 'none';
+    }
+
+    // Show viewer with animation
+    viewer.classList.add('active');
 }
+
+// Close story viewer
+function closeStoryViewer() {
+    const viewer = document.getElementById('genz-story-viewer');
+    if (viewer) {
+        viewer.classList.remove('active');
+    }
+    currentStoryKey = null;
+    currentStoryChapterIndex = 0;
+}
+
+// Navigate to previous chapter
+function navigatePreviousChapter() {
+    if (currentStoryKey && currentStoryChapterIndex > 0) {
+        openStoryViewer(currentStoryKey, currentStoryChapterIndex - 1);
+    }
+}
+
+// Navigate to next chapter
+function navigateNextChapter() {
+    if (currentStoryKey) {
+        const story = stories[currentStoryKey];
+        if (currentStoryChapterIndex < story.totalChapters - 1) {
+            openStoryViewer(currentStoryKey, currentStoryChapterIndex + 1);
+        } else {
+            // Finished the story - return to story list
+            closeStoryViewer();
+            showSection('genz-stories-section');
+        }
+    }
+}
+
+// Share story function
+function shareStory() {
+    const story = stories[currentStoryKey];
+    if (!story) return;
+    
+    const chapter = story.chapters[currentStoryChapterIndex];
+    const shareText = `Check out this story: ${story.title} - ${chapter.heading}`;
+    
+    if (navigator.share) {
+        navigator.share({
+            title: story.title,
+            text: shareText,
+            url: window.location.href
+        }).catch(err => console.log('Error sharing:', err));
+    } else {
+        // Fallback - copy to clipboard
+        navigator.clipboard.writeText(shareText).then(() => {
+            showToast('Link copied to clipboard!');
+        });
+    }
+}
+
+// Expose functions globally
+window.populateGenZStories = populateGenZStories;
+window.initializeStoryFilters = initializeStoryFilters;
+window.filterStoriesByTag = filterStoriesByTag;
+window.openStoryViewer = openStoryViewer;
+window.closeStoryViewer = closeStoryViewer;
+window.navigatePreviousChapter = navigatePreviousChapter;
+window.navigateNextChapter = navigateNextChapter;
+window.shareStory = shareStory;

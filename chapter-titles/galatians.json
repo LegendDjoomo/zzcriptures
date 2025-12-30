@@ -1,0 +1,11 @@
+{
+  "book": "Galatians",
+  "chapters": [
+    { "chapter": 1, "title": "No Other Gospel" },
+    { "chapter": 2, "title": "Faith Beats Law" },
+    { "chapter": 3, "title": "Promise Over Law" },
+    { "chapter": 4, "title": "Sons Not Slaves" },
+    { "chapter": 5, "title": "Freedom Walked Out" },
+    { "chapter": 6, "title": "Sow Spiritually" }
+  ]
+}

@@ -1,21 +1,96 @@
+// Optimized Glossary Functions with Lazy Loading and Pagination
+
 // Glossary Variables
 let currentGlossaryFilter = 'all';
 let currentSearchTerm = '';
+let glossaryScriptsLoaded = false;
+let filteredGlossaryItems = [];
+let displayedItemsCount = 0;
+const ITEMS_PER_PAGE = 40; // Increased to 40 to buffer better against fast scrolling
 
-// Render glossary based on current filters
-function renderGlossary() {
+// Lazy load glossary scripts
+async function loadGlossaryScripts() {
+    if (glossaryScriptsLoaded) return true;
+    
+    try {
+        // Load glossary items first
+        await loadScript('glossary_items.js');
+        glossaryScriptsLoaded = true;
+        return true;
+    } catch (error) {
+        console.error('Failed to load glossary scripts:', error);
+        return false;
+    }
+}
+
+// Helper function to dynamically load scripts
+function loadScript(src) {
+    return new Promise((resolve, reject) => {
+        const script = document.createElement('script');
+        script.src = src;
+        script.onload = () => resolve();
+        script.onerror = () => reject(new Error(`Failed to load script: ${src}`));
+        document.head.appendChild(script);
+    });
+}
+
+// Initialize and show glossary
+async function initializeAndShowGlossary() {
+    const loadingDiv = document.getElementById('glossary-loading');
+    const contentDiv = document.getElementById('glossary-content');
+    
+    // Show loading indicator
+    if (loadingDiv) loadingDiv.style.display = 'block';
+    if (contentDiv) contentDiv.style.display = 'none';
+    
+    // Load scripts if not already loaded
+    const loaded = await loadGlossaryScripts();
+    
+    if (!loaded) {
+        if (loadingDiv) {
+            loadingDiv.innerHTML = `
+                <div class="card text-center">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">❌</div>
+                    <h3 class="card-title">Failed to Load Glossary</h3>
+                    <p class="card-description">Please refresh the page and try again.</p>
+                </div>
+            `;
+        }
+        return;
+    }
+    
+    // Hide loading, show content
+    if (loadingDiv) loadingDiv.style.display = 'none';
+    if (contentDiv) contentDiv.style.display = 'block';
+    
+    // Initialize glossary if bibleGlossary exists
+    if (typeof bibleGlossary !== 'undefined') {
+        initializeGlossary();
+        filterGlossaryByLetter('all');
+    }
+}
+
+// Render glossary with pagination
+function renderGlossary(resetPagination = true) {
     const glossaryList = document.getElementById('glossary-list');
     const glossaryCount = document.getElementById('glossary-count');
+    const loadMoreContainer = document.getElementById('glossary-load-more-container');
     
-    if (!glossaryList) return;
+    if (!glossaryList || typeof bibleGlossary === 'undefined') return;
+    
+    // Reset pagination if needed
+    if (resetPagination) {
+        displayedItemsCount = 0;
+        glossaryList.innerHTML = '';
+    }
     
     // Filter glossary items
-    let filteredGlossary = bibleGlossary;
+    filteredGlossaryItems = bibleGlossary;
     
     // Apply search filter
     if (currentSearchTerm) {
         const searchTerm = currentSearchTerm.toLowerCase();
-        filteredGlossary = filteredGlossary.filter(item => 
+        filteredGlossaryItems = filteredGlossaryItems.filter(item => 
             item.term.toLowerCase().includes(searchTerm) ||
             item.definition.toLowerCase().includes(searchTerm) ||
             item.category.toLowerCase().includes(searchTerm)
@@ -24,51 +99,82 @@ function renderGlossary() {
     
     // Apply alphabet filter
     if (currentGlossaryFilter !== 'all') {
-        filteredGlossary = filteredGlossary.filter(item => 
+        filteredGlossaryItems = filteredGlossaryItems.filter(item => 
             item.term.charAt(0).toUpperCase() === currentGlossaryFilter
         );
     }
     
     // Sort alphabetically
-    filteredGlossary.sort((a, b) => a.term.localeCompare(b.term));
+    filteredGlossaryItems.sort((a, b) => a.term.localeCompare(b.term));
     
     // Update count
     if (glossaryCount) {
-        glossaryCount.textContent = filteredGlossary.length;
+        glossaryCount.textContent = filteredGlossaryItems.length;
     }
     
-    // Group by first letter
-    const groupedGlossary = {};
-    filteredGlossary.forEach(item => {
-        const firstLetter = item.term.charAt(0).toUpperCase();
-        if (!groupedGlossary[firstLetter]) {
-            groupedGlossary[firstLetter] = [];
+    // Render items with pagination
+    renderPaginatedItems();
+    
+    // Show/hide load more container and setup intersection observer
+    if (loadMoreContainer) {
+        if (displayedItemsCount < filteredGlossaryItems.length) {
+const ITEMS_PER_PAGE = 40; // Increased to 40 to provide a better buffer
+            
+            // ... (rest of code) ...
+
+            // Setup Intersection Observer for Infinite Scroll
+            if (!window.glossaryObserver) {
+                window.glossaryObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        // Trigger load when user is within 800px (approx 1-2 screens) of the bottom
+                        if (entry.isIntersecting && displayedItemsCount < filteredGlossaryItems.length) {
+                            loadMoreGlossaryItems();
+                        }
+                    });
+                }, { root: null, rootMargin: '800px', threshold: 0.1 });
+                
+                window.glossaryObserver.observe(loadMoreContainer);
+            }
+        } else {
+            loadMoreContainer.style.display = 'none';
+            if (window.glossaryObserver) {
+                window.glossaryObserver.disconnect();
+                window.glossaryObserver = null;
+            }
         }
-        groupedGlossary[firstLetter].push(item);
-    });
-    
-    // Render grouped items
-    if (filteredGlossary.length === 0) {
-        glossaryList.innerHTML = `
-            <div class="card text-center">
-                <h3 class="card-title">No results found</h3>
-                <p class="card-description">Try a different search term or letter filter.</p>
-            </div>
-        `;
-        return;
     }
     
-    let html = '';
+    // Show/hide back to top button
+    updateBackToTopButton();
+}
+
+// Render paginated items
+function renderPaginatedItems() {
+    const glossaryList = document.getElementById('glossary-list');
+    if (!glossaryList) return;
     
-    // If we're filtering by a specific letter, don't show letter headers
-    if (currentGlossaryFilter !== 'all') {
-        html = filteredGlossary.map(item => renderGlossaryItem(item)).join('');
-    } else {
-        // Show alphabetical sections
+    // Calculate items to render
+    const startIndex = displayedItemsCount;
+    const endIndex = Math.min(startIndex + ITEMS_PER_PAGE, filteredGlossaryItems.length);
+    const itemsToRender = filteredGlossaryItems.slice(startIndex, endIndex);
+    
+    let htmlContent = '';
+
+    // Group by first letter if showing all
+    if (currentGlossaryFilter === 'all' && !currentSearchTerm) {
+        const groupedGlossary = {};
+        itemsToRender.forEach(item => {
+            const firstLetter = item.term.charAt(0).toUpperCase();
+            if (!groupedGlossary[firstLetter]) {
+                groupedGlossary[firstLetter] = [];
+            }
+            groupedGlossary[firstLetter].push(item);
+        });
+        
         const sortedLetters = Object.keys(groupedGlossary).sort();
         
         sortedLetters.forEach(letter => {
-            html += `
+            htmlContent += `
                 <div class="glossary-letter-section">
                     <div class="glossary-letter-header">${letter}</div>
                     <div class="glossary-letter-items">
@@ -77,12 +183,35 @@ function renderGlossary() {
                 </div>
             `;
         });
+    } else {
+        // Render flat list
+        htmlContent = itemsToRender.map(item => renderGlossaryItem(item)).join('');
+    }
+
+    // Batch insertion to DOM
+    if (htmlContent) {
+        glossaryList.insertAdjacentHTML('beforeend', htmlContent);
     }
     
-    glossaryList.innerHTML = html;
-    
-    // Show/hide back to top button
-    updateBackToTopButton();
+    // Update displayed count
+    displayedItemsCount = endIndex;
+}
+
+// Load more glossary items
+function loadMoreGlossaryItems() {
+    requestAnimationFrame(() => {
+        renderPaginatedItems();
+        
+        // Update load more button visibility
+        const loadMoreContainer = document.getElementById('glossary-load-more-container');
+        if (loadMoreContainer) {
+            if (displayedItemsCount >= filteredGlossaryItems.length) {
+                loadMoreContainer.style.display = 'none';
+            }
+        }
+        
+        updateBackToTopButton();
+    });
 }
 
 // Render individual glossary item
@@ -117,7 +246,7 @@ function searchGlossary() {
     const searchInput = document.getElementById('glossary-search');
     if (searchInput) {
         currentSearchTerm = searchInput.value.trim();
-        renderGlossary();
+        renderGlossary(true); // Reset pagination on search
     }
 }
 
@@ -125,12 +254,14 @@ function searchGlossary() {
 function filterGlossaryByLetter(letter) {
     currentGlossaryFilter = letter;
     updateAlphabetButtons();
-    renderGlossary();
+    renderGlossary(true); // Reset pagination on filter change
     
     // Scroll to top when changing filters
     const glossaryList = document.getElementById('glossary-list');
     if (glossaryList) {
-        glossaryList.scrollTop = 0;
+        requestAnimationFrame(() => {
+            glossaryList.scrollTop = 0;
+        });
     }
 }
 
@@ -151,7 +282,7 @@ function updateAlphabetButtons() {
 
 // Search Bible verse from reference
 async function searchBibleVerse(reference) {
-    // Close glossary modal
+    // Close glossary section
     const glossarySection = document.getElementById('glossary-section');
     if (glossarySection) {
         glossarySection.classList.remove('active');
@@ -204,28 +335,29 @@ async function searchBibleVerse(reference) {
 
 // Update back to top button visibility
 function updateBackToTopButton() {
-    const backToTopBtn = document.getElementById('back-to-top');
-    const glossaryList = document.getElementById('glossary-list');
-    
-    if (backToTopBtn && glossaryList) {
-        if (glossaryList.scrollHeight > 400) {
-            backToTopBtn.style.display = 'block';
-        } else {
-            backToTopBtn.style.display = 'none';
+    requestAnimationFrame(() => {
+        const backToTopBtn = document.getElementById('back-to-top');
+        const glossaryList = document.getElementById('glossary-list');
+        
+        if (backToTopBtn && glossaryList) {
+            if (glossaryList.scrollHeight > 400) {
+                backToTopBtn.style.display = 'block';
+            } else {
+                backToTopBtn.style.display = 'none';
+            }
         }
-    }
+    });
 }
 
 // Scroll to top function
 function scrollToTop() {
-    const glossaryList = document.getElementById('glossary-list');
-    if (glossaryList) {
-        glossaryList.scrollTop = 0;
-    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 // Initialize glossary when app loads
 function initializeGlossary() {
     // Sort glossary alphabetically on load
-    bibleGlossary.sort((a, b) => a.term.localeCompare(b.term));
+    if (typeof bibleGlossary !== 'undefined') {
+        bibleGlossary.sort((a, b) => a.term.localeCompare(b.term));
+    }
 }

@@ -1,0 +1,10 @@
+{
+  "book": "1 John",
+  "chapters": [
+    { "chapter": 1, "title": "Walk In Light" },
+    { "chapter": 2, "title": "Obey & Love" },
+    { "chapter": 3, "title": "Children Of God" },
+    { "chapter": 4, "title": "Love > Hate" },
+    { "chapter": 5, "title": "Faith & Victory" }
+  ]
+}

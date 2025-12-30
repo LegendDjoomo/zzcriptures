@@ -1,0 +1,17 @@
+{
+  "book": "Daniel",
+  "chapters": [
+    { "chapter": 1, "title": "Faith Wins Over Kings" },
+    { "chapter": 2, "title": "God Reveals Dreams" },
+    { "chapter": 3, "title": "Fiery Furnace Survived" },
+    { "chapter": 4, "title": "Nebuchadnezzar Humbled" },
+    { "chapter": 5, "title": "Handwriting On Wall" },
+    { "chapter": 6, "title": "Lions Can’t Stop Faith" },
+    { "chapter": 7, "title": "Four Beasts Vision" },
+    { "chapter": 8, "title": "Ram Vs Goat Prophecy" },
+    { "chapter": 9, "title": "Daniel Prays, God Answers" },
+    { "chapter": 10, "title": "Vision With Angel" },
+    { "chapter": 11, "title": "Kings And Wars Prophecy" },
+    { "chapter": 12, "title": "End Times Revealed" }
+  ]
+}

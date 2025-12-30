@@ -1,0 +1,26 @@
+{
+  "book": "John",
+  "chapters": [
+    { "chapter": 1, "title": "Word Became Flesh" },
+    { "chapter": 2, "title": "Water To Wine Flex" },
+    { "chapter": 3, "title": "Born Again Talk" },
+    { "chapter": 4, "title": "Samaritan Woman Hype" },
+    { "chapter": 5, "title": "Healing On Sabbath" },
+    { "chapter": 6, "title": "Bread Of Life" },
+    { "chapter": 7, "title": "Feast Teachings" },
+    { "chapter": 8, "title": "I Am Light" },
+    { "chapter": 9, "title": "Blind Man Sees" },
+    { "chapter": 10, "title": "Good Shepherd Flex" },
+    { "chapter": 11, "title": "Lazarus Raised" },
+    { "chapter": 12, "title": "Triumphal Entry" },
+    { "chapter": 13, "title": "Foot Wash Flex" },
+    { "chapter": 14, "title": "I Am Way Truth Life" },
+    { "chapter": 15, "title": "Vine & Branches" },
+    { "chapter": 16, "title": "Spirit Comes Soon" },
+    { "chapter": 17, "title": "Prayer For Believers" },
+    { "chapter": 18, "title": "Arrest & Trial" },
+    { "chapter": 19, "title": "Crucifixion Energy" },
+    { "chapter": 20, "title": "Resurrection Shock" },
+    { "chapter": 21, "title": "Peter Restored" }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "book": "Jonah",
+  "chapters": [
+    { "chapter": 1, "title": "Run From God, Fail" },
+    { "chapter": 2, "title": "Praying Inside Fish" },
+    { "chapter": 3, "title": "Nineveh Actually Repents" },
+    { "chapter": 4, "title": "Jonah Mad At Mercy" }
+  ]
+}

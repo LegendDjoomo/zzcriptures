@@ -1,13 +1,3 @@
-/**
- * Daily Fact - Shows a daily Bible Fun Fact
- * Uses the bibleFunFacts array from Fun_Facts_items.js
- * Updates daily like the Daily Verse
- */
-
-/**
- * Get daily fact based on current date
- * Same fact for entire day
- */
 function getDailyFact() {
     const today = new Date();
     const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / 86400000);

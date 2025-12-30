@@ -1,0 +1,15 @@
+{
+  "book": "Ezra",
+  "chapters": [
+    { "chapter": 1, "title": "Cyrus Lets Jews Return" },
+    { "chapter": 2, "title": "Exiles List Arrives" },
+    { "chapter": 3, "title": "Altar Rebuilt, Temple Started" },
+    { "chapter": 4, "title": "Enemies Try To Block" },
+    { "chapter": 5, "title": "Prophets Push Temple Forward" },
+    { "chapter": 6, "title": "Temple Completed, Worship Resumes" },
+    { "chapter": 7, "title": "Ezra Arrives With Authority" },
+    { "chapter": 8, "title": "Ezra Leads People Safely" },
+    { "chapter": 9, "title": "Ezra Confronts Sin" },
+    { "chapter": 10, "title": "People Repent, Commit Right" }
+  ]
+}
