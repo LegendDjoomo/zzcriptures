@@ -1,8 +1,749 @@
 {
   "book": "Exodus",
   "chapters": [
+{
+  "chapter": "1",
+  "verses": [
+    {
+      "verse": "1",
+      "text": "These are the names of Jacob’s sons who rolled into Egypt with him, each with their squad:"
+    },
+    {
+      "verse": "2",
+      "text": "Reuben, Simeon, Levi, Judah,"
+    },
+    {
+      "verse": "3",
+      "text": "Issachar, Zebulun, Benjamin,"
+    },
+    {
+      "verse": "4",
+      "text": "Dan, Naphtali, Gad, and Asher."
+    },
+    {
+      "verse": "5",
+      "text": "Total descendants of Jacob? Seventy deep. Joseph was already in Egypt."
+    },
+    {
+      "verse": "6",
+      "text": "Then Joseph died, and so did his brothers and that whole generation."
+    },
+    {
+      "verse": "7",
+      "text": "But the Israelites multiplied heavy—had kids on kids. They filled the land."
+    },
+    {
+      "verse": "8",
+      "text": "Then a new Pharaoh came up in Egypt—he didn’t know Joseph."
+    },
+    {
+      "verse": "9",
+      "text": "He said to his people, “Yo, these Israelites are getting too big and too strong."
+    },
+    {
+      "verse": "10",
+      "text": "We gotta outsmart them, or they’ll squad up with our enemies and dip on us.”"
+    },
+    {
+      "verse": "11",
+      "text": "So they put taskmasters over them—forced labor, building cities like Pithom and Raamses for Pharaoh."
+    },
+    {
+      "verse": "12",
+      "text": "But the more they got oppressed, the more they multiplied. Egypt started freaking out."
+    },
+    {
+      "verse": "13",
+      "text": "Egyptians worked them like dogs,"
+    },
+    {
+      "verse": "14",
+      "text": "made their lives bitter with hard labor—bricks, mortar, fieldwork. Straight-up oppression."
+    },
+    {
+      "verse": "15",
+      "text": "Then Pharaoh told the Hebrew midwives—Shiphrah and Puah—"
+    },
+    {
+      "verse": "16",
+      "text": "“When you help Hebrew women give birth, if it’s a boy, kill him. If it’s a girl, let her live.”"
+    },
+    {
+      "verse": "17",
+      "text": "But the midwives feared God, didn’t follow Pharaoh’s order. They let the boys live."
+    },
+    {
+      "verse": "18",
+      "text": "Pharaoh called them out: “Why’d you let the boys live?”"
+    },
+    {
+      "verse": "19",
+      "text": "They said, “Hebrew women ain’t like Egyptian women—they give birth fast, before we even show up.”"
+    },
+    {
+      "verse": "20",
+      "text": "God blessed the midwives for that. The people kept multiplying."
+    },
+    {
+      "verse": "21",
+      "text": "Because they feared God, He gave the midwives families of their own."
+    },
+    {
+      "verse": "22",
+      "text": "Then Pharaoh went full villain: “Every Hebrew boy born—yeet him into the Nile. Girls can live.”"
+    }
+  ]
+},
+{
+  "chapter": "2",
+  "verses": [
+    {
+      "verse": "1",
+      "text": "A man from Levi’s tribe married a Levite woman."
+    },
+    {
+      "verse": "2",
+      "text": "She got pregnant and had a son. He was fine, so she hid him for three months."
+    },
+    {
+      "verse": "3",
+      "text": "When she couldn’t hide him anymore, she made a waterproof basket, put the baby in it, and floated it down the Nile."
+    },
+    {
+      "verse": "4",
+      "text": "His sister posted up nearby, watching to see what would happen."
+    },
+    {
+      "verse": "5",
+      "text": "Pharaoh’s daughter came to bathe in the river. She saw the basket, sent her servant girl to grab it."
+    },
+    {
+      "verse": "6",
+      "text": "She opened it, saw the baby crying, and felt for him. “This must be a Hebrew baby,” she said."
+    },
+    {
+      "verse": "7",
+      "text": "The sister stepped up: “Want me to find a Hebrew woman to nurse him for you?”"
+    },
+    {
+      "verse": "8",
+      "text": "Pharaoh’s daughter said, “Go.” So the girl brought the baby’s own mom."
+    },
+    {
+      "verse": "9",
+      "text": "Pharaoh’s daughter told her, “Take this baby, nurse him for me. I’ll pay you.” So the woman took him and nursed him."
+    },
+    {
+      "verse": "10",
+      "text": "When the child grew up, she brought him back. Pharaoh’s daughter adopted him and named him Moses, saying, “I pulled him out the water.”"
+    },
+    {
+      "verse": "11",
+      "text": "Years later, Moses grew up. He saw an Egyptian beating a Hebrew—one of his own people."
+    },
+    {
+      "verse": "12",
+      "text": "He looked both ways, saw no one, and murked the Egyptian. Hid the body in the sand."
+    },
+    {
+      "verse": "13",
+      "text": "Next day, he saw two Hebrews fighting. He said to the one in the wrong, “Why you hitting your own brother?”"
+    },
+    {
+      "verse": "14",
+      "text": "Dude said, “Who made you boss? You gonna kill me like you did that Egyptian?” Moses freaked—“They know.”"
+    },
+    {
+      "verse": "15",
+      "text": "Pharaoh heard and tried to kill Moses. So Moses dipped to Midian and chilled by a well."
+    },
+    {
+      "verse": "16",
+      "text": "The priest of Midian had seven daughters. They came to draw water for their dad’s flock."
+    },
+    {
+      "verse": "17",
+      "text": "Some shepherds tried to run them off, but Moses stepped in, saved them, and watered their sheep."
+    },
+    {
+      "verse": "18",
+      "text": "They went home to their dad, Reuel. He asked, “Why y’all back so early?”"
+    },
+    {
+      "verse": "19",
+      "text": "They said, “An Egyptian helped us out, even watered the flock.”"
+    },
+    {
+      "verse": "20",
+      "text": "He said, “Where is he? Why’d you leave him? Go invite him to eat.”"
+    },
+    {
+      "verse": "21",
+      "text": "Moses agreed to stay. Reuel gave him his daughter Zipporah."
+    },
+    {
+      "verse": "22",
+      "text": "She had a son. Moses named him Gershom, saying, “I’ve been a stranger in a strange land.”"
+    },
+    {
+      "verse": "23",
+      "text": "Time passed. Egypt’s king died. The Israelites groaned under slavery and cried out. Their cry reached God."
+    },
+    {
+      "verse": "24",
+      "text": "God heard them, remembered His covenant with Abraham, Isaac, and Jacob."
+    },
+    {
+      "verse": "25",
+      "text": "God saw what was going on—and He didn’t ignore it."
+    }
+  ]
+},
+{
+  "chapter": "3",
+  "verses": [
+    {
+      "verse": "1",
+      "text": "Moses was working for his father-in-law Jethro, priest of Midian, watching sheep near Mount Horeb, God’s mountain."
+    },
+    {
+      "verse": "2",
+      "text": "Outta nowhere, the angel of the Lord showed up in a lit bush—flames everywhere, but the bush wasn’t burning up."
+    },
+    {
+      "verse": "3",
+      "text": "Moses was like, “Yo, that bush is on fire but not burning? I gotta check this out.”"
+    },
+    {
+      "verse": "4",
+      "text": "When the Lord saw Moses pull up, He called from the bush: “Moses, Moses.” Moses said, “I’m here.”"
+    },
+    {
+      "verse": "5",
+      "text": "God said, “Don’t come closer. Take off your kicks—you’re on holy ground.”"
+    },
+    {
+      "verse": "6",
+      "text": "Then He said, “I’m the God of your father, the God of Abraham, Isaac, and Jacob.” Moses hid his face—he was shook to look at God."
+    },
+    {
+      "verse": "7",
+      "text": "The Lord said, “I’ve seen My people suffering in Egypt. I’ve heard their cries. I know their pain."
+    },
+    {
+      "verse": "8",
+      "text": "I’ve come down to rescue them, take them to a good land—big, rich, flowing with milk and honey. It’s Canaanite turf now, but not for long."
+    },
+    {
+      "verse": "9",
+      "text": "The cries of Israel have reached Me. I see how Egypt’s crushing them."
+    },
+    {
+      "verse": "10",
+      "text": "So now, I’m sending you to Pharaoh. You’re gonna bring My people out.”"
+    },
+    {
+      "verse": "11",
+      "text": "Moses said, “Me? Who am I to go to Pharaoh and lead Israel out?”"
+    },
+    {
+      "verse": "12",
+      "text": "God said, “I’ll be with you. And here’s your sign: when you bring them out, you’ll worship Me right here.”"
+    },
+    {
+      "verse": "13",
+      "text": "Moses said, “Okay but what if they ask, ‘What’s His name?’ What do I say?”"
+    },
+    {
+      "verse": "14",
+      "text": "God said, “I AM WHO I AM. Tell them ‘I AM’ sent you.”"
+    },
+    {
+      "verse": "15",
+      "text": "“Tell them: The Lord, God of your ancestors—Abraham, Isaac, and Jacob—sent me. That’s My name forever.”"
+    },
+    {
+      "verse": "16",
+      "text": "“Now go gather the elders of Israel. Tell them, ‘The Lord appeared to me. He’s seen what’s been done to us in Egypt."
+    },
+    {
+      "verse": "17",
+      "text": "He’s gonna bring us out to a land flowing with milk and honey—Canaanite territory.’"
+    },
+    {
+      "verse": "18",
+      "text": "They’ll listen. Then you and the elders will go to Pharaoh and say, ‘The Lord wants us to take a three-day trip into the wilderness to worship.’"
+    },
+    {
+      "verse": "19",
+      "text": "But Pharaoh won’t let you go unless he’s forced."
+    },
+    {
+      "verse": "20",
+      "text": "So I’ll flex—hit Egypt with wonders. Then he’ll let you go."
+    },
+    {
+      "verse": "21",
+      "text": "I’ll make the Egyptians favor y’all. You won’t leave empty-handed."
+    },
+    {
+      "verse": "22",
+      "text": "Every Hebrew woman will ask her Egyptian neighbor for silver, gold, and clothes. You’ll dress your sons and daughters in it. That’s how you’ll plunder Egypt.”"
+    }
+  ]
+},
+{
+  "chapter": "4",
+  "verses": [
+    {
+      "verse": "1",
+      "text": "Moses said, 'What if they don't believe me or listen? What if they say, \"God didn't send you\"?'"
+    },
+    {
+      "verse": "2",
+      "text": "The Lord said, 'What's that in your hand?' Moses said, 'A staff.'"
+    },
+    {
+      "verse": "3",
+      "text": "God said, 'Throw it down.' He did—it turned into a snake. Moses dipped."
+    },
+    {
+      "verse": "4",
+      "text": "God said, 'Grab it by the tail.' Moses did—it turned back into a staff."
+    },
+    {
+      "verse": "5",
+      "text": "'That's so they'll believe I'm the God of Abraham, Isaac, and Jacob.'"
+    },
+    {
+      "verse": "6",
+      "text": "God said, 'Put your hand in your cloak.' He did—pulled it out leprous, white as snow."
+    },
+    {
+      "verse": "7",
+      "text": "'Put it back.' He did—came out clean."
+    },
+    {
+      "verse": "8",
+      "text": "'If they don't believe the first sign, maybe the second will hit.'"
+    },
+    {
+      "verse": "9",
+      "text": "'If not, take water from the Nile, pour it on the ground—it'll turn to blood.'"
+    },
+    {
+      "verse": "10",
+      "text": "Moses said, 'Lord, I'm not good with words—never have been. I stutter, I freeze.'"
+    },
+    {
+      "verse": "11",
+      "text": "God said, 'Who made mouths? Who makes people mute, deaf, seeing, or blind? I do.'"
+    },
+    {
+      "verse": "12",
+      "text": "'Now go—I'll help you speak and teach you what to say.'"
+    },
+    {
+      "verse": "13",
+      "text": "Moses said, 'Please, Lord, send someone else.'"
+    },
+    {
+      "verse": "14",
+      "text": "God got heated: 'Fine. Your brother Aaron can speak. He's already on his way.'"
+    },
+    {
+      "verse": "15",
+      "text": "'I'll talk to both of you. You speak to him, he'll speak for you.'"
+    },
+    {
+      "verse": "16",
+      "text": "'He'll be your voice, you'll be like God to him.'"
+    },
+    {
+      "verse": "17",
+      "text": "'Take your staff—it's your miracle tool.'"
+    },
+    {
+      "verse": "18",
+      "text": "Moses went back to Jethro: 'Let me go back to Egypt, check on my people.' Jethro said, 'Go in peace.'"
+    },
+    {
+      "verse": "19",
+      "text": "God told Moses in Midian: 'Go back. The ones who wanted you dead are gone.'"
+    },
+    {
+      "verse": "20",
+      "text": "Moses took his wife and sons, put them on a donkey, and headed to Egypt with God's staff in hand."
+    },
+    {
+      "verse": "21",
+      "text": "God said, 'When you get there, do the signs I gave you. But I'll harden Pharaoh's heart—he won't let the people go.'"
+    },
+    {
+      "verse": "22",
+      "text": "'Tell Pharaoh: \"Israel is My firstborn.\"'"
+    },
+    {
+      "verse": "23",
+      "text": "'Let My son go so he can worship Me. If not, I'll take your firstborn.'"
+    },
+    {
+      "verse": "24",
+      "text": "On the way, at a rest stop, God came at Moses—ready to take him out."
+    },
+    {
+      "verse": "25",
+      "text": "Zipporah grabbed a flint knife, circumcised their son, and touched Moses' feet with it: 'You're a blood husband to me.'"
+    },
+    {
+      "verse": "26",
+      "text": "God backed off. That's why she said 'blood husband'—because of the circumcision."
+    },
+    {
+      "verse": "27",
+      "text": "God told Aaron, 'Go meet Moses in the wilderness.' He did, met him at the mountain, and kissed him."
+    },
+    {
+      "verse": "28",
+      "text": "Moses told Aaron everything God said and showed him the signs."
+    },
+    {
+      "verse": "29",
+      "text": "They went to Egypt, gathered Israel's elders."
+    },
+    {
+      "verse": "30",
+      "text": "Aaron told them everything God said, did the signs."
+    },
+    {
+      "verse": "31",
+      "text": "The people believed. When they heard God saw their pain, they bowed and worshipped."
+    }
+  ]
+},
+{
+  "chapter": "5",
+  "verses": [
+    {
+      "verse": "1",
+      "text": "After that, Moses and Aaron pulled up to Pharaoh: 'This is what the Lord, God of Israel, says—\"Let My people go so they can throw Me a festival in the wilderness.\"'"
+    },
+    {
+      "verse": "2",
+      "text": "Pharaoh said, 'Who's this \"Lord\" you're talking about? Why should I listen to Him and let Israel go? I don't know Him, and I'm not letting y'all go.'"
+    },
+    {
+      "verse": "3",
+      "text": "They said, 'The God of the Hebrews met with us. Let us go three days into the wilderness to offer sacrifices, or He might hit us with plagues or the sword.'"
+    },
+    {
+      "verse": "4",
+      "text": "Pharaoh clapped back: 'Why are y'all distracting the people from their work? Get back to your grind.'"
+    },
+    {
+      "verse": "5",
+      "text": "He said, 'Look, the people are already too many, and you're making them lazy with this \"go worship\" talk.'"
+    },
+    {
+      "verse": "6",
+      "text": "That same day, Pharaoh told the slave drivers and overseers,"
+    },
+    {
+      "verse": "7",
+      "text": "'Stop giving them straw for bricks. Let them gather their own.'"
+    },
+    {
+      "verse": "8",
+      "text": "'But don't lower the quota. They're lazy—that's why they're crying about sacrifices.'"
+    },
+    {
+      "verse": "9",
+      "text": "'Make the work harder so they stop listening to lies.'"
+    },
+    {
+      "verse": "10",
+      "text": "The slave drivers and overseers told the people, 'Pharaoh says no more straw.'"
+    },
+    {
+      "verse": "11",
+      "text": "'Go get your own wherever you can find it. But your daily quota stays the same.'"
+    },
+    {
+      "verse": "12",
+      "text": "So the people scattered all over Egypt looking for stubble to use."
+    },
+    {
+      "verse": "13",
+      "text": "The slave drivers kept pressing: 'Hurry up! Meet your quota like before!'"
+    },
+    {
+      "verse": "14",
+      "text": "The Israelite overseers got beat down because their crews weren't hitting the numbers."
+    },
+    {
+      "verse": "15",
+      "text": "The Israelite overseers went to Pharaoh: 'Why you doing this to us?'"
+    },
+    {
+      "verse": "16",
+      "text": "'We're not getting straw, but we're still expected to make bricks. We're getting beat—it's not our fault.'"
+    },
+    {
+      "verse": "17",
+      "text": "Pharaoh said, 'Y'all are lazy. That's why you're saying, \"Let us go worship.\"'"
+    },
+    {
+      "verse": "18",
+      "text": "'Now get back to work. No straw. Same quota.'"
+    },
+    {
+      "verse": "19",
+      "text": "The overseers knew they were in trouble when Pharaoh said, 'No slack on the bricks.'"
+    },
+    {
+      "verse": "20",
+      "text": "They ran into Moses and Aaron outside and said,"
+    },
+    {
+      "verse": "21",
+      "text": "'May the Lord judge y'all. You made us stink to Pharaoh. You handed him the knife to cut us down.'"
+    },
+    {
+      "verse": "22",
+      "text": "Moses went back to the Lord: 'Why'd You bring this trouble on Your people? Why'd You even send me?'"
+    },
+    {
+      "verse": "23",
+      "text": "'Since I spoke to Pharaoh in Your name, things got worse. And You haven't rescued them at all.'"
+    }]},
 
-
-
-
-    ]}
+    {
+  "chapter": "6",
+  "verses": [
+    {
+      "verse": "1",
+      "text": "The Lord told Moses, 'Now you'll see what I do to Pharaoh. When I flex, he'll let My people go—he'll push them out himself.'"
+    },
+    {
+      "verse": "2",
+      "text": "God said, 'I am the Lord.'"
+    },
+    {
+      "verse": "3",
+      "text": "'I showed up to Abraham, Isaac, and Jacob as God Almighty, but I didn't drop My full name—Yahweh.'"
+    },
+    {
+      "verse": "4",
+      "text": "'I made a covenant with them to give them Canaan, the land they lived in as strangers.'"
+    },
+    {
+      "verse": "5",
+      "text": "'I've heard the groans of My people in Egypt. I remember My promise.'"
+    },
+    {
+      "verse": "6",
+      "text": "'So tell Israel: I am the Lord. I'll break their chains, rescue them with power and judgment.'"
+    },
+    {
+      "verse": "7",
+      "text": "'I'll make you My people, and I'll be your God. You'll know I'm the Lord who freed you.'"
+    },
+    {
+      "verse": "8",
+      "text": "'I'll bring you to the land I promised, and I'll give it to you. I'm the Lord.'"
+    },
+    {
+      "verse": "9",
+      "text": "Moses told this to the Israelites, but they didn't listen—too crushed, too broken."
+    },
+    {
+      "verse": "10",
+      "text": "Then the Lord said to Moses,"
+    },
+    {
+      "verse": "11",
+      "text": "'Go tell Pharaoh to let My people go.'"
+    },
+    {
+      "verse": "12",
+      "text": "Moses said, 'If Israel won't listen to me, why would Pharaoh? I'm not good with words.'"
+    },
+    {
+      "verse": "13",
+      "text": "But the Lord told Moses and Aaron to speak to Israel and Pharaoh and lead the people out."
+    },
+    {
+      "verse": "14",
+      "text": "These are the heads of the tribes: Reuben's sons: Hanoch, Pallu, Hezron, Carmi."
+    },
+    {
+      "verse": "15",
+      "text": "Simeon's sons: Jemuel, Jamin, Ohad, Jachin, Zohar, and Shaul (whose mom was a Canaanite)."
+    },
+    {
+      "verse": "16",
+      "text": "Levi's sons (by generations): Gershon, Kohath, Merari. Levi lived 137 years."
+    },
+    {
+      "verse": "17",
+      "text": "Gershon's sons: Libni and Shimei."
+    },
+    {
+      "verse": "18",
+      "text": "Kohath's sons: Amram, Izhar, Hebron, Uzziel. Kohath lived 133 years."
+    },
+    {
+      "verse": "19",
+      "text": "Merari's sons: Mahli and Mushi."
+    },
+    {
+      "verse": "20",
+      "text": "Amram married his aunt Jochebed. They had Aaron and Moses. Amram lived 137 years."
+    },
+    {
+      "verse": "21",
+      "text": "Izhar's sons: Korah, Nepheg, Zichri."
+    },
+    {
+      "verse": "22",
+      "text": "Uzziel's sons: Mishael, Elzaphan, Sithri."
+    },
+    {
+      "verse": "23",
+      "text": "Aaron married Elisheba (Amminadab's daughter, Nahshon's sister). They had Nadab, Abihu, Eleazar, Ithamar."
+    },
+    {
+      "verse": "24",
+      "text": "Korah's sons: Assir, Elkanah, Abiasaph."
+    },
+    {
+      "verse": "25",
+      "text": "Eleazar (Aaron's son) married one of Putiel's daughters. They had Phinehas."
+    },
+    {
+      "verse": "26",
+      "text": "These are the Levite family heads. This is the same Aaron and Moses God told to lead Israel out of Egypt."
+    },
+    {
+      "verse": "27",
+      "text": "They spoke to Pharaoh about freeing the Israelites—same Moses and Aaron."
+    },
+    {
+      "verse": "28",
+      "text": "When the Lord spoke to Moses in Egypt,"
+    },
+    {
+      "verse": "29",
+      "text": "He said, 'I am the Lord. Tell Pharaoh everything I say.'"
+    },
+    {
+      "verse": "30",
+      "text": "Moses said, 'I'm not a smooth talker. Why would Pharaoh listen to me?'"
+    }
+  ]
+},
+{
+  "chapter": "7",
+  "verses": [
+    {
+      "verse": "1",
+      "text": "The Lord told Moses, 'Look, I've made you like a god to Pharaoh, and Aaron's your prophet.'"
+    },
+    {
+      "verse": "2",
+      "text": "'You'll say everything I command, and Aaron will speak it to Pharaoh—tell him to let My people go.'"
+    },
+    {
+      "verse": "3",
+      "text": "'But I'll harden Pharaoh's heart and stack up My signs and wonders in Egypt.'"
+    },
+    {
+      "verse": "4",
+      "text": "'He won't listen, so I'll flex hard—bring My people out with power and judgment.'"
+    },
+    {
+      "verse": "5",
+      "text": "'Then Egypt will know I'm the Lord when I stretch out My hand and free Israel.'"
+    },
+    {
+      "verse": "6",
+      "text": "Moses and Aaron did exactly what God said."
+    },
+    {
+      "verse": "7",
+      "text": "Moses was 80, Aaron was 83 when they stepped to Pharaoh."
+    },
+    {
+      "verse": "8",
+      "text": "The Lord said, 'When Pharaoh says, \"Prove it,\"'"
+    },
+    {
+      "verse": "9",
+      "text": "'tell Aaron to throw down his staff—it'll turn into a snake.'"
+    },
+    {
+      "verse": "10",
+      "text": "Moses and Aaron went to Pharaoh, did what God said. Aaron threw down his staff—it turned into a snake."
+    },
+    {
+      "verse": "11",
+      "text": "Pharaoh called his magicians. They did the same with their secret arts."
+    },
+    {
+      "verse": "12",
+      "text": "Each threw down his staff—they became snakes too. But Aaron's snake ate theirs."
+    },
+    {
+      "verse": "13",
+      "text": "Still, Pharaoh's heart was hard. He wouldn't listen—just like God said."
+    },
+    {
+      "verse": "14",
+      "text": "God told Moses, 'Pharaoh's heart is stone. He won't let the people go.'"
+    },
+    {
+      "verse": "15",
+      "text": "'Go meet him in the morning by the Nile. Take your staff that turned into a snake.'"
+    },
+    {
+      "verse": "16",
+      "text": "'Say, \"The Lord, God of the Hebrews, sent me: Let My people go so they can worship Me in the wilderness. But you wouldn't listen.\"'"
+    },
+    {
+      "verse": "17",
+      "text": "'So here's the sign: I'll strike the Nile with this staff—it'll turn to blood.'"
+    },
+    {
+      "verse": "18",
+      "text": "'Fish will die, river will stink, and Egyptians won't drink the water.'"
+    },
+    {
+      "verse": "19",
+      "text": "God said, 'Tell Aaron: Take your staff, stretch it over the waters—rivers, canals, ponds, and pools. They'll all turn to blood. Even water in jars will be blood.'"
+    },
+    {
+      "verse": "20",
+      "text": "Moses and Aaron did what God said. Aaron struck the Nile in front of Pharaoh and his crew—water turned to blood."
+    },
+    {
+      "verse": "21",
+      "text": "Fish died, river stank, Egypt couldn't drink it. Blood everywhere."
+    },
+    {
+      "verse": "22",
+      "text": "But Pharaoh's magicians did the same trick. Pharaoh's heart stayed hard. He walked away, unbothered."
+    },
+    {
+      "verse": "23",
+      "text": "He went home, didn't care."
+    },
+    {
+      "verse": "24",
+      "text": "Egyptians dug around the Nile for water—they couldn't drink the river."
+    },
+    {
+      "verse": "25",
+      "text": "Seven days passed after God struck the Nile."
+    }
+  ]
+} ]}

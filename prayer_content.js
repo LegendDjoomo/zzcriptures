@@ -4,20 +4,21 @@
                 title: "Gratitude Prayer",
                 content: `
                     <p>Heavenly Father,</p>
-                    <p>I come before You with a heart full of gratitude. Thank You for Your countless blessings in my life.</p>
-                    <p>Thank You for the gift of life, for Your love that never fails, and for Your mercy that is new every morning.</p>
-                    <p>Help me to always have a thankful heart, recognizing Your goodness in every situation.</p>
-                    <p>In Jesus' name, Amen.</p>
+                   <p> I come before You today laying down my crowd.</p>
+                   <p>O Lord Jesus, I just wanna say Thank you for your love, grace and mercy </p>
+                   <p> I cannot even imagine my life without Your Grace and Mercy. Thank You Lord for everything</p>
+                   <p> In the Name of Jesus. Amen </p>
                 `
             },
             guidance: {
                 title: "Guidance Prayer",
                 content: `
-                    <p>Lord Jesus,</p>
-                    <p>I seek Your wisdom and guidance in my life. You promise to direct our paths when we trust in You.</p>
-                    <p>Illuminate my way and help me make decisions that honor You. Give me discernment to recognize Your voice.</p>
-                    <p>I surrender my plans to You and ask that Your will be done in my life.</p>
-                    <p>In Your precious name, Amen.</p>
+                    <p> Father Lord,</p>
+                    <p>I come before today seeking guidance. Lord, today, I seek your holy Spirit to guide and teach me.</p>
+                    <p>Give me wisdom to living a purposeful life for Your Glory</p>
+                    <p>Guide my path o Lord, God Almighty and lead me to a straight path.</p>
+                    <p>Take over my life and be the GPS that shows me the way.</p>
+                    <p> In Jesus Name, Amen </p>
                 `
             },
             healing: {
@@ -97,23 +98,17 @@
 
                  intercession:{
                     title: "Intercession",
-                      content: [
-                "Heavenly Father,",
-                "I come before You to lift up the needs of those around me — family, friends, and even those I do not know personally.",
-                "Provide for their struggles, guide them through challenges, and comfort them in times of pain and uncertainty.",
-                "Help them to feel Your presence and trust in Your perfect plan for their lives.",
-                "In Jesus' name, Amen."
+                      content: [`
+                        <p> Thank you Lord Jesus. Today I come before you, Lord, praying for the lives of those in dire needs. O, Lord, I pray that you intervene in their lives and provide for them. O lord, You said that You will give us our daily bread. Today, ask that provide for the poor and needy. IN Jesus Name, AMEN  </P>
+                
+                `
             ]
             },
 
             forgiveness: {
                 title: "Forgiveness Prayer",
                 content: `
-                    <p>Loving God,</p>
-                    <p>I confess my sins and shortcomings before You. Please forgive me and cleanse me from all unrighteousness.</p>
-                    <p>Help me also to forgive those who have wronged me, just as You have forgiven me.</p>
-                    <p>Create in me a clean heart and renew a right spirit within me.</p>
-                    <p>In Jesus' name, Amen.</p>
+                   <p> Lord Jesus, I ask for forgiveness. Lord, I am very well aware You died for my sins to be forgiven. Lord, Today let Your blood, the Blood that speaks better things than the blood of Abel cleanse me, from head to toe. Lord, I just dont pray for cleansing of sins but also the desires to sin. Kill every desire of sin lurking in my heart and make me pure as snow. In Jesus, name, AMEN.  </p>
                 `
             }
         };

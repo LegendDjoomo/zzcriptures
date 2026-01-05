@@ -34,7 +34,7 @@
     <script src="daily_power.js"></script>
     <script src="daily_fact.js"></script>
     <script src="share_verse.js"></script>
-    <script src="daily_verse.js"></script>
+    <!-- daily_verse.js is large; load only when needed via getDailyVerseAsync() -->
 </head>
 
 <body>
@@ -197,7 +197,7 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <img src="logo.jpg" alt="Zcriptures" style="width: 48px; height: auto; border-radius: 8px;">
+                    <img src="logo1.png" alt="Zcriptures" style="width: 48px; height: auto; border-radius: 8px;">
                     <h1 class="logo-text">Zcriptures</h1>
                 </div>
                 <div class="header-actions">
@@ -224,6 +224,19 @@
                 <h2 class="greeting-text" id="greeting-text">
                     Welcome back, <span class="user-name" id="user-name">Friend</span>!
                 </h2>
+            </div>
+
+            <!-- Beta / Demo Info Bar -->
+            <div class="beta-info-row">
+                <button id="beta-info-btn" class="beta-info-btn" onclick="openBetaInfoModal()" aria-label="Beta Info">
+                    ‚ö†Ô∏è <strong>Beta Demo</strong> ‚Äî Tap to learn more
+                </button>
+            </div>
+
+            <!-- Expiration / Countdown Banner (hidden until needed) -->
+            <div id="expiration-banner" class="expiration-banner" style="display:none;">
+                <div id="expiration-message" class="expiration-message"></div>
+                <button class="btn btn-secondary" id="expiration-dismiss" onclick="dismissExpirationBanner()">Dismiss</button>
             </div>
 
             <!-- Daily Verse -->
@@ -265,10 +278,10 @@
                 </div>
 
                 <div class="card">
-                    <h3 class="card-title"> GENZ STORIES </h3>
+                    <h3 class="card-title">GENZ STORIES</h3>
                      <div id="profile-level" class="card-description"
-                                style="font-size:2rem; color:var(--accent-gold); margin: 8px 0; font-weight: 700;">Biblically Insipired Stories </div>
-                    <button class="btn btn-secondary"  onclick="showSection('genz-stories-section'); initializeStoryFilters(); populateGenZStories()"
+                                style="font-size:2rem; color:var(--accent-gold); margin: 8px 0; font-weight: 700;">Bible Stories in Genz</div>
+                    <button class="btn btn-secondary" onclick="showSection('genz-stories-section'); initializeStoryFilters(); populateGenZStories()"
                         style="font-size: 0.75rem; width: 100%; margin-top: 8px;">
                         Check Stories
                     </button>
@@ -334,7 +347,7 @@
                 <!-- Morning Prayer Card -->
                 <!-- Morning Prayer Card -->
                 <div class="daily-activity-card" id="morning-prayer-card" data-activity="morning-prayer"
-                    onclick="openDailyActivityModal('morning-prayer')">
+                    onclick="safeOpenDailyActivity('morning-prayer')">
                     <img src="pic_daily_activities/morning.jpg" alt="Morning Prayer" class="daily-activity-bg">
                     <div class="daily-activity-content">
                         <h3 class="activity-title">Morning Prayer</h3>
@@ -346,10 +359,10 @@
                 <!-- Daily Power Card -->
                 <!-- Daily Power Card -->
                 <div class="daily-activity-card" id="daily-power-card" data-activity="daily-power"
-                    onclick="openDailyActivityModal('daily-power')">
-                    <img src="pic_daily_activities/daily_power.jpg" alt="Daily Power" class="daily-activity-bg">
+                    onclick="safeOpenDailyActivity('daily-power')">
+                    <img src="pic_daily_activities/daily_power.jpg" alt="Daily Devotion" class="daily-activity-bg">
                     <div class="daily-activity-content">
-                        <h3 class="activity-title">Daily Power</h3>
+                        <h3 class="activity-title">Daily Devotion</h3>
                         <p class="activity-description">Today's devotion and spiritual strength</p>
                         <div class="activity-status" id="daily-power-status"></div>
                     </div>
@@ -358,7 +371,7 @@
                 <!-- Daily Affirmation Card -->
                 <!-- Daily Affirmation Card -->
                 <div class="daily-activity-card" id="daily-affirmation-card" data-activity="daily-affirmation"
-                    onclick="openDailyActivityModal('daily-affirmation')">
+                    onclick="safeOpenDailyActivity('daily-affirmation')">
                     <img src="pic_daily_activities/affirmation.jpg" alt="Daily Affirmation" class="daily-activity-bg">
                     <div class="daily-activity-content">
                         <h3 class="activity-title">Daily Affirmation</h3>
@@ -370,7 +383,7 @@
                 <!-- Evening Prayer Card -->
                 <!-- Evening Prayer Card -->
                 <div class="daily-activity-card" id="evening-prayer-card" data-activity="evening-prayer"
-                    onclick="openDailyActivityModal('evening-prayer')">
+                    onclick="safeOpenDailyActivity('evening-prayer')">
                     <img src="pic_daily_activities/evening.jpg" alt="Evening Prayer" class="daily-activity-bg">
                     <div class="daily-activity-content">
                         <h3 class="activity-title">Evening Prayer</h3>
@@ -641,6 +654,12 @@
                 <h3 class="card-title">Peace</h3>
                 <p class="card-description">Seek God's peace in your life.</p>
                 <button class="btn btn-primary" onclick="startPrayer('peace')">Start Prayer</button>
+            </div>
+
+               <div class="card">
+                <h3 class="card-title">Forgiveness</h3>
+                <p class="card-description">Ask for the cleansing power of Jesus.</p>
+                <button class="btn btn-primary" onclick="startPrayer('forgiveness')">Start Prayer</button>
             </div>
         </section>
 
@@ -2362,6 +2381,35 @@
         </div>
     </div>
 
+    <!-- Beta Info Modal -->
+    <div id="beta-info-modal" class="modal">
+        <div class="modal-content" style="max-width: 640px;">
+            <div class="modal-header">
+                <h2>Beta / Demo (MVP)</h2>
+                <button class="close-btn" onclick="closeBetaInfoModal()">√ó</button>
+            </div>
+            <div class="modal-body">
+                <p>This app is an early beta/demo (MVP). Some features may be incomplete or may not work exactly as expected. Not all books have been paraphrased into Gen Z lingo yet ‚Äî the <strong>entire New Testament</strong> has been paraphrased and some Old Testament books are complete.</p>
+                <p><strong>Important:</strong> This test app will be disabled after <strong>2 years</strong>, as the full app will be released on the Play Store. This build is for testing and feedback only.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" onclick="closeBetaInfoModal()">Okay, got it</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- App Expired Overlay (shown when expiration date passes) -->
+    <div id="app-expired-overlay" class="modal">
+        <div class="modal-content" style="max-width: 640px; text-align:center;">
+            <div class="modal-header">
+                <h2>App Disabled</h2>
+            </div>
+            <div class="modal-body">
+                <p>This beta/demo period has ended. The full app will be available on the Play Store. Thank you for testing.</p>
+            </div>
+        </div>
+    </div>
+
     <!-- DAILY ACTIVITIES MODALS -->
     <!-- Morning Prayer Modal -->
     <div id="morning-prayer-modal" class="modal">
@@ -2386,12 +2434,18 @@
     <!-- Daily Power Modal -->
     <div id="daily-power-modal" class="modal">
         <div class="modal-content" style="max-width: 600px;">
-            <div class="modal-header">
-                <h2>Daily Power ‚ö°</h2>
-                <button class="close-btn" onclick="closeDailyActivityModal('daily-power-modal')">√ó</button>
+            <div class="modal-header" style="display:flex; align-items:center; gap:12px;">
+                <h2 style="flex:1;">Daily Devotion</h2>
+                <div style="display:flex; gap:8px; align-items:center;">
+                    <button class="btn btn-ghost" onclick="prevDevotion()" title="Previous devotion">‚óÇ Prev</button>
+                    <button class="close-btn" onclick="closeDailyActivityModal('daily-power-modal')">√ó</button>
+                </div>
             </div>
             <div class="modal-body">
-                <div class="daily-activity-day-badge" id="daily-power-day">Day 1</div>
+                <div style="display:flex; align-items:center; gap:8px;">
+                    <div class="daily-activity-day-badge" id="daily-power-day">Day 1</div>
+                    <div id="daily-power-indicator" class="devotion-indicator" aria-hidden="true"></div>
+                </div>
                 <div id="daily-power-content">
                     <!-- Content will be loaded by JavaScript -->
                 </div>
@@ -2443,56 +2497,43 @@
             </div>
         </div>
     </div>
+
     <!-- User Profile Modal -->
-    <div id="user-profile-modal" class="modal">
-        <div class="modal-content">
-            <div
-                style="text-align: center; padding: var(--space-xl); background: linear-gradient(135deg, var(--accent-gold), var(--accent-burgundy)); border-radius: var(--radius-lg) var(--radius-lg) 0 0; color: var(--primary); margin: calc(-1 * var(--space-lg)); margin-bottom: var(--space-lg); position: relative;">
-                <div style="width: 110px; height: 110px; background: var(--surface); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 3rem; margin: 0 auto var(--space-md); overflow:hidden; color:var(--accent-gold); border: 4px solid rgba(255,255,255,0.25); flex-shrink: 0; animation: none;"
-                    id="profile-avatar">
+    <div id="user-profile-modal" class="modal profile-modal">
+        <div class="modal-content profile-modal-content">
+            <div class="profile-modal-header">
+                <div id="profile-avatar" class="profile-avatar">
                     <!-- Avatar image or initial will be injected here -->
                     üë§
                 </div>
-                <div style="font-size: 1.85rem; font-weight: 900; margin-bottom: 12px; letter-spacing: 0.8px; color: var(--accent-gold); text-shadow: 0 2px 4px rgba(0,0,0,0.2); line-height: 1.2; display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap;">
-                    <span id="profile-name">Friend</span>
-                    <button onclick="editUsername()" class="btn btn-icon" style="font-size: 1rem; padding: 4px 8px; background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3);" title="Edit name">‚úèÔ∏è</button>
+                <div class="profile-name-row">
+                    <span id="profile-name" class="profile-name">Friend</span>
+                    <button onclick="editUsername()" class="btn btn-icon profile-edit-btn" title="Edit name">‚úèÔ∏è</button>
                 </div>
+
                 <!-- Edit username mode (hidden by default) -->
-                <div id="profile-name-edit" style="display: none; margin-bottom: 12px;">
-                    <input type="text" id="profile-name-input" placeholder="Enter your name" 
-                        style="width: 250px; padding: 10px; border-radius: 8px; border: 2px solid var(--accent-gold); text-align: center; font-size: 1.2rem; font-weight: 700; color: var(--text-color); background: var(--surface);" 
-                        maxlength="30">
-                    <div style="display: flex; gap: 8px; justify-content: center; margin-top: 10px;">
-                        <button onclick="saveNewUsername()" class="btn btn-primary" style="font-size: 0.875rem; padding: 8px 16px;">Save</button>
-                        <button onclick="cancelEditUsername()" class="btn btn-secondary" style="font-size: 0.875rem; padding: 8px 16px;">Cancel</button>
+                <div id="profile-name-edit" class="profile-name-edit" style="display: none;">
+                    <input type="text" id="profile-name-input" placeholder="Enter your name" maxlength="30">
+                    <div class="profile-edit-actions">
+                        <button onclick="saveNewUsername()" class="btn btn-primary">Save</button>
+                        <button onclick="cancelEditUsername()" class="btn btn-secondary">Cancel</button>
                     </div>
-                    <p id="profile-name-error" style="color: #ff6b6b; font-size: 0.875rem; margin-top: 8px; display: none; background: rgba(255,107,107,0.1); padding: 6px 12px; border-radius: 6px;">Name must be at least 2 characters</p>
+                    <p id="profile-name-error" class="profile-error">Name must be at least 2 characters</p>
                 </div>
-                <div style="font-size: 1.05rem; font-weight: 700; letter-spacing: 0.6px; color: rgba(255,255,255,0.95); text-shadow: 0 1px 3px rgba(0,0,0,0.25); background: rgba(0,0,0,0.15); padding: 10px 18px; border-radius: 20px; display: inline-block;"
-                    id="profile-title">
-                    Scripture Explorer
-                </div>
-                <button class="close-btn" onclick="hideUserProfile()"
-                    style="position: absolute; top: 15px; right: 15px; background: rgba(26, 21, 17, 0.3); border-color: transparent;">√ó</button>
+
+                <div id="profile-title" class="profile-title">Scripture Explorer</div>
+                <button class="close-btn" onclick="hideUserProfile()">√ó</button>
             </div>
 
             <div class="modal-body">
-                <div class="grid-2" style="margin: var(--space-lg) 0; gap: 12px;">
-                    <div
-                        style="background: linear-gradient(135deg, rgba(255,215,0,0.15), rgba(255,215,0,0.08)); border: 2px solid var(--accent-gold); border-radius: 12px; padding: 18px; text-align: center;">
-                        <div style="font-size: 2.2rem; font-weight: 900; color: var(--accent-gold); margin-bottom: 6px;"
-                            id="profile-streak">0</div>
-                        <div
-                            style="font-size: 0.85rem; color: var(--text-primary); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">
-                             Day Streak</div>
+                <div class="grid-2 profile-stats" >
+                    <div class="profile-stat">
+                        <div id="profile-streak" class="profile-stat-value">0</div>
+                        <div class="profile-stat-label">Day Streak</div>
                     </div>
-                    <div
-                        style="background: linear-gradient(135deg, rgba(255,215,0,0.15), rgba(255,215,0,0.08)); border: 2px solid var(--accent-gold); border-radius: 12px; padding: 18px; text-align: center;">
-                        <div style="font-size: 2.2rem; font-weight: 900; color: var(--accent-gold); margin-bottom: 6px;"
-                            id="profile-highlights">0</div>
-                        <div
-                            style="font-size: 0.85rem; color: var(--text-primary); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">
-                            ‚≠ê Highlights</div>
+                    <div class="profile-stat">
+                        <div id="profile-highlights" class="profile-stat-value">0</div>
+                        <div class="profile-stat-label">‚≠ê Highlights</div>
                     </div>
                 </div>
                 <!-- PROFILE ACTIONS: Change avatar / edit bio -->
@@ -3422,12 +3463,12 @@ A small caution: Zcriptures is great for clarity and daily guidance, but it isn‚
                 applyHighlightColor(v, color, { suppressReload: true });
             });
 
-            // clear selection and reload once
+            // clear selection and persist changes (DOM already updated in applyHighlightColor)
             document.querySelectorAll('.verse-selected').forEach(el => el.classList.remove('verse-selected'));
             selectedVerses.clear();
             saveUserData();
             const p = document.getElementById('highlight-palette'); if (p) p.remove();
-            loadVerses(currentBook.id, currentChapter);
+            showToast('Highlights updated');
         }
 
         // Remove highlight(s) for selected verses (or single verse if none selected)
@@ -3440,7 +3481,7 @@ A small caution: Zcriptures is great for clarity and daily guidance, but it isn‚
             selectedVerses.clear();
             saveUserData();
             const p = document.getElementById('highlight-palette'); if (p) p.remove();
-            loadVerses(currentBook.id, currentChapter);
+            showToast('Highlights removed');
         }
 
         // Remove a highlight by book/chapter/verse (used in Highlights list)
@@ -3471,6 +3512,8 @@ A small caution: Zcriptures is great for clarity and daily guidance, but it isn‚
         // Add points to user score
         function addGamePoints(points, gameType) {
             userData.gamePoints = (userData.gamePoints || 0) + points;
+            // Update last active timestamp when user gains points
+            userData.lastActive = new Date().toISOString();
 
             // Update specific game stats
             if (gameType === 'quiz' && points > (userData.quizHighScore || 0)) {
@@ -3488,6 +3531,10 @@ A small caution: Zcriptures is great for clarity and daily guidance, but it isn‚
 
             saveUserData();
             updateGamePointsDisplay();
+            // Recompute leaderboard so your new activity affects ranking immediately
+            try {
+                if (typeof updateLeaderboardScores === 'function') updateLeaderboardScores().then(() => { if (typeof renderLeaderboard === 'function') renderLeaderboard(); });
+            } catch(e) { console.warn('Could not update leaderboard immediately', e); }
             showToast(`+${points} points! üéâ`);
         }
 
@@ -3516,6 +3563,38 @@ A small caution: Zcriptures is great for clarity and daily guidance, but it isn‚
                 
                 await initializeApp();
                 if (typeof initializeOriginalWords === 'function') await initializeOriginalWords();
+
+                // Expiration system: show a countdown banner within 10 days and disable the app after expiry
+                (function setupExpiration() {
+                    const EXPIRATION_DATE = new Date('2028-01-04T00:00:00Z'); // 2 years from Jan 4, 2026
+                    const BANNER = document.getElementById('expiration-banner');
+                    const MESSAGE = document.getElementById('expiration-message');
+                    const OVERLAY = document.getElementById('app-expired-overlay');
+
+                    function update() {
+                        const now = new Date();
+                        const msLeft = EXPIRATION_DATE - now;
+                        const daysLeft = Math.ceil(msLeft / (1000 * 60 * 60 * 24));
+
+                        if (msLeft <= 0) {
+                            // expired: show blocking overlay
+                            if (OVERLAY) OVERLAY.classList.add('active');
+                            document.body.classList.add('app-expired');
+                        } else if (daysLeft <= 10) {
+                            if (BANNER && MESSAGE) {
+                                MESSAGE.textContent = `This test app will be disabled in ${daysLeft} day${daysLeft === 1 ? '' : 's'}. Please save any data.`;
+                                BANNER.style.display = 'flex';
+                            }
+                        }
+                    }
+
+                    window.dismissExpirationBanner = function() {
+                        if (BANNER) BANNER.style.display = 'none';
+                    };
+
+                    update();
+                    setInterval(update, 60 * 60 * 1000); // hourly
+                })();
 
                 // Fallback bindings: ensure leaderboard nav always triggers the leaderboard
                 try {
@@ -3606,7 +3685,7 @@ A small caution: Zcriptures is great for clarity and daily guidance, but it isn‚
             initializeNavigation();
             showBottomNav();
             updateUI();
-            setDailyVerse();
+            await setDailyVerse();
             loadSettings();
             updateGamePointsDisplay();
             initializeBibleSection(); // This will load John 1 directly
@@ -3652,17 +3731,22 @@ A small caution: Zcriptures is great for clarity and daily guidance, but it isn‚
             } catch (e) { console.warn('Could not schedule leaderboard update', e); }
         }
 
-        function setDailyVerse() {
-            const dailyVerse = getDailyVerse();
+        async function setDailyVerse() {
+            // fetch only today's verse on demand
+            try {
+                const dailyVerse = await getDailyVerseAsync();
 
-            if (dailyVerse) {
-                document.getElementById('daily-verse-reference').textContent = dailyVerse.reference;
-                document.getElementById('daily-verse-text').textContent = `"${dailyVerse.text}"`;
-                document.getElementById('daily-verse-genz').textContent = dailyVerse.genZ;
+                if (dailyVerse) {
+                    document.getElementById('daily-verse-reference').textContent = dailyVerse.reference;
+                    document.getElementById('daily-verse-text').textContent = `"${dailyVerse.text}"`;
+                    document.getElementById('daily-verse-genz').textContent = dailyVerse.genZ;
+                }
+
+                // Apply user preference
+                updateDailyVerseDisplay();
+            } catch (e) {
+                console.warn('Failed to load daily verse', e);
             }
-
-            // Apply user preference
-            updateDailyVerseDisplay();
         }
 
 
@@ -3706,10 +3790,30 @@ A small caution: Zcriptures is great for clarity and daily guidance, but it isn‚
 
                 if (savedData) {
                     userData = savedData;
-                    showRandomGreeting();
+                    // If name is missing, prompt the user again (previous incomplete setup)
+                    if (!userData.name) {
+                        // ensure username modal is visible and focused
+                        const unameModal = document.getElementById('username-modal');
+                        if (unameModal) {
+                            unameModal.classList.add('active');
+                            setTimeout(() => {
+                                const input = document.getElementById('username-input');
+                                if (input) input.focus();
+                            }, 120);
+                        }
+                    } else {
+                        showRandomGreeting();
+                    }
                 } else {
                     // First time user - show modal (name is REQUIRED)
-                    document.getElementById('username-modal').classList.add('active');
+                    const unameModal = document.getElementById('username-modal');
+                    if (unameModal) {
+                        unameModal.classList.add('active');
+                        setTimeout(() => {
+                            const input = document.getElementById('username-input');
+                            if (input) input.focus();
+                        }, 120);
+                    }
                     userData = {
                         id: 'main',
                         name: "", // No default - user MUST provide name
@@ -3730,6 +3834,9 @@ A small caution: Zcriptures is great for clarity and daily guidance, but it isn‚
             } catch (error) {
                 console.error('Error loading user data:', error);
             }
+
+            // Update UI-related profile elements now that userData is loaded
+            try { updateSettingsProfile(); updateProfileAvatar(); updateUI(); } catch (e) { console.warn('profile UI sync failed', e); }
 
             // Check if user logged in today
             checkStreak();
@@ -3761,28 +3868,69 @@ A small caution: Zcriptures is great for clarity and daily guidance, but it isn‚
             showRandomGreeting();
             setDailyChallenge();
             updateUI();
+            updateSettingsProfile();
             
             showToast(`Welcome, ${name}! üôè`);
         }
         
-        // Allow Enter key to submit username
-        document.addEventListener('DOMContentLoaded', function() {
-            const usernameInput = document.getElementById('username-input');
-            if (usernameInput) {
-                usernameInput.addEventListener('keypress', function(e) {
-                    if (e.key === 'Enter') {
-                        saveUsername();
-                    }
-                });
+// Initialize username modal (draft persistence, non-dismissible) and attach Enter handler
+document.addEventListener('DOMContentLoaded', function() {
+    function initializeUsernameModal() {
+        const unameModal = document.getElementById('username-modal');
+        const input = document.getElementById('username-input');
+        const error = document.getElementById('username-error');
+        if (!unameModal || !input) return;
+
+        // Restore draft if present
+        const draft = localStorage.getItem('username-draft');
+        if (draft) input.value = draft;
+
+        // Save draft as user types
+        input.addEventListener('input', () => {
+            try { localStorage.setItem('username-draft', input.value); } catch (e) { /* ignore */ }
+            if (error) { error.style.display = 'none'; input.style.borderColor = ''; }
+        });
+
+        // Submit on Enter
+        input.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') saveUsername();
+        });
+
+        // Prevent overlay clicks from dismissing the username modal (required)
+        unameModal.addEventListener('click', function(e) {
+            if (e.target === this) {
+                e.stopPropagation();
             }
         });
 
-               // ADD THIS function
+        // Prevent Escape from closing username modal
+        window.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && unameModal.classList.contains('active')) {
+                e.preventDefault();
+            }
+        });
+
+        // Observe class changes so when modal is shown we focus input and restore draft
+        const observer = new MutationObserver(mutations => {
+            mutations.forEach(m => {
+                if (m.attributeName === 'class' && unameModal.classList.contains('active')) {
+                    const d = localStorage.getItem('username-draft');
+                    if (d && !input.value) input.value = d;
+                    setTimeout(() => input.focus(), 80);
+                }
+            });
+        });
+        observer.observe(unameModal, { attributes: true });
+    }
+    initializeUsernameModal();
+        });
+
+               // Synchronous helper that returns cached verse if available; otherwise triggers a background fetch
         function getDailyVerse() {
-            // Get verse based on day of month (consistent daily)
-            const dayOfMonth = new Date().getDate();
-            const verseIndex = (dayOfMonth - 1) % verseOfTheDayList.length;
-            return verseOfTheDayList[verseIndex];
+            if (cachedDailyVerse) return cachedDailyVerse;
+            // Kick off background fetch but return null immediately; callers should handle null gracefully
+            getDailyVerseAsync().then(v => { cachedDailyVerse = v; }).catch(e => console.warn('getDailyVerse background fetch failed', e));
+            return null;
         }
 
         // KEEP your saveUserData function as is:
@@ -3795,6 +3943,71 @@ A small caution: Zcriptures is great for clarity and daily guidance, but it isn‚
             } catch (error) {
                 console.error('Error saving user data:', error);
             }
+        }
+
+        // --- Daily verse lazy fetch helpers ---
+        let cachedDailyVerse = null;
+        let cachedVerseArray = null; // optional parsed array for reuse
+
+        // try to fetch a single verse file first, falling back to parsing the big JS file
+        async function getDailyVerseAsync() {
+            if (cachedDailyVerse) return cachedDailyVerse;
+
+            const dayOfMonth = new Date().getDate();
+            const index = (dayOfMonth - 1);
+
+            // try per-verse file (if exists)
+            try {
+                const resp = await fetch(`daily_verses/verse_${index + 1}.json`, { cache: 'force-cache' });
+                if (resp.ok) {
+                    const j = await resp.json();
+                    cachedDailyVerse = j;
+                    return cachedDailyVerse;
+                }
+            } catch (e) {
+                // ignore and fallback
+            }
+
+            // Fallback: fetch and parse the existing daily_verse.js file body and extract the nth object
+            try {
+                if (!cachedVerseArray) {
+                    const res = await fetch('daily_verse.js', { cache: 'force-cache' });
+                    const txt = await res.text();
+
+                    // Try to extract the array literal and parse it as JSON
+                    const arrMatch = txt.match(/\[([\s\S]*)\]\s*;?/);
+                    if (arrMatch) {
+                        let arrText = '[' + arrMatch[1] + ']';
+                        // remove trailing commas before array close
+                        arrText = arrText.replace(/,\s*\]/g, ']');
+                        try {
+                            cachedVerseArray = JSON.parse(arrText);
+                        } catch (e) {
+                            // As a fallback, extract object blocks
+                            const objMatches = txt.match(/\{[^\}]*\}/g);
+                            if (objMatches) {
+                                cachedVerseArray = objMatches.map(s => {
+                                    try { return JSON.parse(s); } catch (ex) { return null; }
+                                }).filter(Boolean);
+                            } else {
+                                cachedVerseArray = [];
+                            }
+                        }
+                    } else {
+                        cachedVerseArray = [];
+                    }
+                }
+
+                if (cachedVerseArray && cachedVerseArray[index]) {
+                    cachedDailyVerse = cachedVerseArray[index];
+                    return cachedDailyVerse;
+                }
+            } catch (e) {
+                console.warn('Failed to parse daily_verse.js', e);
+            }
+
+            // final fallback
+            return null;
         }
 
       
@@ -4311,7 +4524,24 @@ A small caution: Zcriptures is great for clarity and daily guidance, but it isn‚
             const p = document.getElementById('highlight-palette');
             if (p && !options.suppressReload) p.remove();
 
-            // Reload verses to show the highlight unless suppressed
+            // If the verse element is already present in the current view, update it in-place
+            const verseEl = document.querySelector(`#verses-container .verse-inline[data-verse='${verseNumber}']`);
+            if (verseEl) {
+                if (color === null) {
+                    verseEl.style.background = '';
+                    verseEl.style.borderRadius = '';
+                    verseEl.style.padding = '';
+                } else {
+                    verseEl.style.background = hexToRgba(color, 0.22);
+                    verseEl.style.borderRadius = '4px';
+                    verseEl.style.padding = '2px 4px';
+                }
+
+                // We already updated the DOM in place ‚Äì no need to reload the whole chapter
+                return;
+            }
+
+            // Otherwise, reload verses to reflect changes (default behavior)
             if (!options.suppressReload) {
                 loadVerses(currentBook.id, currentChapter);
             }
@@ -4617,7 +4847,7 @@ A small caution: Zcriptures is great for clarity and daily guidance, but it isn‚
             });
         }
 
-        function showSection(sectionId) {
+        function showSection(sectionId, options) {
             // Hide all sections
             document.querySelectorAll('.section').forEach(section => {
                 section.classList.remove('active');
@@ -4651,6 +4881,34 @@ A small caution: Zcriptures is great for clarity and daily guidance, but it isn‚
                     if (bibleFilter) bibleFilter.classList.add('hidden');
                 }
             }
+
+            // Initialize Sacred Studies when shown so HOME tab renders immediately
+            if (sectionId === 'bible-study-section') {
+                try {
+                    // Ensure Home tab is active and populate topics
+                    switchSacredTab(typeof currentSacredTab !== 'undefined' ? currentSacredTab : 'home');
+                    populateSacredTopics();
+                } catch (e) {
+                    console.warn('populateSacredTopics failed', e);
+                }
+            }
+
+            // Ensure Gen Z Stories section initializes filters and list when shown (prevents blank page)
+            if (sectionId === 'genz-stories-section') {
+                try {
+                    // Initialize filter tabs (idempotent)
+                    initializeStoryFilters();
+                } catch (e) {
+                    console.warn('initializeStoryFilters failed', e);
+                }
+                try {
+                    // Populate stories using currentFilter if set, otherwise default to 'all'
+                    populateGenZStories(typeof currentFilter !== 'undefined' ? currentFilter : 'all');
+                } catch (e) {
+                    console.warn('populateGenZStories failed', e);
+                }
+            }
+
             // If navigating to the leaderboard page, render its content
             if (sectionId === 'leaderboard-section') {
                 showLeaderboardPage();
@@ -4659,7 +4917,34 @@ A small caution: Zcriptures is great for clarity and daily guidance, but it isn‚
 
             // Initialize daily activities when section is shown
             if (sectionId === 'daily-activities-section') {
-                initializeDailyActivities();
+                if (typeof window.initializeDailyActivities === 'function') {
+                    try {
+                        window.initializeDailyActivities();
+                    } catch (e) {
+                        console.warn('initializeDailyActivities failed', e);
+                    }
+                } else {
+                    // In case scripts are still parsing, try again shortly
+                    setTimeout(() => {
+                        if (typeof window.initializeDailyActivities === 'function') {
+                            try { window.initializeDailyActivities(); } catch (e) { console.warn('initializeDailyActivities failed', e); }
+                        } else {
+                            console.warn('initializeDailyActivities not available after delay');
+                        }
+                    }, 200);
+                }
+            }
+
+            // Push history state so back button navigates between sections (unless explicitly disabled)
+            if (!options || options.push !== false) {
+                try {
+                    const currentState = (history.state && history.state.section) || null;
+                    if (currentState !== sectionId) {
+                        history.pushState({ section: sectionId }, '', '#'+sectionId);
+                    }
+                } catch (e) {
+                    console.warn('history.pushState failed', e);
+                }
             }
         }
         function restoreBiblePosition() {
@@ -4673,6 +4958,22 @@ A small caution: Zcriptures is great for clarity and daily guidance, but it isn‚
             }
             // If no current book/chapter, it will just show the normal book list
         }
+
+        // History navigation: set initial state and handle back button so Android back navigates sections
+        (function() {
+            // On load, replace state with the currently active section (prevents accidental app-close when there's at least a history entry)
+            window.addEventListener('load', function() {
+                const active = document.querySelector('.section.active')?.id || 'home-section';
+                try { history.replaceState({ section: active }, '', '#'+active); } catch (e) { console.warn('history.replaceState failed', e); }
+            });
+
+            // When user presses hardware back / browser back, navigate sections instead of performing full unload
+            window.addEventListener('popstate', function(e) {
+                const sec = (e.state && e.state.section) ? e.state.section : 'home-section';
+                // call showSection without pushing a new history entry
+                showSection(sec, { push: false });
+            });
+        })();
 
         function showBottomNav() {
             const bottomNav = document.getElementById('bottom-nav');
@@ -4783,6 +5084,52 @@ A small caution: Zcriptures is great for clarity and daily guidance, but it isn‚
             }
         }
 
+        // Enable drag-to-scroll for theme tiles so swipe works reliably (mouse and touch)
+        (function() {
+            function enableDragScroll(container) {
+                let isDown = false;
+                let startX;
+                let scrollLeft;
+
+                container.addEventListener('mousedown', (e) => {
+                    isDown = true;
+                    container.classList.add('dragging');
+                    startX = e.pageX - container.offsetLeft;
+                    scrollLeft = container.scrollLeft;
+                });
+
+                container.addEventListener('mouseleave', () => {
+                    isDown = false; container.classList.remove('dragging');
+                });
+                container.addEventListener('mouseup', () => {
+                    isDown = false; container.classList.remove('dragging');
+                });
+
+                container.addEventListener('mousemove', (e) => {
+                    if (!isDown) return;
+                    e.preventDefault();
+                    const x = e.pageX - container.offsetLeft;
+                    const walk = (x - startX) * 1; // scroll-fast multiplier
+                    container.scrollLeft = scrollLeft - walk;
+                });
+
+                // Touch support
+                container.addEventListener('touchstart', (e) => {
+                    startX = e.touches[0].pageX - container.offsetLeft;
+                    scrollLeft = container.scrollLeft;
+                }, { passive: true });
+
+                container.addEventListener('touchmove', (e) => {
+                    // allow default scrolling when user intends to scroll vertically
+                    const x = e.touches[0].pageX - container.offsetLeft;
+                    const walk = (x - startX) * 1;
+                    container.scrollLeft = scrollLeft - walk;
+                }, { passive: false });
+            }
+
+            document.querySelectorAll('.theme-tiles-container').forEach(enableDragScroll);
+        })();
+
         // Close modal when clicking outside (guarded)
         const bibleStudyModalEl = document.getElementById('bible-study-modal');
         if (bibleStudyModalEl) {
@@ -4836,25 +5183,32 @@ A small caution: Zcriptures is great for clarity and daily guidance, but it isn‚
                 }
             }
         }
-        function saveUsername() {
+        async function saveUsername() {
             const input = document.getElementById('username-input');
-            const userName = input.value.trim() || "Friend";
+            const error = document.getElementById('username-error');
+            const name = (input && input.value) ? input.value.trim() : '';
 
-            if (userName) {
-                userData.name = userName;
-                userData.streak = 1;
-                userData.lastLogin = new Date().toDateString();
-                saveUserData();
-
-                // Update the UI after a slight delay to ensure DOM is ready
-                setTimeout(() => {
-                    updateUI();
-                    showRandomGreeting();
-                }, 100);
-
-                // Hide modal
-                document.getElementById('username-modal').classList.remove('active');
+            if (!name || name.length < 2) {
+                if (error) error.style.display = 'block';
+                if (input) { input.style.borderColor = '#e74c3c'; input.focus(); }
+                return;
             }
+
+            userData.id = 'main';
+            userData.name = name;
+            userData.streak = userData.streak || 1;
+            userData.lastLogin = new Date().toDateString();
+
+            try { await saveUserData(); } catch (e) { console.warn('saveUserData failed', e); }
+
+            try { localStorage.removeItem('username-draft'); } catch (e) {}
+
+            const modal = document.getElementById('username-modal');
+            if (modal) modal.classList.remove('active');
+
+            try { updateUI(); showRandomGreeting(); setDailyChallenge(); updateSettingsProfile(); updateProfileAvatar(); } catch (e) { console.warn('post-name update failed', e); }
+
+            showToast(`Welcome, ${name}! üôè`);
         }
 
         function showRandomGreeting() {
@@ -5114,6 +5468,26 @@ function adjustColorBrightness(hex, factor) {
                     tile.classList.add('active');
                 }
             });
+
+            // If Gen Z story viewer is open (or present), sync its theme classes too
+            try {
+                const viewer = document.getElementById('genz-story-viewer');
+                if (viewer) {
+                    viewer.classList.remove('theme-flex', 'theme-aesthetic', 'theme-light', 'dark-mode');
+                    if (themeName === 'flex') viewer.classList.add('theme-flex');
+                    else if (themeName === 'aesthetic') viewer.classList.add('theme-aesthetic');
+                    else if (themeName === 'dark') viewer.classList.add('dark-mode');
+                    else viewer.classList.add('theme-light');
+                    // update inline fallback styling
+                    try {
+                        const cs = getComputedStyle(document.body);
+                        const bg = cs.getPropertyValue('--story-bg').trim();
+                        const text = cs.getPropertyValue('--story-text').trim();
+                        if (bg) viewer.style.background = bg;
+                        if (text) viewer.style.color = text;
+                    } catch (e) {}
+                }
+            } catch (e) { console.warn('Could not sync theme to story viewer', e); }
             
             // Save to database
             try {
@@ -5234,15 +5608,20 @@ function adjustColorBrightness(hex, factor) {
             });
 
             // Schedule daily verse notification (9:00 AM) - Gen Z style
-            scheduleDailyNotification(9, 0, 'Daily Verse üìñ', () => {
-                const verse = getDailyVerse();
-                const messages = [
-                    `Bro wake up‚Äîyour future self is begging you to read today's verse`,
-                    `God's mercy renewed this morning. You renewing your mind or nah?`,
-                    `New day unlocked. God renewed mercy`,
-                    `"${verse.text}" - ${verse.reference}`
-                ];
-                return messages[Math.floor(Math.random() * messages.length)];
+            scheduleDailyNotification(9, 0, 'Daily Verse üìñ', async () => {
+                try {
+                    const verse = await getDailyVerseAsync();
+                    const messages = [
+                        `Bro wake up‚Äîyour future self is begging you to read today's verse`,
+                        `God's mercy renewed this morning. You renewing your mind or nah?`,
+                        `New day unlocked. God renewed mercy`,
+                        verse ? `"${verse.text}" - ${verse.reference}` : ''
+                    ].filter(Boolean);
+                    return messages[Math.floor(Math.random() * messages.length)];
+                } catch (e) {
+                    console.warn('Failed to fetch daily verse for notification', e);
+                    return `Bro wake up‚Äîyour future self is begging you to read today's verse`;
+                }
             });
 
             // Schedule streak reminder (8:00 PM) - Gen Z style
@@ -5837,12 +6216,14 @@ function adjustColorBrightness(hex, factor) {
                     const modalBody = modal.querySelector('.modal-body');
                     if (modalBody) {
                         const btn = document.createElement('button');
+                        btn.type = 'button';
                         btn.id = 'view-roadmap-btn';
                         btn.className = 'btn btn-secondary';
                         btn.style.marginTop = '15px';
                         btn.style.marginBottom = '0';
                         btn.style.width = '100%';
                         btn.style.display = 'block';
+                        btn.setAttribute('aria-label', 'View Level Roadmap');
                         btn.innerHTML = 'üó∫Ô∏è View Level Roadmap';
                         btn.onclick = function() {
                             hideUserProfile();
@@ -5850,6 +6231,8 @@ function adjustColorBrightness(hex, factor) {
                         };
                         // Append to modal body, after the "Keep Going!" button
                         modalBody.appendChild(btn);
+
+
                     }
                 }
             } else {
@@ -7377,6 +7760,10 @@ function adjustColorBrightness(hex, factor) {
 
             const userName = document.getElementById('user-name');
             if (userName) userName.textContent = newName;
+
+            // Update settings profile and other UI spots
+            updateSettingsProfile();
+            updateUI();
 
             // Update avatar
             updateProfileAvatar();
@@ -9107,6 +9494,7 @@ function adjustColorBrightness(hex, factor) {
             let dailyPrayersData = null;
             let dailyDevotionsData = null;
             let dailyAffirmationsData = null;
+            let currentDailyDevotionDay = null; // absolute day number (1-based) relative to start (2026-01-05) for prev navigation
 
            function getCurrentDay() {
     const today = new Date();
@@ -9116,18 +9504,18 @@ function adjustColorBrightness(hex, factor) {
     return diffDays + 1; // +1 because Jan 1 is day 1, not day 0
 }
 
-            // Load JSON data
+            // Load JSON data (defer heavy devotions file until needed)
             async function loadDailyActivitiesData() {
                 try {
-                    const [prayersRes, devotionsRes, affirmationsRes] = await Promise.all([
+                    const [prayersRes, affirmationsRes] = await Promise.all([
                         fetch('daily-prayer.json'),
-                        fetch('daily_devotions.json'),
                         fetch('daily_affirmation.json')
                     ]);
 
                     dailyPrayersData = await prayersRes.json();
-                    dailyDevotionsData = await devotionsRes.json();
                     dailyAffirmationsData = await affirmationsRes.json();
+
+                    // dailyDevotionsData will be fetched lazily when needed (e.g., opening the Daily Power modal)
                 } catch (error) {
                     console.error('Error loading daily activities data:', error);
                 }
@@ -9168,6 +9556,27 @@ function adjustColorBrightness(hex, factor) {
                 // This function is kept for potential future use
             };
 
+            // Safe wrapper for inline onclicks to avoid ReferenceErrors if functions not yet defined
+            window.safeOpenDailyActivity = function(activity) {
+                if (typeof window.openDailyActivityModal === 'function') {
+                    window.openDailyActivityModal(activity);
+                    return;
+                }
+                // If not ready, attempt to initialize resources then call
+                if (typeof window.initializeDailyActivities === 'function') {
+                    try {
+                        window.initializeDailyActivities();
+                    } catch (e) { console.warn('initializeDailyActivities failed', e); }
+                }
+                setTimeout(() => {
+                    if (typeof window.openDailyActivityModal === 'function') {
+                        window.openDailyActivityModal(activity);
+                    } else {
+                        console.warn('openDailyActivityModal not available');
+                    }
+                }, 200);
+            };
+
             // Open activity modal
             window.openDailyActivityModal = function (activity) {
                 const modalId = `${activity}-modal`;
@@ -9175,6 +9584,12 @@ function adjustColorBrightness(hex, factor) {
                 if (!modal) return;
 
                 const day = getCurrentDay();
+
+                // Reset navigation index when opening the daily-power modal so it starts at today's devotion
+                if (activity === 'daily-power') {
+                    currentDailyDevotionDay = null;
+                }
+
                 loadActivityContent(activity, day);
                 modal.classList.add('active');
             }
@@ -9188,18 +9603,18 @@ function adjustColorBrightness(hex, factor) {
             }
 
             // Load content for specific activity
-            function loadActivityContent(activity, day) {
+            async function loadActivityContent(activity, day) {
                 const dayEl = document.getElementById(`${activity}-day`);
                 const contentEl = document.getElementById(`${activity}-content`);
                 const completeBtn = document.getElementById(`${activity}-complete-btn`);
 
                 // For daily-power, calculate the devotion day number
                 if (activity === 'daily-power') {
-                    const today = new Date();
-                    const startDate2026 = new Date('2026-01-01');
+                        const today = new Date();
+                    const startDate2026 = new Date('2026-01-05');
                     
                     if (today < startDate2026) {
-                        // Before 2026, show "Coming Soon"
+                        // Before start date, show "Coming Soon"
                         if (dayEl) dayEl.textContent = 'Coming Soon';
                     } else {
                         // Calculate devotion day (1-9, cycling)
@@ -9225,7 +9640,7 @@ function adjustColorBrightness(hex, factor) {
                         content = loadEveningPrayer(day);
                         break;
                     case 'daily-power':
-                        content = loadDailyPower(day);
+                        content = await loadDailyPower(day);
                         break;
                     case 'daily-affirmation':
                         content = loadDailyAffirmation(day);
@@ -9324,44 +9739,22 @@ function adjustColorBrightness(hex, factor) {
                 return formatDevotionText(items);
             }
 
-            // Load daily power (devotion)
-            function loadDailyPower(day) {
-                if (!dailyDevotionsData || !Array.isArray(dailyDevotionsData)) return '<p>Loading...</p>';
-
-                // Calculate days since January 1, 2026 
-                const today = new Date();
-                const startDate2026 = new Date('2025-12-19');
-                
-                // Check if we're before 2026
-                if (today < startDate2026) {
-                    const daysUntil2026 = Math.ceil((startDate2026 - today) / (1000 * 60 * 60 * 24));
-                    return `
-                    <div class="activity-content" style="text-align: center; padding: 2rem;">
-                        <h3 class="activity-modal-title">Coming Soon! üéâ</h3>
-                        <div style="font-size: 1.1rem; margin: 1.5rem 0; color: var(--text-muted);">
-                            Daily Power devotions will be available starting <strong>May 1, 2026</strong>.
-                        </div>
-                        <div style="font-size: 2rem; font-weight: 700; color: var(--accent-color); margin: 1rem 0;">
-                            ${daysUntil2026} days to go!
-                        </div>
-                        <div style="margin-top: 1.5rem; padding: 1rem; background: var(--surface); border-radius: 12px;">
-                            <p>Get ready for a powerful journey through God's Word. Mark your calendar! üìÖ</p>
-                        </div>
-                    </div>
-                    `;
+            // Load daily power (devotion) - now lazy and navigable
+            async function ensureDailyDevotionsLoaded() {
+                if (dailyDevotionsData && Array.isArray(dailyDevotionsData)) return;
+                try {
+                    const res = await fetch('daily_devotions.json');
+                    if (!res.ok) throw new Error('Failed to fetch devotions');
+                    dailyDevotionsData = await res.json();
+                } catch (e) {
+                    console.error('Failed to load daily devotions:', e);
+                    dailyDevotionsData = [];
                 }
-                
-                // Calculate which devotion day (starting from May 1, 2026)
-                const diffTime = today - startDate2026;
-                const daysSince2026 = Math.floor(diffTime / (1000 * 60 * 60 * 24)) + 1; 
-                
-                // Use modulo to cycle through available devotions
-                const index = (daysSince2026 - 1) % dailyDevotionsData.length;
-                let devotion = dailyDevotionsData[index];
+            }
 
+            function formatDevotionHtml(devotion) {
                 if (!devotion) return '<p>No devotion available</p>';
 
-                // Metadata Header (Series & Week)
                 let metaHeader = '';
                 if (devotion.series_title || devotion.week_number) {
                     metaHeader = `
@@ -9382,7 +9775,6 @@ function adjustColorBrightness(hex, factor) {
                 `).join('');
                 }
 
-                // Handling Weekly Recap Type
                 if (devotion.type === 'weekly_recap') {
                     return `
                         <div class="activity-content">
@@ -9440,7 +9832,6 @@ function adjustColorBrightness(hex, factor) {
                     `;
                 }
 
-                // Default Ordinary Day Layout
                 return `
                 <div class="activity-content">
                     ${metaHeader}
@@ -9477,6 +9868,141 @@ function adjustColorBrightness(hex, factor) {
                     </div>
                 </div>
             `;
+            }
+
+            async function loadDailyPower(day) {
+                await ensureDailyDevotionsLoaded();
+
+                const today = new Date();
+                const startDate2026 = new Date('2026-01-05');
+
+                if (today < startDate2026) {
+                    const daysUntil2026 = Math.ceil((startDate2026 - today) / (1000 * 60 * 60 * 24));
+                    return `
+                    <div class="activity-content" style="text-align: center; padding: 2rem;">
+                        <h3 class="activity-modal-title">Coming Soon! üéâ</h3>
+                        <div style="font-size: 1.1rem; margin: 1.5rem 0; color: var(--text-muted);">
+                            Daily Devotion will be available starting <strong>January 5, 2026</strong>.
+                        </div>
+                        <div style="font-size: 2rem; font-weight: 700; color: var(--accent-color); margin: 1rem 0;">
+                            ${daysUntil2026} days to go!
+                        </div>
+                    </div>
+                    `;
+                }
+
+                if (!dailyDevotionsData || !dailyDevotionsData.length) {
+                    return '<p>Loading...</p>';
+                }
+
+                // Calculate absolute day for today's devotion if not set by navigation
+                if (currentDailyDevotionDay === null) {
+                    const diffTime = today - startDate2026;
+                    const daysSince2026 = Math.floor(diffTime / (1000 * 60 * 60 * 24)) + 1; 
+                    currentDailyDevotionDay = daysSince2026;
+                }
+
+                const dayNumber = currentDailyDevotionDay;
+                const i = ((dayNumber - 1) % dailyDevotionsData.length + dailyDevotionsData.length) % dailyDevotionsData.length;
+                const devotion = dailyDevotionsData[i];
+
+                // Update day badge to reflect absolute day number (1-based)
+                const dayEl = document.getElementById('daily-power-day');
+                const indicatorEl = document.getElementById('daily-power-indicator');
+                if (dayEl) dayEl.textContent = `Day ${i + 1}`;
+
+                // Update indicator to mark previous vs current devotion
+                try {
+                    const today = new Date();
+                    const startDate = new Date('2026-01-05');
+                    if (!indicatorEl) {
+                        // nothing
+                    } else if (today < startDate) {
+                        indicatorEl.textContent = '';
+                    } else {
+                        const diffTime = today - startDate;
+                        const daysSinceStart = Math.floor(diffTime / (1000 * 60 * 60 * 24)) + 1;
+                        const todaysIndex = (daysSinceStart - 1) % (dailyDevotionsData ? dailyDevotionsData.length : 1);
+                        if (i !== todaysIndex) {
+                            indicatorEl.textContent = 'Previous devotion';
+                            indicatorEl.classList.add('is-previous');
+                        } else {
+                            indicatorEl.textContent = '';
+                            indicatorEl.classList.remove('is-previous');
+                        }
+                    }
+                } catch (e) { /* ignore */ }
+
+                return formatDevotionHtml(devotion);
+            }
+
+            async function renderDevotionByDay(dayNumber) {
+                await ensureDailyDevotionsLoaded();
+                if (!dailyDevotionsData || !dailyDevotionsData.length) return;
+                if (typeof dayNumber !== 'number' || dayNumber < 1) dayNumber = 1;
+                currentDailyDevotionDay = dayNumber;
+
+                const idx = ((dayNumber - 1) % dailyDevotionsData.length + dailyDevotionsData.length) % dailyDevotionsData.length;
+                const contentEl = document.getElementById('daily-power-content');
+                if (!contentEl) return;
+                const html = formatDevotionHtml(dailyDevotionsData[idx]);
+                contentEl.innerHTML = html;
+
+                const dayEl = document.getElementById('daily-power-day');
+                const indicatorEl = document.getElementById('daily-power-indicator');
+                if (dayEl) dayEl.textContent = `Day ${dayNumber}`;
+
+                // Update indicator to mark previous vs current devotion
+                try {
+                    const today = new Date();
+                    const startDate = new Date('2026-01-05');
+                    if (!indicatorEl) {
+                        // nothing
+                    } else if (today < startDate) {
+                        indicatorEl.textContent = '';
+                        indicatorEl.classList.remove('is-previous');
+                    } else {
+                        const diffTime = today - startDate;
+                        const daysSinceStart = Math.floor(diffTime / (1000 * 60 * 60 * 24)) + 1;
+                        if (dayNumber < daysSinceStart) {
+                            // It is a previous devotion
+                            indicatorEl.textContent = 'Previous devotion';
+                            indicatorEl.classList.add('is-previous');
+                        } else {
+                            indicatorEl.textContent = '';
+                            indicatorEl.classList.remove('is-previous');
+                        }
+                    }
+                } catch (e) { /* ignore */ }
+            }
+
+            window.prevDevotion = async function () {
+                if (!dailyDevotionsData || !dailyDevotionsData.length) {
+                    await ensureDailyDevotionsLoaded();
+                    if (!dailyDevotionsData.length) return;
+                }
+                const today = new Date();
+                const startDate = new Date('2026-01-05');
+                if (today < startDate) return; // navigation not available before start
+                const daysSinceStart = Math.floor((today - startDate) / (1000 * 60 * 60 * 24)) + 1;
+                if (currentDailyDevotionDay === null) currentDailyDevotionDay = daysSinceStart;
+                const newDay = currentDailyDevotionDay - 1;
+                if (newDay < 1) return; // already at Day 1
+                await renderDevotionByDay(newDay);
+            }
+
+            window.nextDevotion = async function () {
+                if (!dailyDevotionsData || !dailyDevotionsData.length) {
+                    await ensureDailyDevotionsLoaded();
+                    if (!dailyDevotionsData.length) return;
+                }
+                // Allow navigating forward (future days). If no devotions left, they cycle content but day number increases.
+                const today = new Date();
+                const startDate = new Date('2026-01-05');
+                const daysSinceStart = Math.floor((today - startDate) / (1000 * 60 * 60 * 24)) + 1;
+                if (currentDailyDevotionDay === null) currentDailyDevotionDay = daysSinceStart;
+                const newDay = currentDailyDevotionDay + 1;
+                await renderDevotionByDay(newDay);
             }
 
             // Load daily affirmation
@@ -9636,6 +10162,108 @@ function adjustColorBrightness(hex, factor) {
 
                 const readTopics = userData.readTopics || [];
 
+                // HOME view: grouped sections (rendered using the same .sacred-card markup)
+                if (currentSacredTab === 'home') {
+                    const SECTIONS = [
+                        { id: 'sin', title: 'Sin & Repentance', keywords: ['sin','salvation','repentance','temptation'] },
+                        { id: 'love', title: 'Love', keywords: ['love'] },
+                        { id: 'god', title: 'God & Faith', keywords: ['holy-spirit','faith','grace','god'] },
+                        { id: 'gratitude', title: 'Gratitude', keywords: ['gratitude','thanks','thanksgiving'] },
+                        { id: 'prayer', title: 'Prayer', keywords: ['prayer'] },
+                        { id: 'identity', title: 'Identity & Purpose', keywords: ['identity','purpose'] },
+                        { id: 'mental', title: 'Mental Health', keywords: ['anxiety','peace','stress'] },
+                        { id: 'recommended', title: 'What You Might Like', keywords: [] }
+                    ];
+
+                    const addedKeys = new Set();
+
+                    SECTIONS.forEach(section => {
+                        // Find matching topics
+                        let matches = Object.entries(bibleStudyTopics).filter(([key, topic]) => {
+                            // Filter by search query
+                            if (filter && !topic.title.toLowerCase().includes(filter.toLowerCase())) return false;
+
+                            if (section.id === 'recommended') return false; // handled later
+
+                            const titleLower = topic.title.toLowerCase();
+                            const keyLower = key.toLowerCase();
+
+                            return section.keywords ? section.keywords.some(k => titleLower.includes(k) || keyLower.includes(k)) : false;
+                        }).slice(0,6); // limit per section
+
+                        if (matches.length === 0) return; // skip empty sections
+
+                        // Mark added keys
+                        matches.forEach(([k]) => addedKeys.add(k));
+
+                        // Render section header
+                        const sectionEl = document.createElement('div');
+                        sectionEl.className = 'sacred-home-section';
+                        sectionEl.innerHTML = `<div class="sacred-home-header"><h3>${section.title}</h3><a class="view-more" onclick="switchSacredTab('study')">See all</a></div>`;
+
+                        // Create a small grid for the section
+                        const sectionGrid = document.createElement('div');
+                        sectionGrid.className = 'sacred-grid';
+                        sectionGrid.style.gridTemplateColumns = 'repeat(auto-fill,minmax(160px,1fr))';
+
+                        matches.forEach(([k, topic]) => {
+                            const isRead = readTopics.includes(k);
+                            const iconSVG = getIconSVG(topic.title);
+                            const subtitle = getSubtitle(topic.title);
+
+                            const card = document.createElement('div');
+                            card.className = `sacred-card ${isRead ? 'read' : ''}`;
+                            card.onclick = () => openSacredTopic(k);
+
+                            card.innerHTML = `
+                                <div class="read-indicator">‚úì</div>
+                                <div class="sacred-icon">${iconSVG}</div>
+                                <div>
+                                    <div class="sacred-card-title">${topic.title}</div>
+                                    <div class="sacred-card-subtitle">${subtitle}</div>
+                                </div>
+                            `;
+                            sectionGrid.appendChild(card);
+                        });
+
+                        sectionEl.appendChild(sectionGrid);
+                        grid.appendChild(sectionEl);
+                    });
+
+                    // Recommended: fill with topics not already shown
+                    const remaining = Object.entries(bibleStudyTopics).filter(([k, t]) => !addedKeys.has(k) && (!filter || t.title.toLowerCase().includes(filter.toLowerCase()))).slice(0,6);
+                    if (remaining.length > 0) {
+                        const sectionEl = document.createElement('div');
+                        sectionEl.className = 'sacred-home-section';
+                        sectionEl.innerHTML = `<div class="sacred-home-header"><h3>What You Might Like</h3><a class="view-more" onclick="switchSacredTab('study')">See all</a></div>`;
+                        const sectionGrid = document.createElement('div');
+                        sectionGrid.className = 'sacred-grid';
+                        remaining.forEach(([k, topic]) => {
+                            const isRead = readTopics.includes(k);
+                            const iconSVG = getIconSVG(topic.title);
+                            const subtitle = getSubtitle(topic.title);
+
+                            const card = document.createElement('div');
+                            card.className = `sacred-card ${isRead ? 'read' : ''}`;
+                            card.onclick = () => openSacredTopic(k);
+                            card.innerHTML = `
+                                <div class="read-indicator">‚úì</div>
+                                <div class="sacred-icon">${iconSVG}</div>
+                                <div>
+                                    <div class="sacred-card-title">${topic.title}</div>
+                                    <div class="sacred-card-subtitle">${subtitle}</div>
+                                </div>
+                            `;
+                            sectionGrid.appendChild(card);
+                        });
+                        sectionEl.appendChild(sectionGrid);
+                        grid.appendChild(sectionEl);
+                    }
+
+                    return; // done rendering home
+                }
+
+                // Non-home tabs: existing behavior
                 Object.entries(bibleStudyTopics).forEach(([key, topic]) => {
                     // Filter by search query
                     if (filter && !topic.title.toLowerCase().includes(filter.toLowerCase())) return;
@@ -9645,7 +10273,7 @@ function adjustColorBrightness(hex, factor) {
                         // Only show read topics
                         if (!readTopics.includes(key)) return;
                     }
-                    // 'home' shows all (or popular). 'study' currently shows all (placeholder).
+                    // 'study' shows all topics
 
                     const isRead = readTopics.includes(key);
                     const iconSVG = getIconSVG(topic.title);
@@ -9699,7 +10327,7 @@ function adjustColorBrightness(hex, factor) {
                 
                 if (modalOverlay && modalBody && topic) {
                     modalBody.innerHTML = `
-                        <h2 class="sacred-title" style="font-size: 2rem; margin-bottom: 10px;">${topic.title}</h2>
+                        <h2 style="font-size: 2rem; margin-bottom: 10px; color: inherit;">${topic.title}</h2>
                         <div style="color: #8C7B70; font-style: italic; margin-bottom: 20px; font-family: 'Merriweather', serif;">
                             ${topic.scriptures ? topic.scriptures.join(', ') : ''}
                         </div>

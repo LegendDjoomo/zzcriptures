@@ -7,6 +7,8 @@ let glossaryScriptsLoaded = false;
 let filteredGlossaryItems = [];
 let displayedItemsCount = 0;
 const ITEMS_PER_PAGE = 40; // Increased to 40 to buffer better against fast scrolling
+let glossaryLoading = false; // prevents duplicate concurrent loads
+let glossaryScrollHandlerAttached = false; // tracks scroll listener so we can remove it when done
 
 // Lazy load glossary scripts
 async function loadGlossaryScripts() {
@@ -118,28 +120,75 @@ function renderGlossary(resetPagination = true) {
     // Show/hide load more container and setup intersection observer
     if (loadMoreContainer) {
         if (displayedItemsCount < filteredGlossaryItems.length) {
-const ITEMS_PER_PAGE = 40; // Increased to 40 to provide a better buffer
-            
-            // ... (rest of code) ...
+            // Ensure loader area is visible
+            loadMoreContainer.style.display = 'block';
+            const glossaryListEl = document.getElementById('glossary-list');
 
-            // Setup Intersection Observer for Infinite Scroll
-            if (!window.glossaryObserver) {
-                window.glossaryObserver = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        // Trigger load when user is within 800px (approx 1-2 screens) of the bottom
-                        if (entry.isIntersecting && displayedItemsCount < filteredGlossaryItems.length) {
-                            loadMoreGlossaryItems();
-                        }
-                    });
-                }, { root: null, rootMargin: '800px', threshold: 0.1 });
-                
-                window.glossaryObserver.observe(loadMoreContainer);
-            }
-        } else {
-            loadMoreContainer.style.display = 'none';
+            // Reset any existing observer so we can attach a fresh one (anchors may change on filter/search)
             if (window.glossaryObserver) {
                 window.glossaryObserver.disconnect();
                 window.glossaryObserver = null;
+            }
+
+            // Setup Intersection Observer for Infinite Scroll anchored to the glossary list
+            window.glossaryObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !glossaryLoading && displayedItemsCount < filteredGlossaryItems.length) {
+                        glossaryLoading = true;
+                        // show subtle loader state
+                        loadMoreContainer.classList.add('loading');
+                        loadMoreGlossaryItems();
+                    }
+                });
+            }, { root: glossaryListEl || null, rootMargin: '200px', threshold: 0.1 });
+
+            window.glossaryObserver.observe(loadMoreContainer);
+
+            // Attach a throttled scroll fallback for very fast scrolls (observer can miss rapid jumps)
+            if (glossaryListEl && !glossaryScrollHandlerAttached) {
+                let ticking = false;
+                const onScrollCheck = () => {
+                    if (glossaryLoading) return;
+                    const threshold = 300; // px to trigger early
+                    if (glossaryListEl.scrollTop + glossaryListEl.clientHeight >= glossaryListEl.scrollHeight - threshold && displayedItemsCount < filteredGlossaryItems.length) {
+                        glossaryLoading = true;
+                        if (loadMoreContainer) {
+                            loadMoreContainer.classList.add('loading');
+                            loadMoreContainer.style.display = 'block';
+                        }
+                        loadMoreGlossaryItems();
+                    }
+                };
+                const throttled = () => {
+                    if (!ticking) {
+                        window.requestAnimationFrame(() => {
+                            onScrollCheck();
+                            ticking = false;
+                        });
+                        ticking = true;
+                    }
+                };
+                glossaryListEl.addEventListener('scroll', throttled, { passive: true });
+                window._glossary_throttled_scroll = throttled;
+                glossaryScrollHandlerAttached = true;
+            }
+        } else {
+            loadMoreContainer.style.display = 'none';
+            loadMoreContainer.classList.remove('loading');
+            if (window.glossaryObserver) {
+                window.glossaryObserver.disconnect();
+                window.glossaryObserver = null;
+            }
+
+            // Remove scroll fallback if attached
+            const glossaryListEl = document.getElementById('glossary-list');
+            if (glossaryListEl && glossaryScrollHandlerAttached) {
+                const throttled = window._glossary_throttled_scroll;
+                if (throttled) {
+                    glossaryListEl.removeEventListener('scroll', throttled);
+                    window._glossary_throttled_scroll = null;
+                }
+                glossaryScrollHandlerAttached = false;
             }
         }
     }
@@ -170,18 +219,42 @@ function renderPaginatedItems() {
             }
             groupedGlossary[firstLetter].push(item);
         });
-        
+
         const sortedLetters = Object.keys(groupedGlossary).sort();
-        
+
+        // Insert each letter group, and if the last rendered section already has the same letter, merge into it
         sortedLetters.forEach(letter => {
-            htmlContent += `
-                <div class="glossary-letter-section">
-                    <div class="glossary-letter-header">${letter}</div>
-                    <div class="glossary-letter-items">
-                        ${groupedGlossary[letter].map(item => renderGlossaryItem(item)).join('')}
+            const lastSection = glossaryList.querySelector('.glossary-letter-section:last-of-type');
+            const lastHeader = lastSection ? lastSection.querySelector('.glossary-letter-header') : null;
+            const letterItemsHtml = groupedGlossary[letter].map(item => renderGlossaryItem(item)).join('');
+
+            if (lastHeader && lastHeader.textContent === letter && lastSection) {
+                // Merge items into existing section to avoid duplicate sticky headers and layout gaps
+                const itemsContainer = lastSection.querySelector('.glossary-letter-items');
+                if (itemsContainer) {
+                    itemsContainer.insertAdjacentHTML('beforeend', letterItemsHtml);
+                } else {
+                    // Fallback: append a new section if something unexpected
+                    htmlContent += `
+                        <div class="glossary-letter-section">
+                            <div class="glossary-letter-header">${letter}</div>
+                            <div class="glossary-letter-items">
+                                ${letterItemsHtml}
+                            </div>
+                        </div>
+                    `;
+                }
+            } else {
+                // New letter section
+                htmlContent += `
+                    <div class="glossary-letter-section">
+                        <div class="glossary-letter-header">${letter}</div>
+                        <div class="glossary-letter-items">
+                            ${letterItemsHtml}
+                        </div>
                     </div>
-                </div>
-            `;
+                `;
+            }
         });
     } else {
         // Render flat list
@@ -195,22 +268,54 @@ function renderPaginatedItems() {
     
     // Update displayed count
     displayedItemsCount = endIndex;
+
+    // Ensure the glossary scroller is filled — useful if the user jumped/fast-scrolled and content didn't reach the scrollbar
+    ensureGlossaryFilled();
 }
 
 // Load more glossary items
 function loadMoreGlossaryItems() {
+    // idempotent set to prevent races when called from different triggers
+    glossaryLoading = true;
+
     requestAnimationFrame(() => {
         renderPaginatedItems();
         
-        // Update load more button visibility
+        // Update load more container visibility
         const loadMoreContainer = document.getElementById('glossary-load-more-container');
         if (loadMoreContainer) {
             if (displayedItemsCount >= filteredGlossaryItems.length) {
+                // no more items
                 loadMoreContainer.style.display = 'none';
+                loadMoreContainer.classList.remove('loading');
+                if (window.glossaryObserver) {
+                    window.glossaryObserver.disconnect();
+                    window.glossaryObserver = null;
+                }
+
+                // Remove scroll fallback if attached
+                const glossaryListEl = document.getElementById('glossary-list');
+                if (glossaryListEl && glossaryScrollHandlerAttached) {
+                    const throttled = window._glossary_throttled_scroll;
+                    if (throttled) {
+                        glossaryListEl.removeEventListener('scroll', throttled);
+                        window._glossary_throttled_scroll = null;
+                    }
+                    glossaryScrollHandlerAttached = false;
+                }
+            } else {
+                // still more items — ensure loader visible but stop spinner state
+                loadMoreContainer.style.display = 'block';
+                loadMoreContainer.classList.remove('loading');
             }
         }
         
+        // allow the observer to trigger again
+        glossaryLoading = false;
         updateBackToTopButton();
+
+        // If the content didn't fill the container (fast scrolling left us with a short content), trigger extra loads until it's scrollable
+        ensureGlossaryFilled();
     });
 }
 
@@ -330,6 +435,26 @@ async function searchBibleVerse(reference) {
                 console.warn(`Verse ${verse} not found in DOM`);
             }
         }, 500);
+    }
+}
+
+// Attempt to fill the visible scroller by loading additional pages until scrollable or out of items
+function ensureGlossaryFilled() {
+    const glossaryList = document.getElementById('glossary-list');
+    const loadMoreContainer = document.getElementById('glossary-load-more-container');
+    if (!glossaryList) return;
+
+    // If the content is shorter than the viewport or the user scrolled to/into the bottom and more items exist, trigger another load
+    if ((glossaryList.scrollHeight <= glossaryList.clientHeight || (glossaryList.scrollTop + glossaryList.clientHeight >= glossaryList.scrollHeight - 50)) && displayedItemsCount < filteredGlossaryItems.length && !glossaryLoading) {
+        glossaryLoading = true;
+        if (loadMoreContainer) {
+            loadMoreContainer.style.display = 'block';
+            loadMoreContainer.classList.add('loading');
+        }
+        // schedule the load — small delay lets the browser finish layout
+        setTimeout(() => {
+            loadMoreGlossaryItems();
+        }, 50);
     }
 }
 

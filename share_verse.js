@@ -4,11 +4,11 @@
 const SHARE_CONFIG = {
     canvasWidth: 1080,
     canvasHeight: 1920,
-    overlayOpacity: 0.7,
+    overlayOpacity: 0.3,
     fontSize: {
-        reference: 52,
-        genZ: 58,
-        kjv: 46
+        reference: 56,
+        genZ: 52,
+        kjv: 52
     },
     padding: 80,
     logoSize: 100
@@ -27,11 +27,29 @@ let currentVerseData = {
 // Initialize share modal
 function initShareModal() {
     loadBackgroundsFromFolder();
+
+    // Make Beta Info modal dismissible by clicking outside and with ESC key
+    const betaModal = document.getElementById('beta-info-modal');
+    if (betaModal) {
+        betaModal.addEventListener('click', function(e) {
+            if (e.target === betaModal) closeBetaInfoModal();
+        });
+    }
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            if (betaModal && betaModal.classList.contains('active')) closeBetaInfoModal();
+            const appOverlay = document.getElementById('app-expired-overlay');
+            if (appOverlay && appOverlay.classList.contains('active')) {
+                // Don't allow closing expired overlay with ESC (it's blocking)
+            }
+        }
+    });
 }
 
 // Load backgrounds from share_pics folder
 async function loadBackgroundsFromFolder() {
-    // List of background images (user has these in share_pics folder)
+    // List of background images (in share_pics folder)
     // We'll try to load them dynamically
     const backgroundFiles = [
         'bg1.jpg', 'bg2.jpg', 'bg3.jpg', 'bg4.jpg', 'bg5.jpg',
@@ -96,6 +114,28 @@ function openShareModal() {
 function closeShareModal() {
     const modal = document.getElementById('share-verse-modal');
     modal.style.display = 'none';
+}
+
+// Beta Info modal
+function openBetaInfoModal() {
+    const modal = document.getElementById('beta-info-modal');
+    if (modal) {
+        modal.classList.add('active');
+        // fallback in case CSS visibility is blocked elsewhere
+        modal.style.display = 'flex';
+        // focus first close button for accessibility
+        const closeBtn = modal.querySelector('.close-btn');
+        if (closeBtn) closeBtn.focus();
+        console.log('Beta info modal opened');
+    }
+}
+
+function closeBetaInfoModal() {
+    const modal = document.getElementById('beta-info-modal');
+    if (modal) {
+        modal.classList.remove('active');
+        modal.style.display = '';
+    }
 }
 
 // Select background
@@ -173,14 +213,15 @@ async function renderPreview() {
         yPos += referenceHeight + spacing;
         
         // Gen Z Translation Header
-        ctx.font = 'bold 38px -apple-system, BlinkMacSystemFont, sans-serif';
+        ctx.font = 'bold italic 45px Georgia, serif';
         ctx.globalAlpha = 1;
         ctx.fillText('GEN Z TRANSLATION', centerX, yPos);
         ctx.globalAlpha = 1;
         yPos += genZHeaderHeight + 20;
         
         // Gen Z Translation Text
-        ctx.font = `600 ${SHARE_CONFIG.fontSize.genZ}px -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif`;
+        ctx.font = `600 ${SHARE_CONFIG.fontSize.genZ}px Georgia, serif`;
+        ctx.globalAlpha = 0.85;
         genZLines.forEach(line => {
             ctx.fillText(line, centerX, yPos);
             yPos += SHARE_CONFIG.fontSize.genZ + 20;
@@ -188,37 +229,29 @@ async function renderPreview() {
         yPos += spacing - 20;
         
         // KJV Header
-        ctx.font = 'bold 38px Georgia, serif';
+        ctx.font = 'bold italic 45px Georgia, serif';
         ctx.globalAlpha = 1;
         ctx.fillText('KING JAMES VERSION', centerX, yPos);
         ctx.globalAlpha = 1;
         yPos += kjvHeaderHeight + 20;
         
         // KJV Text
-        ctx.font = `italic ${SHARE_CONFIG.fontSize.kjv}px Georgia, serif`;
+        ctx.font = `600 ${SHARE_CONFIG.fontSize.kjv}px Georgia, serif`;
         ctx.globalAlpha = 0.85;
         kjvLines.forEach(line => {
             ctx.fillText(line, centerX, yPos);
-            yPos += SHARE_CONFIG.fontSize.kjv + 15;
+            yPos += SHARE_CONFIG.fontSize.kjv + 20;
         });
         ctx.globalAlpha = 1;
         
         // 5. Add logo watermarks (top-left and bottom-right for diagonal alignment)
         try {
-            const logo = await loadImage('logo.jpg');
+            const logo = await loadImage('logo1.png');
             const logoSize = SHARE_CONFIG.logoSize;
             
             // TOP-LEFT WATERMARK
-            const logoX1 = 60; // Left side
-            const logoY1 = 60; // Top side
-            
-            // Draw semi-transparent circle background
-            ctx.globalAlpha = 0.3;
-            ctx.fillStyle = '#ffffff';
-            ctx.beginPath();
-            ctx.arc(logoX1 + logoSize/2, logoY1 + logoSize/2, logoSize/2 + 10, 0, Math.PI * 2);
-            ctx.fill();
-            ctx.globalAlpha = 1;
+            const logoX1 = 150; // Left side
+            const logoY1 = 150; // Top side
             
             // Draw logo
             ctx.save();
@@ -237,16 +270,8 @@ async function renderPreview() {
             ctx.fillText('Zcriptures', logoX1 + logoSize + 15, logoY1 + logoSize/2 + 10);
             
             // BOTTOM-RIGHT WATERMARK (diagonal from top-left)
-            const logoX2 = canvas.width - logoSize - 60; // Right side
-            const logoY2 = canvas.height - logoSize - 60; // Bottom side
-            
-            // Draw semi-transparent circle background
-            ctx.globalAlpha = 0.3;
-            ctx.fillStyle = '#ffffff';
-            ctx.beginPath();
-            ctx.arc(logoX2 + logoSize/2, logoY2 + logoSize/2, logoSize/2 + 10, 0, Math.PI * 2);
-            ctx.fill();
-            ctx.globalAlpha = 1;
+            const logoX2 = canvas.width - logoSize - 150; // Right side
+            const logoY2 = canvas.height - logoSize - 150; // Bottom side
             
             // Draw logo
             ctx.save();

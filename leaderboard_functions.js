@@ -63,6 +63,11 @@ async function initializeLeaderboard() {
     try {
         await updateLeaderboardScores();
         renderLeaderboard();
+        // Keep leaderboard fresh: recalc every 6 hours to reflect decay and daily fake player updates
+        setInterval(async () => {
+            await updateLeaderboardScores();
+            renderLeaderboard();
+        }, 6 * 60 * 60 * 1000);
     } catch (error) {
         console.error('Error initializing leaderboard:', error);
     }
@@ -111,34 +116,70 @@ async function updateLeaderboardScores() {
         await dbSet('leaderboard', lb);
     }
     
-    // Ensure current user is in the list
+    // Ensure current user is in the list and track last active time
     if (userData) {
+        // Update user's lastActive timestamp when they play (if available), otherwise use existing
+        const currentLastActive = userData.lastActive || new Date().toISOString();
+
         const userEntryIndex = lb.users.findIndex(u => u.name === userData.name && !u.isFake);
         if (userEntryIndex !== -1) {
             lb.users[userEntryIndex].points = userData.gamePoints || 0;
+            lb.users[userEntryIndex].lastActive = currentLastActive;
         } else {
             lb.users.push({
                 name: userData.name,
                 points: userData.gamePoints || 0,
                 avatar: "👤",
-                isFake: false
+                isFake: false,
+                lastActive: currentLastActive
             });
         }
-        
-        // Sort by points (highest first)
-        lb.users.sort((a, b) => b.points - a.points);
-        
+
+        // Compute ranking points that factor in inactivity decay
+        const DECAY_DAILY = 0.02; // 2% decay per day of inactivity
+        const MIN_EFFECTIVE = 0.10; // at least 10% of points remain
+        const today = new Date();
+
+        lb.users = lb.users.map(u => {
+            // Ensure lastActive exists; fake users are active daily
+            if (!u.lastActive) {
+                if (u.isFake) u.lastActive = new Date().toISOString();
+                else u.lastActive = new Date().toISOString();
+            }
+
+            // Calculate days since last active
+            const last = new Date(u.lastActive);
+            const daysInactive = Math.max(0, Math.floor((today - last) / (1000 * 60 * 60 * 24)));
+
+            // Effective ranking points: apply decay for human users only
+            let rankPoints = u.points;
+            if (!u.isFake) {
+                const factor = Math.pow(1 - DECAY_DAILY, daysInactive);
+                rankPoints = Math.max(Math.floor(u.points * factor), Math.floor(u.points * MIN_EFFECTIVE));
+            } else {
+                // Fake players are active daily; keep their calculated points
+                rankPoints = u.points;
+            }
+
+            return Object.assign({}, u, { rankPoints: rankPoints, daysInactive: daysInactive });
+        });
+
+        // Sort by rankPoints (highest first), tie-breaker by raw points
+        lb.users.sort((a, b) => (b.rankPoints - a.rankPoints) || (b.points - a.points));
+
         // Keep only top 15 to avoid clutter
         lb.users = lb.users.slice(0, 15);
-        
+
         // Save back
         await dbSet('leaderboard', lb);
     }
 }
 
 function renderLeaderboard() {
-    const container = document.getElementById('leaderboard-page-container');
-    if (!container) return;
+    // Render into page and modal if present
+    const pageContainer = document.getElementById('leaderboard-page-container');
+    const modalContainer = document.getElementById('leaderboard-container');
+    if (!pageContainer && !modalContainer) return;
 
     // Fetch latest data
     initDB().then(async () => {
@@ -164,13 +205,22 @@ function renderLeaderboard() {
                 rankEmoji = '🥉';
             }
 
+            // Determine stale indicator
+            const daysInactive = user.daysInactive || 0;
+            const stale = (!user.isFake && daysInactive >= 30);
+            const staleBadge = stale ? `<span class="stale-badge">Stale</span>` : '';
+
+            // Show effective ranking points in small text so users see why ranks moved
+            const rankPointsDisplay = (typeof user.rankPoints !== 'undefined') ? ` (rank: ${user.rankPoints.toLocaleString()})` : '';
+
             html += `
                 <div class="leaderboard-item ${isCurrentUser ? 'current-user' : ''}">
                     <div class="rank ${rankClass}">${rankEmoji || rank}</div>
                     <div class="avatar">${user.avatar || '👤'}</div>
                     <div class="info">
-                        <div class="name">${user.name} ${isCurrentUser ? '(You)' : ''}</div>
-                        <div class="points">${user.points.toLocaleString()} pts</div>
+                        <div class="name">${user.name} ${isCurrentUser ? '(You)' : ''} ${staleBadge}</div>
+                        <div class="points">${user.points.toLocaleString()} pts <span class="rank-points">${rankPointsDisplay}</span></div>
+                        <div class="last-active" style="font-size:0.85rem; color:var(--text-muted);">${user.isFake ? 'Active' : (daysInactive === 0 ? 'Active today' : `${daysInactive} day${daysInactive===1?'':'s'} ago`)}</div>
                     </div>
                 </div>
             `;
@@ -186,7 +236,9 @@ function renderLeaderboard() {
             </div>`;
         }
         
-        container.innerHTML = html;
+        // Inject HTML into both page and modal containers if they exist
+        if (pageContainer) pageContainer.innerHTML = html;
+        if (modalContainer) modalContainer.innerHTML = html;
     });
 }
 

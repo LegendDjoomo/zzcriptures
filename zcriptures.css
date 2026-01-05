@@ -1878,13 +1878,14 @@ body.dark-mode .glossary-letter-header {
 
 .daily-power-text {
   flex: 1;
-  font-size: 1.1rem;
+  font-size: 0.9rem; /* match Sacred Studies subtitle size */
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; /* clean, offline-friendly */
   font-weight: 600;
   color: var(--text-primary);
   line-height: 1.6;
-  font-style: italic;
-  letter-spacing: 0.02em;
-}
+  font-style: normal; /* clearer */
+  letter-spacing: 0.01em;
+} 
 
 /* Dark mode styles for Daily Power Card */
 body.dark-mode .daily-power-card {
@@ -2041,6 +2042,7 @@ body.dark-mode .did-you-know-content {
   right: 0;
   padding: var(--space-lg);
   z-index: 2;
+  /* subtle overlay that adapts per theme */
   background: linear-gradient(
     to top,
     rgba(27, 32, 21, 0.95) 0%,
@@ -2052,21 +2054,41 @@ body.dark-mode .did-you-know-content {
 }
 
 .activity-title {
-  color: #ffffff;
+  color: var(--text-primary); /* theme-aware */
   font-size: 1.35rem;
   font-weight: 700;
   margin-bottom: var(--space-xs);
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
   letter-spacing: -0.01em;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
 }
 
 .activity-description {
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--text-secondary); /* theme-aware */
   font-size: 0.9rem;
   line-height: 1.5;
   margin-bottom: var(--space-sm);
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+  text-shadow: none;
 }
+
+/* Dark mode keeps stronger contrast */
+body.dark-mode .daily-activity-content {
+  background: linear-gradient(
+    to top,
+    rgba(26, 31, 22, 0.98) 0%,
+    rgba(26, 31, 22, 0.9) 50%,
+    transparent 100%
+  );
+}
+
+body.dark-mode .activity-title {
+  color: #f5f5f5;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+}
+
+body.dark-mode .activity-description {
+  color: rgba(245, 245, 245, 0.85);
+} 
 
 .activity-status {
   display: inline-flex;
@@ -2304,6 +2326,38 @@ body.dark-mode .daily-activity-card:hover {
   font-weight: 600;
 }
 
+/* Beta / Demo Info Bar */
+.beta-info-row {
+  margin-bottom: var(--space-md);
+}
+.beta-info-btn {
+  width: 100%;
+  display: block;
+  padding: 14px 18px;
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,0.06);
+  background: linear-gradient(90deg, rgba(255,244,224,1), rgba(255,238,213,1));
+  color: var(--accent-gold);
+  font-weight: 700;
+  text-align: left;
+  box-shadow: var(--shadow-soft);
+  cursor: pointer;
+}
+.beta-info-btn:active { transform: translateY(1px); }
+
+/* Theme-aware variants */
+body.theme-flex .beta-info-btn {
+  background: linear-gradient(90deg, rgba(62,34,96,1), rgba(46,22,79,1));
+  color: #ffffff;
+  border-color: rgba(255,255,255,0.04);
+}
+body.theme-aesthetic .beta-info-btn {
+  background: linear-gradient(90deg, rgba(255,255,255,1), rgba(250,250,250,1));
+  color: var(--aesthetic-text-primary);
+  border-color: rgba(0,0,0,0.04);
+}
+
+
 .user-name {
   color: var(--accent-gold);
   font-weight: 700;
@@ -2527,6 +2581,7 @@ body.dark-mode .daily-activity-card:hover {
   transition: opacity 0.3s ease;
   border: 1px solid rgba(167, 181, 161, 0.3);
   max-width: 90vw;
+  pointer-events: none; /* allow clicks to pass through to underlying UI */
 }
 
 .toast.visible {
@@ -2720,6 +2775,22 @@ body.dark-mode .daily-activity-card:hover {
 
 .loader-bar.complete {
   width: 100%;
+}
+
+/* Glossary load-more visual tweaks */
+#glossary-load-more-container .loader-bar {
+  width: 60px;
+  height: 6px;
+  margin: 0 auto;
+  border-radius: 6px;
+  animation: shimmerLoader 1.2s infinite;
+  opacity: 0.9;
+}
+
+#glossary-load-more-container.loading .loader-bar {
+  /* visible small bar while loading more items */
+  width: 60px;
+  opacity: 1;
 }
 
 /* Mobile optimizations */
@@ -4533,6 +4604,53 @@ body.dark-mode #daily-affirmation-modal .modal-content {
   border-color: var(--dark-border);
 }
 
+/* Flex theme modals */
+body.theme-flex #morning-prayer-modal .modal-content,
+body.theme-flex #evening-prayer-modal .modal-content,
+body.theme-flex #daily-power-modal .modal-content,
+body.theme-flex #daily-affirmation-modal .modal-content {
+  background: var(--flex-card);
+  border-color: var(--flex-border);
+  color: var(--flex-text-primary);
+}
+body.theme-flex #morning-prayer-modal .modal-header,
+body.theme-flex #evening-prayer-modal .modal-header,
+body.theme-flex #daily-power-modal .modal-header,
+body.theme-flex #daily-affirmation-modal .modal-header {
+  background: var(--flex-surface);
+  border-bottom-color: var(--flex-border);
+  color: var(--flex-text-primary);
+}
+body.theme-flex #morning-prayer-modal .modal-header h2,
+body.theme-flex #evening-prayer-modal .modal-header h2,
+body.theme-flex #daily-power-modal .modal-header h2,
+body.theme-flex #daily-affirmation-modal .modal-header h2 {
+  color: var(--flex-text-primary);
+}
+
+/* Aesthetic theme modals */
+body.theme-aesthetic #morning-prayer-modal .modal-content,
+body.theme-aesthetic #evening-prayer-modal .modal-content,
+body.theme-aesthetic #daily-power-modal .modal-content,
+body.theme-aesthetic #daily-affirmation-modal .modal-content {
+  background: var(--aesthetic-card);
+  border-color: var(--aesthetic-border);
+  color: var(--aesthetic-text-primary);
+}
+body.theme-aesthetic #morning-prayer-modal .modal-header,
+body.theme-aesthetic #evening-prayer-modal .modal-header,
+body.theme-aesthetic #daily-power-modal .modal-header,
+body.theme-aesthetic #daily-affirmation-modal .modal-header {
+  background: var(--aesthetic-surface);
+  border-bottom-color: var(--aesthetic-border);
+  color: var(--aesthetic-text-primary);
+}
+body.theme-aesthetic #morning-prayer-modal .modal-header h2,
+body.theme-aesthetic #evening-prayer-modal .modal-header h2,
+body.theme-aesthetic #daily-power-modal .modal-header h2,
+body.theme-aesthetic #daily-affirmation-modal .modal-header h2 {
+  color: var(--aesthetic-text-primary);
+} 
 body.dark-mode #morning-prayer-modal .modal-header,
 body.dark-mode #evening-prayer-modal .modal-header,
 body.dark-mode #daily-power-modal .modal-header,
@@ -6117,6 +6235,94 @@ body.dark-mode .story-viewer-header {
   border-color: var(--dark-border);
 }
 
+/* Flex theme Story Viewer */
+body.theme-flex .story-viewer {
+  background: var(--flex-card);
+  color: var(--flex-text-primary);
+}
+body.theme-flex .story-viewer-header {
+  background: rgba(45, 27, 78, 0.9);
+  border-color: var(--flex-border);
+}
+body.theme-flex .story-viewer-title,
+body.theme-flex .story-viewer-back-btn,
+body.theme-flex .story-viewer-share-btn {
+  color: var(--flex-text-primary);
+}
+
+/* Aesthetic theme Story Viewer */
+body.theme-aesthetic .story-viewer {
+  background: var(--aesthetic-card);
+  color: var(--aesthetic-text-primary);
+}
+body.theme-aesthetic .story-viewer-header {
+  background: rgba(250,250,250,0.95);
+  border-color: var(--aesthetic-border);
+}
+body.theme-aesthetic .story-viewer-title,
+body.theme-aesthetic .story-viewer-back-btn,
+body.theme-aesthetic .story-viewer-share-btn {
+  color: var(--aesthetic-text-primary);
+}
+
+/* Ensure story viewer inherits theme when the class is applied directly to it */
+.story-viewer.theme-flex {
+  background: var(--flex-card) !important;
+  color: var(--flex-text-primary) !important;
+}
+.story-viewer.theme-flex .story-viewer-header {
+  background: linear-gradient(90deg, rgba(45,27,78,0.95), rgba(34,18,60,0.95)) !important;
+  border-color: var(--flex-border) !important;
+}
+.story-viewer.theme-flex .story-viewer-title,
+.story-viewer.theme-flex .story-viewer-back-btn,
+.story-viewer.theme-flex .story-viewer-share-btn {
+  color: var(--flex-text-primary) !important;
+}
+
+.story-viewer.theme-aesthetic {
+  background: var(--aesthetic-card) !important;
+  color: var(--aesthetic-text-primary) !important;
+}
+.story-viewer.theme-aesthetic .story-viewer-header {
+  background: linear-gradient(90deg, rgba(255,255,255,0.98), rgba(250,250,250,0.98)) !important;
+  border-color: var(--aesthetic-border) !important;
+}
+.story-viewer.theme-aesthetic .story-viewer-title,
+.story-viewer.theme-aesthetic .story-viewer-back-btn,
+.story-viewer.theme-aesthetic .story-viewer-share-btn {
+  color: var(--aesthetic-text-primary) !important;
+}
+
+/* ID-specific overrides: ensure themes affect the Gen Z story overlay even if base rules are later */
+body.theme-flex #genz-story-viewer {
+  background: var(--flex-card);
+  color: var(--flex-text-primary);
+}
+body.theme-flex #genz-story-viewer .story-viewer-header {
+  background: linear-gradient(90deg, rgba(45,27,78,0.95), rgba(34,18,60,0.95));
+  border-color: var(--flex-border);
+}
+body.theme-flex #genz-story-viewer .story-viewer-title,
+body.theme-flex #genz-story-viewer .story-viewer-back-btn,
+body.theme-flex #genz-story-viewer .story-viewer-share-btn {
+  color: var(--flex-text-primary);
+}
+
+body.theme-aesthetic #genz-story-viewer {
+  background: var(--aesthetic-card);
+  color: var(--aesthetic-text-primary);
+}
+body.theme-aesthetic #genz-story-viewer .story-viewer-header {
+  background: linear-gradient(90deg, rgba(255,255,255,0.98), rgba(250,250,250,0.98));
+  border-color: var(--aesthetic-border);
+}
+body.theme-aesthetic #genz-story-viewer .story-viewer-title,
+body.theme-aesthetic #genz-story-viewer .story-viewer-back-btn,
+body.theme-aesthetic #genz-story-viewer .story-viewer-share-btn {
+  color: var(--aesthetic-text-primary);
+}
+
 .story-viewer-title {
   font-weight: 700;
   font-size: 1.1rem;
@@ -6157,6 +6363,25 @@ body.dark-mode .story-viewer-title {
 
 body.dark-mode .story-viewer-back-btn,
 body.dark-mode .story-viewer-share-btn {
+
+/* Leaderboard extras: stale badge and rank helper */
+}
+
+.stale-badge {
+  display: inline-block;
+  background: rgba(255, 99, 71, 0.12);
+  color: #ff6347;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.75rem;
+  margin-left: 8px;
+}
+.rank-points {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-left: 6px;
+}
   color: var(--dark-text-primary);
 }
 
@@ -6336,6 +6561,44 @@ body.dark-mode {
   --story-text: #ffffff;
   --story-accent: #b388ff;
   --story-nav-text: rgba(255, 255, 255, 0.8);
+}
+
+/* Theme-specific story variables so themes control the high-contrast story viewer */
+body.theme-flex {
+  --story-bg: var(--flex-card);
+  --story-text: var(--flex-text-primary);
+  --story-accent: var(--flex-accent-purple);
+  --story-nav-text: var(--flex-text-secondary);
+}
+
+body.theme-aesthetic {
+  --story-bg: var(--aesthetic-card);
+  --story-text: var(--aesthetic-text-primary);
+  --story-accent: var(--accent-gold);
+  --story-nav-text: var(--aesthetic-text-secondary);
+}
+
+/* Expiration banner styles */
+.expiration-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, rgba(255,244,224,1), rgba(255,238,213,1));
+  color: var(--accent-gold);
+  border: 1px solid rgba(0,0,0,0.06);
+}
+
+body.theme-flex .expiration-banner {
+  background: linear-gradient(90deg, rgba(62,34,96,1), rgba(46,22,79,1));
+  color: #ffffff;
+}
+
+body.theme-aesthetic .expiration-banner {
+  background: linear-gradient(90deg, rgba(255,255,255,1), rgba(250,250,250,1));
+  color: var(--aesthetic-text-primary);
 }
 
 /* Viewer Container Override */
@@ -7796,28 +8059,112 @@ body.theme-flex .settings-row {
   border-bottom-color: var(--flex-border);
 }
 
-/* Profile Modal */
-body.theme-flex .profile-modal {
-  background: var(--flex-surface);
+/* Profile Modal Base */
+.profile-modal .profile-modal-content {
+  max-width: 640px;
+  border-radius: 12px;
+  overflow: hidden;
 }
 
-body.theme-flex .profile-modal-content {
-  background: var(--flex-card);
-  border-color: var(--flex-border);
+/* Make the View Level Roadmap button fully tappable on mobile */
+#view-roadmap-btn {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 100% !important;
+  box-sizing: border-box;
+  padding: 14px var(--space-xl) !important;
+  min-height: 48px;
+  z-index: 500; /* raised so button sits above modal content */
+  position: relative;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: rgba(0,0,0,0.12);
+  pointer-events: auto;
 }
 
-body.theme-flex .profile-modal-header {
-  background: var(--flex-surface);
-  border-bottom-color: var(--flex-border);
+/* Indicator for previous devotion */
+.devotion-indicator {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-weight: 600;
 }
 
-body.theme-flex .profile-stat-label {
-  color: var(--flex-text-muted);
+.devotion-indicator.is-previous {
+  color: var(--text-secondary);
 }
 
-body.theme-flex .profile-stat-value {
-  color: var(--flex-text-primary);
+.profile-modal-header {
+  text-align: center;
+  padding: 28px 20px 20px 20px;
+  position: relative;
+  background: linear-gradient(135deg, var(--accent-color), var(--accent-burgundy));
+  color: var(--text-primary);
 }
+
+.profile-avatar {
+  width: 110px;
+  height: 110px;
+  background: var(--surface);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  margin: 0 auto 14px auto;
+  overflow: hidden;
+  color: var(--accent-color);
+  border: 4px solid rgba(255,255,255,0.18);
+}
+
+.profile-name-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.profile-edit-btn {
+  font-size: 1rem;
+  padding: 6px 8px;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.profile-name-edit input#profile-name-input {
+  width: 250px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  text-align: center;
+  font-size: 1rem;
+}
+
+.profile-edit-actions { display:flex; gap:8px; justify-content:center; margin-top:10px; }
+
+.profile-error { color: #ff6b6b; font-size:0.875rem; margin-top:8px; display:none; background: rgba(255,107,107,0.06); padding:6px 12px; border-radius:6px; }
+
+.profile-title {
+  margin-top: 12px;
+  display:inline-block;
+  padding:8px 16px;
+  border-radius:20px;
+  font-weight:700;
+  background: rgba(0,0,0,0.08);
+  color: var(--text-primary);
+}
+
+.profile-stats { margin: 20px 0; gap: 12px; }
+.profile-stat { background: linear-gradient(135deg, rgba(0,0,0,0.03), rgba(0,0,0,0.02)); border-radius:12px; padding:18px; text-align:center; border:1px solid var(--border); }
+.profile-stat-value { font-size:2rem; font-weight:900; color: var(--text-primary); }
+.profile-stat-label { font-size:0.85rem; color: var(--text-muted); font-weight:600; text-transform:uppercase; letter-spacing:0.5px; }
+
+/* Theme-specific overrides already defined below, make sure they apply */
+
+/* Ensure close button sits above header */
+.profile-modal .close-btn { position: absolute; top: 12px; right: 12px; }
 
 /* Daily Reminder Modal */
 body.theme-flex .daily-reminder-modal {
@@ -8079,45 +8426,317 @@ body.theme-aesthetic .book-item:hover {
   background: var(--surface-hover);
 }
 
-/* Settings Content Container - No cards, just clean sections */
+/* Settings Content Container - central container */
 #settings-section > div {
-  padding: 0;
-  max-width: 100%;
-  margin: 0;
+  padding: 12px 12px 64px 12px; /* reduced top spacing so card sits closer to header */
+  max-width: 900px;
+  margin: 0 auto;
 }
 
-/* Settings Sections - Remove card styling */
-.settings-card {
-  background: transparent !important;
-  border: none !important;
-  border-radius: 0 !important;
-  padding: 0 !important;
-  margin: 0 !important;
-  box-shadow: none !important;
+#settings-section .settings-card:first-child {
+  margin-top: 8px; /* small gap under header */
 }
 
-.settings-card-header {
+/* Settings Card - readable, elevated blocks */
+#settings-section .settings-card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 18px;
+  margin: 18px 0;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  border: 1px solid var(--border);
+}
+
+/* Card header */
+#settings-section .settings-card-header {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 20px 20px 12px 20px;
+  padding-bottom: 12px;
+  margin: 0 0 6px 0;
+  background: transparent;
+  border-bottom: 1px solid var(--border);
+}
+
+#settings-section .settings-card-icon {
+  font-size: 1.4rem;
+}
+
+#settings-section .settings-card-title {
+  font-size: 1rem;
+  font-weight: 700;
   margin: 0;
-  background: var(--surface);
+  color: var(--text-primary);
+}
+
+/* Settings row layout */
+.settings-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.settings-row:last-child {
   border-bottom: none;
 }
 
-.settings-card-icon {
-  font-size: 1.5rem;
+.settings-label {
+  display: flex;
+  gap: 12px;
+  align-items: center;
 }
 
-.settings-card-title {
-  font-size: 0.9rem;
-  font-weight: 800;
-  margin: 0;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: var(--accent-gold);
+.settings-icon {
+  font-size: 1.25rem;
 }
+
+/* Theme tiles & color bubbles */
+.theme-tiles-container {
+  display: flex;
+  gap: 12px;
+  flex-wrap: nowrap; /* keep on a single row */
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+  padding: 8px 16px 12px 16px; /* allow space at both ends so last tile can fully enter viewport */
+  scroll-padding-inline: 16px; /* ensures snap brings tile fully into view */
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+.theme-tiles-container::-webkit-scrollbar {
+  height: 8px;
+}
+
+.theme-tiles-container::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.12);
+  border-radius: 8px;
+}
+
+/* Cursor while dragging */
+.theme-tiles-container.dragging {
+  cursor: grabbing;
+}
+
+/* On small screens, size tiles so 4 fit in the viewport (fallback if swipe isn't available) */
+@media (max-width: 520px) {
+  .theme-tile {
+    flex: 0 0 calc((100% - 36px) / 4); /* 4 tiles across minus gaps */
+    max-width: calc((100% - 36px) / 4);
+  }
+}
+.theme-tile {
+  flex: 0 0 auto;
+  min-width: 76px;
+  max-width: 96px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--card-bg);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.18s ease;
+  scroll-snap-align: start;
+}
+
+.theme-tile:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+.theme-tile.selected {
+  border-color: var(--accent-color);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+}
+
+.color-bubbles {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.color-bubble {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid rgba(0,0,0,0.06);
+  cursor: pointer;
+}
+
+/* Make header gradient match theme in flex mode */
+body.theme-flex .settings-header-gradient {
+  background: linear-gradient(135deg, var(--flex-bg-gradient-start), var(--flex-bg-gradient-end)) !important;
+  color: var(--flex-text-primary) !important;
+}
+
+body.theme-flex .settings-nav-btn {
+  color: var(--flex-text-primary) !important;
+  border-color: var(--flex-border) !important;
+}
+
+/* Theme-specific Settings UI styles so Flex/Aesthetic actually influence settings (no base blending) */
+body.theme-flex #settings-section {
+  background: var(--flex-surface) !important;
+}
+body.theme-flex #settings-section .settings-card {
+  background: var(--flex-card) !important;
+  border-color: var(--flex-border) !important;
+  color: var(--flex-text-primary) !important;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+}
+body.theme-flex #settings-section .settings-card-header {
+  border-bottom-color: var(--flex-border) !important;
+}
+body.theme-flex .settings-label {
+  color: var(--flex-text-primary) !important;
+}
+body.theme-flex .settings-row {
+  background: transparent;
+  border-bottom-color: var(--flex-border) !important;
+}
+body.theme-flex .theme-tile {
+  background: var(--flex-card) !important;
+  border-color: var(--flex-border) !important;
+  color: var(--flex-text-primary) !important;
+}
+body.theme-flex .theme-tile.selected {
+  border-color: var(--flex-accent-pink) !important;
+  box-shadow: 0 8px 28px rgba(255,105,180,0.06);
+}
+
+/* Aesthetic theme overrides */
+body.theme-aesthetic #settings-section {
+  background: var(--aesthetic-surface) !important;
+}
+body.theme-aesthetic #settings-section .settings-card {
+  background: var(--aesthetic-card) !important;
+  border-color: var(--aesthetic-border) !important;
+  color: var(--aesthetic-text-primary) !important;
+}
+body.theme-aesthetic .settings-label {
+  color: var(--aesthetic-text-primary) !important;
+}
+body.theme-aesthetic .theme-tile {
+  background: var(--aesthetic-card) !important;
+  border-color: var(--aesthetic-border) !important;
+  color: var(--aesthetic-text-primary) !important;
+}
+body.theme-aesthetic .theme-tile.selected {
+  border-color: var(--aesthetic-accent-sage) !important;
+}
+
+/* Make about & policy text readable in flex theme */
+body.theme-flex #policy-section p,
+body.theme-flex #about-section p {
+  color: var(--flex-text-secondary) !important;
+}
+
+body.theme-flex #policy-section h3,
+body.theme-flex #about-section h3 {
+  color: var(--flex-accent-pink) !important;
+}
+
+/* Ensure the top section headers are visible in flex mode */
+body.theme-flex #policy-section .settings-header,
+body.theme-flex #about-section .settings-header {
+  background: linear-gradient(135deg, var(--flex-bg-gradient-start), var(--flex-bg-gradient-end));
+  border-bottom: 1px solid var(--flex-border);
+}
+
+body.theme-flex #policy-section .settings-header .settings-header-title,
+body.theme-flex #about-section .settings-header .settings-header-title {
+  color: var(--flex-text-primary) !important;
+}
+
+/* Make about & policy text readable in flex theme */
+body.theme-flex #policy-section p,
+body.theme-flex #about-section p {
+  color: var(--flex-text-secondary) !important;
+}
+
+body.theme-flex #policy-section h3,
+body.theme-flex #about-section h3 {
+  color: var(--flex-accent-pink) !important;
+}
+
+/* Ensure the top section headers are visible in flex mode */
+body.theme-flex #policy-section .settings-header,
+body.theme-flex #about-section .settings-header {
+  background: linear-gradient(135deg, var(--flex-bg-gradient-start), var(--flex-bg-gradient-end));
+  border-bottom: 1px solid var(--flex-border);
+}
+
+body.theme-flex #policy-section .settings-header .settings-header-title,
+body.theme-flex #about-section .settings-header .settings-header-title {
+  color: var(--flex-text-primary) !important;
+}
+
+/* ensure links in about/policy are readable */
+body.theme-flex #policy-section a,
+body.theme-flex #about-section a {
+  color: var(--flex-accent-purple) !important;
+}
+
+/* Aesthetic header visibility */
+body.theme-aesthetic #policy-section .settings-header,
+body.theme-aesthetic #about-section .settings-header,
+body.theme-aesthetic .settings-header {
+  background: linear-gradient(135deg, var(--aesthetic-bg-gradient-start), var(--aesthetic-bg-gradient-end));
+  border-bottom: 1px solid var(--aesthetic-border);
+}
+
+body.theme-aesthetic #policy-section .settings-header .settings-header-title,
+body.theme-aesthetic #about-section .settings-header .settings-header-title,
+body.theme-aesthetic .settings-header .settings-header-title {
+  color: var(--aesthetic-text-primary) !important;
+}
+
+/* Map base variables to theme values so inline styles (and small areas) use the correct theme colors */
+body.theme-flex {
+  --text-primary: var(--flex-text-primary);
+  --text-secondary: var(--flex-text-secondary);
+  --text-muted: var(--flex-text-muted);
+  --card-bg: var(--flex-card);
+  --surface: var(--flex-surface);
+  --border: var(--flex-border);
+  --accent-color: var(--flex-accent-pink);
+}
+
+body.theme-aesthetic {
+  --text-primary: var(--aesthetic-text-primary);
+  --text-secondary: var(--aesthetic-text-secondary);
+  --text-muted: var(--aesthetic-text-muted);
+  --card-bg: var(--aesthetic-card);
+  --surface: var(--aesthetic-surface);
+  --border: var(--aesthetic-border);
+  --accent-color: var(--aesthetic-accent-sage);
+}
+
+/* Ensure theme tiles' labels and icons inherit readable color */
+.theme-tile-label, .theme-tile-icon {
+  color: var(--text-primary) !important;
+}
+
+/* Accent color bubbles use theme accent when active */
+body.theme-flex .color-bubble.active {
+  border-color: var(--flex-accent-pink) !important;
+  box-shadow: 0 4px 10px rgba(255,105,180,0.08);
+}
+body.theme-aesthetic .color-bubble.active {
+  border-color: var(--aesthetic-accent-sage) !important;
+  box-shadow: 0 4px 10px rgba(168,181,160,0.06);
+}
+
+/* dark mode fallback */
+body.dark-mode #settings-section .settings-card {
+  background: rgba(255,255,255,0.02);
+  border-color: rgba(255,255,255,0.06);
+}
+
 
 /* Settings Rows - Clean list items */
 .settings-row {

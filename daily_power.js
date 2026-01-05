@@ -125,8 +125,15 @@ const dailyPowerMotivations = [
  */
 function getDailyPower() {
     const today = new Date();
-    const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / 86400000);
-    const index = dayOfYear % dailyPowerMotivations.length;
+    const startDate = new Date('2026-01-05'); // Day 1 = Jan 5, 2026
+
+    if (today < startDate) {
+        return dailyPowerMotivations[0];
+    }
+
+    const diffTime = today - startDate;
+    const daysSinceStart = Math.floor(diffTime / (1000 * 60 * 60 * 24)) + 1; // 1-based
+    const index = (daysSinceStart - 1) % dailyPowerMotivations.length;
     return dailyPowerMotivations[index];
 }
 

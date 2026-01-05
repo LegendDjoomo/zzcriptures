@@ -26,11 +26,11 @@ function populateGenZStories(filterTag) {
     
     container.innerHTML = ''; // Clear existing content
     
-    // Only update currentFilter if a specific tag is passed
-    if (filterTag) {
+    // Determine the active filter: prefer explicit parameter, otherwise use global currentFilter
+    const activeFilter = (typeof filterTag !== 'undefined' && filterTag !== null) ? filterTag : (typeof currentFilter !== 'undefined' ? currentFilter : 'all');
+    if (typeof filterTag !== 'undefined' && filterTag !== null) {
         currentFilter = filterTag;
     }
-    // Otherwise use the existing global currentFilter
 
     // Ensure stories object exists
     if (typeof stories === 'undefined') {
@@ -39,28 +39,33 @@ function populateGenZStories(filterTag) {
         return;
     }
 
+    const afLower = String(activeFilter).toLowerCase();
+
     // Filter stories based on tag
     const filteredStories = Object.entries(stories).filter(([key, story]) => {
-        if (filterTag === 'all') return true;
+        if (afLower === 'all') return true;
         
         if (!story.tag || !Array.isArray(story.tag)) {
             // Stories without tags go to 'others'
-            return filterTag === 'others';
+            return afLower === 'others';
         }
         
         // Check if any tag matches the filter (case-insensitive, partial match)
-        const hasMatchingTag = story.tag.some(tag => 
-            tag.toLowerCase().includes(filterTag.toLowerCase()) ||
-            filterTag.toLowerCase().includes(tag.toLowerCase())
-        );
+        const hasMatchingTag = story.tag.some(tag => {
+            if (typeof tag !== 'string') return false;
+            const tagLower = tag.toLowerCase();
+            return tagLower.includes(afLower) || afLower.includes(tagLower);
+        });
         
-        if (filterTag === 'others') {
+        if (afLower === 'others') {
             // 'others' shows stories that don't match any main category
-            const matchesMainCategory = FILTER_CATEGORIES.slice(1, -1).some(category => 
-                story.tag.some(tag => 
-                    tag.toLowerCase().includes(category.toLowerCase()) ||
-                    category.toLowerCase().includes(tag.toLowerCase())
-                )
+            const matchesMainCategory = FILTER_CATEGORIES.slice(1).some(category => 
+                story.tag.some(tag => {
+                    if (typeof tag !== 'string') return false;
+                    const tagLower = tag.toLowerCase();
+                    const categoryLower = category.toLowerCase();
+                    return tagLower.includes(categoryLower) || categoryLower.includes(tagLower);
+                })
             );
             return !matchesMainCategory;
         }
@@ -195,6 +200,22 @@ function openStoryViewer(storyKey, chapterIndex) {
         reflectSection.style.display = 'none';
     }
 
+    // Ensure the viewer reflects the current theme (copy theme classes from body)
+    const bodyClasses = ['theme-flex', 'theme-aesthetic', 'dark-mode', 'theme-light'];
+    bodyClasses.forEach(c => {
+        if (document.body.classList.contains(c)) viewer.classList.add(c);
+        else viewer.classList.remove(c);
+    });
+
+    // Also set inline fallback using computed story vars (helps when CSS specificity blocks variables)
+    try {
+        const cs = getComputedStyle(document.body);
+        const bg = cs.getPropertyValue('--story-bg').trim();
+        const text = cs.getPropertyValue('--story-text').trim();
+        if (bg) viewer.style.background = bg;
+        if (text) viewer.style.color = text;
+    } catch (e) { /* ignore */ }
+
     // Show viewer with animation
     viewer.classList.add('active');
 }
@@ -204,6 +225,10 @@ function closeStoryViewer() {
     const viewer = document.getElementById('genz-story-viewer');
     if (viewer) {
         viewer.classList.remove('active');
+        // remove any theme classes and inline fallbacks
+        ['theme-flex','theme-aesthetic','dark-mode','theme-light'].forEach(c => viewer.classList.remove(c));
+        viewer.style.background = '';
+        viewer.style.color = '';
     }
     currentStoryKey = null;
     currentStoryChapterIndex = 0;
